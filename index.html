@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고객 설문조사</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B35;
+            --primary-dark: #E85A28;
+            --secondary: #004E89;
+            --bg-light: #FFF8F3;
+            --text-dark: #1A1A2E;
+            --text-light: #6B6B7C;
+            --success: #2ECC71;
+            --shadow: rgba(0, 78, 137, 0.15);
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: var(--text-dark);
+        }
+
+        .app-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            max-width: 480px;
+            margin: 0 auto;
+            width: 100%;
+            background: var(--bg-light);
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 2px 12px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header h1 {
+            font-family: 'Gowun Batang', serif;
+            font-size: 24px;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* Main Content */
+        .content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .welcome-screen, .admin-screen {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .welcome-card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px 24px;
+            box-shadow: 0 8px 24px var(--shadow);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .welcome-card h2 {
+            font-family: 'Gowun Batang', serif;
+            font-size: 28px;
+            color: var(--secondary);
+            margin-bottom: 16px;
+        }
+
+        .welcome-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        /* Buttons */
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 6px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            box-shadow: 0 4px 12px rgba(0, 78, 137, 0.3);
+            margin-top: 12px;
+        }
+
+        .btn-small {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+
+        /* Survey Popup */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .popup-overlay.active {
+            display: flex;
+        }
+
+        .popup-content {
+            background: white;
+            border-radius: 24px;
+            max-width: 90%;
+            width: 400px;
+            max-height: 85vh;
+            overflow-y: auto;
+            animation: slideUp 0.4s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .popup-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 24px;
+            border-radius: 24px 24px 0 0;
+            position: relative;
+        }
+
+        .popup-header h3 {
+            font-family: 'Gowun Batang', serif;
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .popup-header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .popup-body {
+            padding: 24px;
+        }
+
+        .question {
+            margin-bottom: 24px;
+        }
+
+        .question label {
+            display: block;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        .question input[type="text"],
+        .question textarea,
+        .question select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #E8E8F0;
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: 'Noto Sans KR', sans-serif;
+            transition: all 0.2s ease;
+        }
+
+        .question input:focus,
+        .question textarea:focus,
+        .question select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        .question textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .rating {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 8px;
+        }
+
+        .rating-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid #E8E8F0;
+            background: white;
+            color: var(--text-light);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .rating-btn:hover {
+            border-color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .rating-btn.selected {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            transform: scale(1.15);
+        }
+
+        /* Admin Panel */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px var(--shadow);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Gowun Batang', serif;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .response-list {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .response-list h3 {
+            font-size: 18px;
+            color: var(--secondary);
+            margin-bottom: 16px;
+        }
+
+        .response-item {
+            border-bottom: 1px solid #F0F0F5;
+            padding: 16px 0;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .response-item:last-child {
+            border-bottom: none;
+        }
+
+        .response-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .response-time {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .response-rating {
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .response-text {
+            color: var(--text-dark);
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .no-responses {
+            text-align: center;
+            color: var(--text-light);
+            padding: 40px 20px;
+        }
+
+        .success-message {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--success);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(46, 204, 113, 0.3);
+            display: none;
+            animation: slideUp 0.4s ease;
+            z-index: 2000;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            background: white;
+            padding: 12px 20px;
+            box-shadow: 0 -2px 12px var(--shadow);
+            display: flex;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            flex: 1;
+            padding: 12px;
+            background: var(--bg-light);
+            border: 2px solid var(--secondary);
+            border-radius: 10px;
+            color: var(--secondary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .nav-btn.active {
+            background: var(--secondary);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <h1>📋 설문조사</h1>
+            <p>고객 의견을 수집합니다</p>
+        </div>
+
+        <div class="content">
+            <!-- Welcome Screen -->
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-card">
+                    <h2>환영합니다! 👋</h2>
+                    <p>고객님의 소중한 의견을 들려주세요.<br>설문은 약 1분 정도 소요됩니다.</p>
+                    <button class="btn" onclick="showSurvey()">설문 시작하기</button>
+                    <button class="btn btn-secondary btn-small" onclick="showAdmin()">🔒 관리자 페이지</button>
+                </div>
+            </div>
+
+            <!-- Admin Screen -->
+            <div class="admin-screen" id="adminScreen" style="display: none;">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalResponses">0</div>
+                        <div class="stat-label">총 응답</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="avgRating">0</div>
+                        <div class="stat-label">평균 만족도</div>
+                    </div>
+                </div>
+
+                <div class="response-list">
+                    <h3>수집된 응답</h3>
+                    <div id="responsesList"></div>
+                    <button class="btn btn-secondary btn-small" onclick="clearAllData()" style="width: 100%; margin-top: 16px;">🗑️ 모든 데이터 삭제</button>
+                    <p style="margin-top: 12px; font-size: 12px; color: var(--text-light); text-align: center;">
+                        💡 비밀번호 변경: 코드에서 'admin1234' 수정
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Survey Popup -->
+        <div class="popup-overlay" id="surveyPopup">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h3>고객 만족도 조사</h3>
+                    <p>귀하의 의견이 서비스 향상에 도움이 됩니다</p>
+                    <button class="close-btn" onclick="closeSurvey()">&times;</button>
+                </div>
+                <div class="popup-body">
+                    <form id="surveyForm">
+                        <div class="question">
+                            <label>이름 (선택)</label>
+                            <input type="text" id="name" placeholder="이름을 입력하세요">
+                        </div>
+
+                        <div class="question">
+                            <label>서비스 만족도 *</label>
+                            <div class="rating" id="ratingButtons"></div>
+                            <input type="hidden" id="rating">
+                        </div>
+
+                        <div class="question">
+                            <label>서비스 이용 목적 *</label>
+                            <select id="purpose" required>
+                                <option value="">선택하세요</option>
+                                <option value="개인">개인 사용</option>
+                                <option value="업무">업무 목적</option>
+                                <option value="학습">학습/교육</option>
+                                <option value="기타">기타</option>
+                            </select>
+                        </div>
+
+                        <div class="question">
+                            <label>개선이 필요한 점이나 의견을 자유롭게 작성해주세요 *</label>
+                            <textarea id="feedback" placeholder="의견을 입력하세요" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn" style="width: 100%;">제출하기</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav" id="bottomNav" style="display: none;">
+            <button class="nav-btn" onclick="showWelcome()">홈</button>
+            <button class="nav-btn" onclick="showAdmin()">🔒 응답 관리</button>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+        ✅ 설문이 성공적으로 제출되었습니다!
+    </div>
+
+    <script>
+        // Initialize rating buttons
+        const ratingContainer = document.getElementById('ratingButtons');
+        for (let i = 1; i <= 5; i++) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'rating-btn';
+            btn.textContent = i;
+            btn.onclick = () => selectRating(i);
+            ratingContainer.appendChild(btn);
+        }
+
+        function selectRating(value) {
+            document.getElementById('rating').value = value;
+            document.querySelectorAll('.rating-btn').forEach((btn, index) => {
+                btn.classList.toggle('selected', index < value);
+            });
+        }
+
+        function showSurvey() {
+            document.getElementById('surveyPopup').classList.add('active');
+        }
+
+        function closeSurvey() {
+            document.getElementById('surveyPopup').classList.remove('active');
+            document.getElementById('surveyForm').reset();
+            document.querySelectorAll('.rating-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+        }
+
+        function showWelcome() {
+            document.getElementById('welcomeScreen').style.display = 'block';
+            document.getElementById('adminScreen').style.display = 'none';
+            document.getElementById('bottomNav').style.display = 'none';
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+        }
+
+        function showAdmin() {
+            // 비밀번호 확인
+            const password = prompt('관리자 비밀번호를 입력하세요:');
+            const correctPassword = 'admin1234'; // 여기서 비밀번호 변경 가능
+            
+            if (password !== correctPassword) {
+                alert('❌ 비밀번호가 틀렸습니다!');
+                return;
+            }
+            
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('adminScreen').style.display = 'block';
+            document.getElementById('bottomNav').style.display = 'flex';
+            document.querySelectorAll('.nav-btn')[1].classList.add('active');
+            loadResponses();
+        }
+
+        // Handle form submission
+        document.getElementById('surveyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Check if rating is selected
+            const rating = document.getElementById('rating').value;
+            if (!rating) {
+                alert('만족도를 선택해주세요!');
+                return;
+            }
+
+            const surveyData = {
+                name: document.getElementById('name').value || '익명',
+                rating: rating,
+                purpose: document.getElementById('purpose').value,
+                feedback: document.getElementById('feedback').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Save to localStorage
+            let responses = JSON.parse(localStorage.getItem('surveyResponses') || '[]');
+            responses.push(surveyData);
+            localStorage.setItem('surveyResponses', JSON.stringify(responses));
+
+            // Show success message
+            const successMsg = document.getElementById('successMessage');
+            successMsg.classList.add('show');
+            setTimeout(() => successMsg.classList.remove('show'), 3000);
+
+            // Close popup and reset form
+            closeSurvey();
+        });
+
+        function loadResponses() {
+            const responses = JSON.parse(localStorage.getItem('surveyResponses') || '[]');
+            const responsesList = document.getElementById('responsesList');
+
+            // Update stats
+            document.getElementById('totalResponses').textContent = responses.length;
+            if (responses.length > 0) {
+                const avgRating = responses.reduce((sum, r) => sum + parseInt(r.rating), 0) / responses.length;
+                document.getElementById('avgRating').textContent = avgRating.toFixed(1);
+            }
+
+            // Display responses
+            if (responses.length === 0) {
+                responsesList.innerHTML = '<div class="no-responses">아직 수집된 응답이 없습니다.</div>';
+                return;
+            }
+
+            responsesList.innerHTML = responses.reverse().map(response => {
+                const date = new Date(response.timestamp);
+                const formattedDate = `${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}`;
+                
+                return `
+                    <div class="response-item">
+                        <div class="response-header">
+                            <span><strong>${response.name}</strong> (${response.purpose})</span>
+                            <span class="response-rating">⭐ ${response.rating}/5</span>
+                        </div>
+                        <div class="response-time">${formattedDate}</div>
+                        <div class="response-text">${response.feedback}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Clear all data (for testing)
+        function clearAllData() {
+            if (confirm('모든 응답 데이터를 삭제하시겠습니까?')) {
+                localStorage.removeItem('surveyResponses');
+                loadResponses();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>job-radar | 개발자 채용공고 레이더</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script src="{{ url_for('static', filename='js/vendor/chart.umd.js') }}"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">job<span>radar</span></div>
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="list">공고 리스트</button>
+      <button class="tab-btn" data-tab="trend">트렌드 대시보드</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- ================= 탭 1: 공고 리스트 ================= -->
+  <section id="tab-list" class="tab-panel active">
+    <aside class="filters">
+      <div class="filter-group">
+        <label>키워드 검색</label>
+        <input type="text" id="f-q" placeholder="기업명, 직무, 스택 검색">
+      </div>
+      <div class="filter-group">
+        <label>출처</label>
+        <select id="f-source"><option value="">전체</option></select>
+      </div>
+      <div class="filter-group">
+        <label>도메인</label>
+        <select id="f-domain"><option value="">전체</option></select>
+      </div>
+      <div class="filter-group">
+        <label>인력유형</label>
+        <select id="f-employment"><option value="">전체</option></select>
+      </div>
+      <div class="filter-group">
+        <label>경력</label>
+        <select id="f-career"><option value="">전체</option></select>
+      </div>
+      <div class="filter-group">
+        <label>지역</label>
+        <select id="f-location"><option value="">전체</option></select>
+      </div>
+      <div class="filter-group">
+        <label>기술스택 (다중선택)</label>
+        <div id="f-stacks" class="stack-checklist"></div>
+      </div>
+      <button id="f-reset" class="btn-reset">필터 초기화</button>
+    </aside>
+
+    <div class="job-list-wrap">
+      <div class="job-list-header">
+        <span id="job-count">0건</span>
+        <span class="sort-label">등록일 최신순</span>
+      </div>
+      <div id="job-list" class="job-list"></div>
+    </div>
+  </section>
+
+  <!-- ================= 탭 2: 트렌드 대시보드 ================= -->
+  <section id="tab-trend" class="tab-panel">
+    <div class="trend-toolbar">
+      <div class="range-toggle">
+        <button class="range-btn active" data-days="7">최근 7일</button>
+        <button class="range-btn" data-days="30">최근 30일</button>
+      </div>
+    </div>
+
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="summary-label">신규 공고 수</div>
+        <div class="summary-value" id="sum-new-jobs">-</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">가장 수요 높은 스택</div>
+        <div class="summary-value" id="sum-top-stack">-</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">가장 활발한 도메인</div>
+        <div class="summary-value" id="sum-top-domain">-</div>
+      </div>
+    </div>
+
+    <div class="chart-grid">
+      <div class="chart-card">
+        <h3>도메인별 공고 수</h3>
+        <div class="chart-canvas"><canvas id="chart-domain"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3>기술스택 수요 TOP 15</h3>
+        <div class="chart-canvas"><canvas id="chart-stack"></canvas></div>
+      </div>
+      <div class="chart-card wide">
+        <h3>일별 공고 등록량 추이</h3>
+        <div class="chart-canvas"><canvas id="chart-daily"></canvas></div>
+      </div>
+      <div class="chart-card wide">
+        <h3>공고 많이 올린 기업 TOP 10 <span class="hint">(영업 타겟 리스트)</span></h3>
+        <div class="chart-canvas"><canvas id="chart-company"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

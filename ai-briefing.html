@@ -116,6 +116,119 @@
     }
     .slide.cover { background: transparent; }
 
+    /* ── 파트 간지 ─────────────────────────────────────────────────── */
+    .slide.divider-slide {
+      background:
+        radial-gradient(60% 60% at 50% 38%, rgba(124,199,255,0.10) 0%, transparent 70%),
+        var(--hero-base);
+    }
+    .divider-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 46rem;
+      position: relative;
+    }
+    .divider-num {
+      position: absolute;
+      top: -5.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11rem;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(124,199,255,0.18);
+      pointer-events: none;
+      z-index: 0;
+      user-select: none;
+    }
+    .divider-kicker {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1.3rem;
+    }
+    .divider-kicker::before, .divider-kicker::after {
+      content: "";
+      width: 2.2rem; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan));
+    }
+    .divider-kicker::after { background: linear-gradient(90deg, var(--cyan), transparent); }
+    .divider-title {
+      position: relative;
+      z-index: 1;
+      font-size: 3.1rem;
+      font-weight: 500;
+      line-height: 1.14;
+      letter-spacing: -0.02em;
+      color: var(--heading);
+      margin-bottom: 1.1rem;
+    }
+    .divider-title em { font-style: normal; color: var(--cyan); }
+    .divider-teaser {
+      position: relative;
+      z-index: 1;
+      font-size: 1.14rem;
+      line-height: 1.6;
+      color: var(--body-muted);
+      max-width: 38rem;
+      margin-bottom: 2rem;
+    }
+    .divider-bullets {
+      position: relative;
+      z-index: 1;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-bottom: 2.2rem;
+    }
+    .divider-bullets li {
+      display: flex;
+      align-items: baseline;
+      gap: 0.7rem;
+      font-size: 1rem;
+      color: var(--body-muted);
+      counter-increment: dv;
+    }
+    .divider-bullets { counter-reset: dv; }
+    .divider-bullets li::before {
+      content: counter(dv, decimal-leading-zero);
+      flex: 0 0 auto;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      color: var(--cyan);
+      opacity: 0.85;
+    }
+    .divider-time {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      height: 2rem;
+      padding: 0 1.1rem;
+      border-radius: 9999px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass-fill);
+      font-size: 0.82rem;
+      color: var(--body-dim);
+      backdrop-filter: blur(10px);
+    }
+    @media (max-width: 1024px) {
+      .divider-num { font-size: 7rem; top: -3.6rem; }
+      .divider-title { font-size: 2.1rem; }
+    }
+
     .slide-bg {
       position: absolute;
       inset: -2%;
@@ -2804,6 +2917,13 @@
         + `<p class="note">저는 AI를 설명만 하는 사람이 아니라, <b style="color:var(--heading)">영업 · 컨설팅 · 기업분석 · RFP 업무에 직접 붙여 써 보며</b> 어떤 방식이 실제 현장에서 먹히는지 검증해 온 사람입니다.</p>`
     },
 
+    /* ── 01 Opening 간지 ─────────────────────────────────────── */
+    { ch: 1, divider: true, nav: "Opening 안내",
+      partLabel: "Opening", title: "우리 '일'에서 시작한다",
+      teaser: "AI 이야기를 시작하기 전에, 우리가 실제로 무엇에 시간을 쓰고 있는지부터 짚어봅니다.",
+      bullets: ["지난 한 주, 우리는 무엇에 시간을 썼는가", "직무가 아니라 '업무 단위(Task)'로 보기", "이미 이렇게 일하는 곳들의 하루"],
+      time: "2–10분" },
+
     /* ── 01 Opening ──────────────────────────────────────────── */
     {
       ch: 1, nav: "60분 전체 흐름", img: "node-graph", cls: "compact",
@@ -2880,26 +3000,26 @@
       + `<p class="note">Meta · Google 등 빅테크 엔지니어링 조직에서 보고되는 패턴을 <b>재구성한 시나리오</b>이며, 특정 회사의 공식 업무 절차는 아닙니다. 이런 방식이 가능한 것은 코드 · 문서처럼 <b>결과를 검증할 수 있는 업무</b>가 많기 때문입니다.</p>`
     },
 
+    /* ── 02 Part 1 간지 ──────────────────────────────────────── */
+    { ch: 2, divider: true, nav: "Part 1 안내",
+      partLabel: "Part 1", title: "AI는 <em>어떻게</em> 변해왔는가",
+      teaser: "2023년부터 2026년까지, AI는 해마다 다른 존재가 되었습니다.",
+      bullets: ["2023 GENERATE에서 2026 DELEGATE까지", "연도별로 무엇이 달라졌는가", "Assistant에서 Agentic AI로"],
+      time: "10–17분" },
+
     /* ── 02 Part 1 ───────────────────────────────────────────── */
     {
-      ch: 2, nav: "2023~2030, AI의 시대 구분", img: "orbit-core", cls: "compact",
+      ch: 2, nav: "2023~2026, AI의 발전 흐름", img: "orbit-core", cls: "compact",
       kicker: "Part 1 · Overview",
-      title: "AI의 흐름을 <em>2023에서 2030까지</em>",
+      title: "AI의 흐름을 <em>2023에서 2026까지</em>",
       body: `<div class="era">
         <div><div class="yr">2023</div><div class="tg">GENERATE</div><p>질문하면 답을 준다.<br>AI = <b>Assistant</b></p></div>
         <div><div class="yr">2024</div><div class="tg">UNDERSTAND</div><p>보고, 듣고, 파일과 도구를 쓴다.<br>AI = <b>Multimodal</b></p></div>
         <div><div class="yr">2025</div><div class="tg">ACT</div><p>업무를 직접 수행한다.<br>AI = <b>Agent</b></p></div>
         <div><div class="yr">2026</div><div class="tg">DELEGATE</div><p>일을 맡길 수 있는 시스템.<br>AI = <b>Agentic AI</b></p></div>
-      </div>
-      <div class="era-label"><b>여기까지가 지나온 길</b> · 아래는 Scenario</div>
-      <div class="era is-forecast">
-        <div><div class="yr">2027</div><div class="tg">ORCHESTRATE</div><p>사람 1명이 여러 Agent를 관리.<br>AI = <b>Multi-Agent</b></p></div>
-        <div><div class="yr">2028</div><div class="tg">AUTOMATE</div><p>정의된 프로세스는 End-to-End.<br>AI = <b>Workflow Autonomy</b></p></div>
-        <div><div class="yr">2029</div><div class="tg">EMBODY</div><p>화면을 넘어 현실 세계로.<br>AI = <b>Physical AI</b></p></div>
-        <div><div class="yr">2030</div><div class="tg">OUTCOME</div><p>Task가 아니라 목표를 맡긴다.<br>AI = <b>Outcome Delegation</b></p></div>
       </div>`
       + quote("2023년에는 “AI에게 무엇이라고 질문할까?”가 중요했다면,<br>2026년에는 “AI가 어떤 환경에서 어떻게 일하도록 만들까?”가 중요해지고 있다.")
-      + `<p class="note">2027년 이후는 <b>확정된 로드맵이 아니라 전망 Scenario</b>입니다. 순서는 대체로 이 방향이지만 <b>시점은 불확실</b>하며, 특히 Physical AI는 현재 성숙도가 가장 낮은 영역입니다(Part 2 참조). 연도보다 <b>“위임 단위가 계속 커진다”</b>는 방향성에 주목해 주세요.</p>`
+      + `<p class="note">2027년 이후 Multi-Agent · Physical AI · Outcome Delegation으로 이어지는 전망은 <b>Part 6</b>에서 자세히 다룹니다. 지금은 <b>“위임 단위가 계속 커진다”</b>는 방향성에 주목해 주세요.</p>`
     },
     {
       ch: 2, nav: "2023 — GENERATE", layout: "split", img: "ai-key", cap: "2023 · Prompt / Generate",
@@ -2946,6 +3066,13 @@
       </div>`
       + quote("모델의 성능 경쟁에서 <b>실행 환경의 설계</b> 경쟁으로 무게중심이 이동하고 있다.")
     },
+
+    /* ── 03 Part 2 간지 ──────────────────────────────────────── */
+    { ch: 3, divider: true, nav: "Part 2 안내",
+      partLabel: "Part 2", title: "2026년, <em>어디까지</em> 왔는가",
+      teaser: "'도입할까 말까'는 이미 끝난 논쟁입니다. 지금 실제로 쓸 수 있는 것이 무엇인지 봅니다.",
+      bullets: ["숫자로 보는 2026년 도입률", "AI Capability Map과 분야별 성숙도", "2026.08 기준 주요 AI 도구 지형도"],
+      time: "17–24분" },
 
     /* ── 03 Part 2 ───────────────────────────────────────────── */
     {
@@ -3146,6 +3273,13 @@
       + quote("AI에게 전달하는 <b>업무의 단위</b>가 계속 커지고 있다.")
     },
 
+    /* ── 04 Part 3 간지 ──────────────────────────────────────── */
+    { ch: 4, divider: true, nav: "Part 3 안내",
+      partLabel: "Part 3", title: "AI <em>Technology Gap</em>",
+      teaser: "뉴스 속 AI와 우리 회사의 AI가 다르게 느껴지는 이유를 짚어봅니다.",
+      bullets: ["도입률과 실제 성과 사이의 격차", "대기업이 느릴 수밖에 없는 이유", "그 격차를 좁히는 기술들"],
+      time: "24–30분" },
+
     /* ── 04 Part 3 ───────────────────────────────────────────── */
     {
       ch: 4, nav: "도입률과 성과의 격차 (통계)", img: "capital-night", cls: "compact",
@@ -3228,6 +3362,13 @@
       </div>`
       + quote("따라서 AI 기술의 <b>Business Adoption 속도</b>가 빨라질 가능성이 높다.")
     },
+
+    /* ── 05 Part 4 간지 ──────────────────────────────────────── */
+    { ch: 5, divider: true, nav: "Part 4 안내",
+      partLabel: "Part 4", title: "<em>Agent System</em>",
+      teaser: "AI Agent를 '디지털 직원'으로 만드는 데 필요한 요소들을 다룹니다.",
+      bullets: ["Prompt → Context → Harness", "MCP · Agent Skills · 문서 체계", "Ralph — 반복 실행 패턴"],
+      time: "30–39분" },
 
     /* ── 05 Part 4 ───────────────────────────────────────────── */
     {
@@ -3370,6 +3511,13 @@
         ]
       ) + `<p class="note">이 네 가지가 갖춰질수록 “AI에게 <b>맡길 수 있는 업무의 길이</b>”가 길어집니다. 이것이 2026년의 실질적인 변화입니다.</p>`
     },
+
+    /* ── 06 Part 5 간지 ──────────────────────────────────────── */
+    { ch: 6, divider: true, nav: "Part 5 안내",
+      partLabel: "Part 5", title: "미쓰이의 <em>실제 업무</em>",
+      teaser: "9개 영업본부와 지원부서, 각자의 업무가 실제로 어떻게 바뀌는지 살펴봅니다.",
+      bullets: ["영업본부 공통 Workflow와 업무 분류", "철강부터 식료유통까지, 부서별 적용 사례", "마지막은 우리 팀 이야기로"],
+      time: "39–48분" },
 
     /* ── 06 Part 5 ───────────────────────────────────────────── */
     {
@@ -3543,6 +3691,32 @@
         ]
       )
     },
+    {
+      ch: 6, nav: "팀 세션 — 우리 팀에 추가할 AI Task", cls: "roomy",
+      kicker: "Part 5 · Team Workshop",
+      title: "팀 세션 — <em>우리 팀</em>에 추가하면 좋을 AI Task",
+      lead: "지금까지 본 부서별 사례를 참고해서, 우리 팀에 실제로 적용해봅니다. 5분간 팀별로 논의해주세요.",
+      body: steps([
+        "지금 반복하고 있는 업무 하나를 각자 떠올린다",
+        "그중 AI에게 맡길 수 있는 부분을 팀원과 함께 찾는다",
+        "실행에 필요한 정보 · 시스템 접근권한을 적는다"
+      ]) + table(
+        ["이름", "현재 반복 업무", "AI에게 맡기고 싶은 부분", "필요한 정보 / 시스템"],
+        [
+          ["&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"],
+          ["&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"],
+          ["&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"],
+          ["&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"]
+        ]
+      ) + `<p class="note">오늘 정리한 것 중 하나를 골라 <b>다음 주에 실제로 시도</b>해보세요.</p>`
+    },
+
+    /* ── 07 Part 6 간지 ──────────────────────────────────────── */
+    { ch: 7, divider: true, nav: "Part 6 안내",
+      partLabel: "Part 6", title: "앞으로의 <em>업무 방식</em>",
+      teaser: "AI 활용의 다섯 단계와, 2027년 이후 우리가 일하는 방식을 전망합니다.",
+      bullets: ["AI 활용의 다섯 단계 (Level 1~5)", "전문가들이 보는 병목", "AI를 잘 쓰는 사람과 못 쓰는 사람"],
+      time: "48–55분" },
 
     /* ── 07 Part 6 ───────────────────────────────────────────── */
     {
@@ -3625,6 +3799,13 @@
       </div>`
       + quote("AI를 잘 쓰는 사람은 <b>질문을 잘하는 사람</b>이 아니라 <b>일을 잘 정의하고 잘 검토하는 사람</b>이다.")
     },
+
+    /* ── 08 Closing 간지 ─────────────────────────────────────── */
+    { ch: 8, divider: true, nav: "Closing 안내",
+      partLabel: "Closing", title: "월요일부터 <em>무엇을 바꿀까</em>",
+      teaser: "오늘 들은 이야기를 각자의 업무로 가져가는 시간입니다.",
+      bullets: ["내 업무를 세 가지로 나누기", "좋은 Prompt보다 중요한 질문", "2분 실습과 마지막 메시지"],
+      time: "55–60분" },
 
     /* ── 08 Closing ──────────────────────────────────────────── */
     {
@@ -3730,6 +3911,13 @@
         + `<p class="note">私はAIを説明するだけの人間ではなく、<b style="color:var(--heading)">営業・コンサルティング・企業分析・RFP業務に実際に組み込んで使いながら</b>、どのやり方が現場で機能するのかを検証してきた人間です。</p>`
     },
 
+    /* ── 01 Opening 間紙 ─────────────────────────────────────── */
+    { ch: 1, divider: true, nav: "Opening 案内",
+      partLabel: "Opening", title: "私たちの<em>『仕事』</em>から始める",
+      teaser: "AIの話を始める前に、私たちが実際に何に時間を使っているのかから確認します。",
+      bullets: ["先週一週間、私たちは何に時間を使ったか", "職務ではなく『業務単位(Task)』で見る", "すでにこう働いている組織の一日"],
+      time: "2–10分" },
+
     /* ── 01 Opening ──────────────────────────────────────────── */
     {
       ch: 1, nav: "60分の全体の流れ", img: "node-graph", cls: "compact",
@@ -3806,26 +3994,26 @@
       + `<p class="note">Meta・Googleなどビッグテックのエンジニアリング組織で報告されているパターンを再構成した<b>シナリオ</b>であり、特定企業の公式な業務手順ではありません。このやり方が可能なのは、コード・ドキュメントのように<b>結果を検証できる業務</b>が多いためです。</p>`
     },
 
+    /* ── 02 Part 1 間紙 ──────────────────────────────────────── */
+    { ch: 2, divider: true, nav: "Part 1 案内",
+      partLabel: "Part 1", title: "AIは<em>どう</em>変わってきたか",
+      teaser: "2023年から2026年まで、AIは毎年違う存在になりました。",
+      bullets: ["2023 GENERATEから2026 DELEGATEまで", "年ごとに何が変わったか", "AssistantからAgentic AIへ"],
+      time: "10–17分" },
+
     /* ── 02 Part 1 ───────────────────────────────────────────── */
     {
-      ch: 2, nav: "2023〜2030年、AIの時代区分", img: "orbit-core", cls: "compact",
+      ch: 2, nav: "2023〜2026年、AIの発展の流れ", img: "orbit-core", cls: "compact",
       kicker: "Part 1 · Overview",
-      title: "AIの流れを<em>2023年から2030年まで</em>",
+      title: "AIの流れを<em>2023年から2026年まで</em>",
       body: `<div class="era">
         <div><div class="yr">2023</div><div class="tg">GENERATE</div><p>質問すれば答えをくれる。<br>AI = <b>Assistant</b></p></div>
         <div><div class="yr">2024</div><div class="tg">UNDERSTAND</div><p>見て、聞いて、ファイルやツールを使う。<br>AI = <b>Multimodal</b></p></div>
         <div><div class="yr">2025</div><div class="tg">ACT</div><p>業務を直接遂行する。<br>AI = <b>Agent</b></p></div>
         <div><div class="yr">2026</div><div class="tg">DELEGATE</div><p>仕事を任せられるシステム。<br>AI = <b>Agentic AI</b></p></div>
-      </div>
-      <div class="era-label"><b>ここまでが歩んできた道</b>・以下はScenario</div>
-      <div class="era is-forecast">
-        <div><div class="yr">2027</div><div class="tg">ORCHESTRATE</div><p>一人が複数のAgentを管理。<br>AI = <b>Multi-Agent</b></p></div>
-        <div><div class="yr">2028</div><div class="tg">AUTOMATE</div><p>定義されたプロセスはEnd-to-End。<br>AI = <b>Workflow Autonomy</b></p></div>
-        <div><div class="yr">2029</div><div class="tg">EMBODY</div><p>画面を超えて現実世界へ。<br>AI = <b>Physical AI</b></p></div>
-        <div><div class="yr">2030</div><div class="tg">OUTCOME</div><p>Taskではなく目標を任せる。<br>AI = <b>Outcome Delegation</b></p></div>
       </div>`
       + quote("2023年には「AIに何を質問しようか?」が重要だったとすれば、<br>2026年には「AIをどんな環境でどう働かせるか?」が重要になっている。")
-      + `<p class="note">2027年以降は確定したロードマップではなく<b>展望Scenario</b>です。順序はおおむねこの方向ですが<b>時期は不確実</b>であり、特にPhysical AIは現時点で成熟度が最も低い領域です(Part 2参照)。年号よりも<b>「委任の単位が拡大し続ける」</b>という方向性に注目してください。</p>`
+      + `<p class="note">2027年以降のMulti-Agent・Physical AI・Outcome Delegationへの展望は<b>Part 6</b>で詳しく扱います。今は<b>「委任の単位が拡大し続ける」</b>という方向性に注目してください。</p>`
     },
     {
       ch: 2, nav: "2023 — GENERATE", layout: "split", img: "ai-key", cap: "2023 · Prompt / Generate",
@@ -3872,6 +4060,13 @@
       </div>`
       + quote("モデル性能の競争から<b>実行環境の設計</b>の競争へと重心が移っている。")
     },
+
+    /* ── 03 Part 2 間紙 ──────────────────────────────────────── */
+    { ch: 3, divider: true, nav: "Part 2 案内",
+      partLabel: "Part 2", title: "2026年、<em>どこまで</em>来ているか",
+      teaser: "『導入するかどうか』はすでに終わった議論です。今実際に使えるものが何かを見ます。",
+      bullets: ["数字で見る2026年の導入率", "AI Capability Mapと分野別成熟度", "2026年8月時点の主要AIツール地図"],
+      time: "17–24分" },
 
     /* ── 03 Part 2 ───────────────────────────────────────────── */
     {
@@ -4072,6 +4267,13 @@
       + quote("AIに渡す<b>業務の単位</b>がどんどん大きくなっている。")
     },
 
+    /* ── 04 Part 3 間紙 ──────────────────────────────────────── */
+    { ch: 4, divider: true, nav: "Part 3 案内",
+      partLabel: "Part 3", title: "AI <em>Technology Gap</em>",
+      teaser: "ニュースの中のAIと自社のAIが違って感じられる理由を確認します。",
+      bullets: ["導入率と実際の成果の間の格差", "大企業が遅くならざるを得ない理由", "その格差を埋める技術"],
+      time: "24–30分" },
+
     /* ── 04 Part 3 ───────────────────────────────────────────── */
     {
       ch: 4, nav: "導入率と成果の格差 (統計)", img: "capital-night", cls: "compact",
@@ -4154,6 +4356,13 @@
       </div>`
       + quote("したがってAI技術の<b>Business Adoption</b>速度は速まる可能性が高い。")
     },
+
+    /* ── 05 Part 4 間紙 ──────────────────────────────────────── */
+    { ch: 5, divider: true, nav: "Part 4 案内",
+      partLabel: "Part 4", title: "<em>Agent System</em>",
+      teaser: "AI Agentを『デジタル社員』にするために必要な要素を扱います。",
+      bullets: ["Prompt → Context → Harness", "MCP・Agent Skills・文書体系", "Ralph — 反復実行パターン"],
+      time: "30–39分" },
 
     /* ── 05 Part 4 ───────────────────────────────────────────── */
     {
@@ -4296,6 +4505,13 @@
         ]
       ) + `<p class="note">この四つが揃うほど<b>『AIに任せられる業務の長さ』</b>が伸びていきます。これが2026年の実質的な変化です。</p>`
     },
+
+    /* ── 06 Part 5 間紙 ──────────────────────────────────────── */
+    { ch: 6, divider: true, nav: "Part 5 案内",
+      partLabel: "Part 5", title: "三井の<em>実際の業務</em>",
+      teaser: "9つの営業本部とサポート部門、それぞれの業務が実際にどう変わるかを見ます。",
+      bullets: ["営業本部共通のWorkflowと業務分類", "鉄鋼から食料流通まで、部署別の適用事例", "最後は私たちのチームの話へ"],
+      time: "39–48分" },
 
     /* ── 06 Part 5 ───────────────────────────────────────────── */
     {
@@ -4469,6 +4685,32 @@
         ]
       )
     },
+    {
+      ch: 6, nav: "チームセッション — チームに追加したいAI Task", cls: "roomy",
+      kicker: "Part 5 · Team Workshop",
+      title: "チームセッション — <em>私たちのチーム</em>に追加したいAI Task",
+      lead: "ここまで見てきた部署別事例を参考に、自分たちのチームに実際に当てはめてみます。5分間チームで話し合ってください。",
+      body: steps([
+        "今繰り返している業務を一つ、それぞれ思い浮かべる",
+        "そのうちAIに任せられる部分をチームで一緒に見つける",
+        "実行に必要な情報・システムアクセス権限を書き出す"
+      ]) + table(
+        ["名前", "現在の反復業務", "AIに任せたい部分", "必要な情報 / システム"],
+        [
+          ["&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"],
+          ["&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"],
+          ["&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"],
+          ["&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"]
+        ]
+      ) + `<p class="note">今日まとめた内容の一つを選んで、<b>来週実際に試してみて</b>ください。</p>`
+    },
+
+    /* ── 07 Part 6 間紙 ──────────────────────────────────────── */
+    { ch: 7, divider: true, nav: "Part 6 案内",
+      partLabel: "Part 6", title: "これからの<em>働き方</em>",
+      teaser: "AI活用の五段階と、2027年以降の働き方を展望します。",
+      bullets: ["AI活用の五段階(Level 1〜5)", "専門家たちが見るボトルネック", "AIをうまく使う人と使えない人"],
+      time: "48–55分" },
 
     /* ── 07 Part 6 ───────────────────────────────────────────── */
     {
@@ -4551,6 +4793,13 @@
       </div>`
       + quote("AIをうまく使う人とは、<b>質問がうまい人</b>ではなく<b>仕事をうまく定義し、うまく検証する人</b>だ。")
     },
+
+    /* ── 08 Closing 間紙 ─────────────────────────────────────── */
+    { ch: 8, divider: true, nav: "Closing 案内",
+      partLabel: "Closing", title: "月曜日から<em>何を変えるか</em>",
+      teaser: "今日聞いた話を、それぞれの業務に持ち帰る時間です。",
+      bullets: ["自分の業務を三つに分ける", "良いPromptより重要な問い", "2分間の実習と最後のメッセージ"],
+      time: "55–60分" },
 
     /* ── 08 Closing ──────────────────────────────────────────── */
     {
@@ -4755,6 +5004,25 @@
       </div>`;
   }
 
+  function renderDividerInner(s) {
+    return `
+      <div class="divider-inner">
+        <div class="divider-num">${pad(s.ch)}</div>
+        <div class="divider-kicker">${s.partLabel}</div>
+        <h2 class="divider-title">${s.title}</h2>
+        <p class="divider-teaser">${s.teaser}</p>
+        <ul class="divider-bullets">${s.bullets.map(b => `<li>${b}</li>`).join("")}</ul>
+        <div class="divider-time">${s.time}</div>
+      </div>`;
+  }
+
+  /* resetSlide / editResetAll — 슬라이드 종류에 맞는 렌더러를 고른다 */
+  function renderSlideInner(s) {
+    if (s.cover) return renderCoverInner(s);
+    if (s.divider) return renderDividerInner(s);
+    return renderInner(s);
+  }
+
   function renderInner(s) {
     const head = `
       ${s.kicker ? `<div class="kicker">${s.kicker}</div>` : ""}
@@ -4784,6 +5052,13 @@
           <span>${s.metaPrefix}${TOTAL}${s.metaSuffix}</span>
           <span>${s.metaHint}</span>
         </div>
+      </section>`;
+      }
+
+      if (s.divider) {
+        return `
+      <section class="slide divider-slide" data-i="${i}">
+        <div class="slide-inner">${renderDividerInner(s)}</div>
       </section>`;
       }
 
@@ -4869,7 +5144,8 @@
     ".tree-row code", ".tree-row em",
     ".col-fig figcaption",
     ".badge", ".cover h1", ".cover .subline", ".cover-meta span",
-    ".lg-text"
+    ".lg-text",
+    ".divider-title", ".divider-teaser", ".divider-bullets li", ".divider-time"
   ].join(",");
 
   let editMode = false;
@@ -5080,7 +5356,7 @@
     const baked = (window.__DECK_EDITS__ && window.__DECK_EDITS__[LANG] && window.__DECK_EDITS__[LANG].slides) || {};
     const inner = slideEls[i].querySelector(".slide-inner");
     if (baked[i]) inner.innerHTML = baked[i];
-    else inner.innerHTML = src.cover ? renderCoverInner(src) : renderInner(src);
+    else inner.innerHTML = renderSlideInner(src);
     if (Number(i) === 1) ensureInstructorPhotos();
     applyImages();
     renderStamp(i);
@@ -5128,7 +5404,7 @@
      그만큼 축소한다. 어떤 해상도에서도 스크롤 없이 한 화면에 들어간다. */
   function fitSlide(el) {
     const inner = el.querySelector(".slide-inner");
-    if (!inner || el.classList.contains("cover")) return;
+    if (!inner || el.classList.contains("cover") || el.classList.contains("divider-slide")) return;
     inner.style.zoom = "";
     const cs = getComputedStyle(el);
     const avail = el.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
@@ -5263,7 +5539,7 @@
     curEdits().meta = {};
     persistEdits();
     slideEls.forEach((el, i) => {
-      el.querySelector(".slide-inner").innerHTML = SLIDES[i].cover ? renderCoverInner(SLIDES[i]) : renderInner(SLIDES[i]);
+      el.querySelector(".slide-inner").innerHTML = renderSlideInner(SLIDES[i]);
     });
     applyImages();
     renderAllStamps();

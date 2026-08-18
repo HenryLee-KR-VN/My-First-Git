@@ -97,7 +97,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 4rem 2.2rem 4.2rem;
+      padding: 3rem 2.2rem 3.4rem;
       background: var(--hero-base);
       overflow: hidden;
       opacity: 0;
@@ -1492,7 +1492,7 @@
     .icon-btn.is-on { background: var(--cyan); color: #05121f; border-color: transparent; }
 
     @media (max-width: 1024px) {
-      .slide { padding: 5rem 2rem 5.4rem; }
+      .slide { padding: 4rem 2rem 4.4rem; }
       .toc { padding: 4.4rem 2rem 2.6rem; }
       .toc-grid { grid-template-columns: repeat(2, 1fr); }
       .slide-inner.is-split { grid-template-columns: 1fr; gap: 1.6rem; }
@@ -1509,7 +1509,7 @@
       .lockup-lg .lg-text { font-size: 0.9rem; letter-spacing: 0.1em; }
       .lockup-lg .lg-img { height: 2rem; }
       .hint { display: none; }
-      .slide { padding: 4.4rem 1.2rem 5rem; }
+      .slide { padding: 3.6rem 1.2rem 4.2rem; }
       .toc-grid { grid-template-columns: 1fr; }
       .g2, .g3, .g4, .g5 { grid-template-columns: 1fr; }
       .cover h1 { font-size: 2.6rem; }
@@ -1560,7 +1560,7 @@
     @keyframes wsBlink { 50% { opacity: 0.25; } }
     .tl-wrap { margin-top: 0.9rem; }
     .tl-wrap > b { color: var(--heading); }
-    .tl-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.8rem; margin-top: 0.6rem; }
+    .tl-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: 0.8rem; margin-top: 0.6rem; }
     .tl-btn { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; padding: 0.6rem 0.95rem;
       border-radius: 12px; border: 1px solid var(--glass-border); background: var(--glass-soft); color: var(--heading);
       font: inherit; font-size: 0.92rem; cursor: pointer; transition: border-color 0.15s ease; }
@@ -2989,6 +2989,20 @@
       ]) + `<div class="demo-prompt"><b>실제 사용 프롬프트</b><br>“첨부한 RFP에서 요구사항을 전부 추출해 표로. 각 항목에 난이도(상/중/하)와 대응 가능 여부를 붙이고, 제안서 목차 초안까지 만들어줘.”</div>`
     },
 
+    /* ── 아이스브레이커 ─────────────────────────────────────── */
+    {
+      ch: 0, nav: "손들기 — 이번 주 AI 사용", img: "node-graph", cls: "roomy",
+      kicker: "Opening · 참여 — 손들기",
+      title: "시작 전에 — <em>이번 주에 AI를 몇 번</em> 쓰셨나요?",
+      lead: "손을 들어 주세요. 제가 세어서 화면에 남기겠습니다. 오늘 이야기의 깊이를 여기에 맞추겠습니다.",
+      body: `<div class="tl-wrap"><b>손들기 — 지난 한 주 기준</b><div class="tl-row"><button type="button" class="tl-btn">거의 안 썼다<span class="tl-count">0</span></button><button type="button" class="tl-btn">가끔 검색 대신<span class="tl-count">0</span></button><button type="button" class="tl-btn">거의 매일 쓴다<span class="tl-count">0</span></button><button type="button" class="tl-btn">업무에 붙여 쓴다<span class="tl-count">0</span></button><button type="button" class="tl-btn">팀에 적용 중<span class="tl-count">0</span></button></div></div>`
+        + `<div class="grid g3" style="margin-top:1.1rem">
+        ${card("많이 나오는 답", ["“계정은 있는데 손이 안 간다”", "“번역·요약 정도만”"], "accent-m")}
+        ${card("오늘의 목표", ["도구를 하나 더 아는 것이 아니라", "<b>내 업무 하나를 바꾸는 것</b>"], "accent-c")}
+        ${card("한 가지 약속", ["오늘 끝날 때 각자 <b>가져갈 것 하나</b>는", "반드시 손에 쥐고 가시게 하겠습니다"], "accent-v")}
+      </div>`
+    },
+
     {
       ch: 0, nav: "60분 전체 흐름", img: "node-graph", cls: "compact",
       kicker: "Agenda · 5–7분",
@@ -2997,12 +3011,12 @@
       body: table(
         ["시간", "파트", "무엇을 하나"],
         [
-          ["0–7분",   "강사 소개",         "실무에서 AI를 어떻게 쓰고 있는지"],
-          ["7–17분",  "Part 1. 통계",      "도입률 · 성과 격차 · 성숙도 — 숫자로 보는 현재"],
+          ["0–7분",   "강사 소개",         "실무 활용 사례 · <b>손들기</b>로 시작"],
+          ["7–17분",  "Part 1. 통계",      "<b>퀴즈</b>로 시작 — 도입률 · 성과 격차 · 성숙도"],
           ["17–32분", "Part 2. 개념 · Agent System", "Harness · MCP · Skills와 핵심 용어 정리"],
           ["32–50분", "Part 3. 팀 활동",   "자동화 · 개선하고 싶은 내 업무를 적고 발표"],
           ["50–55분", "Part 4. 시나리오",  "Level 1~5 · 2027~2030, AI는 어디까지 가는가"],
-          ["55–60분", "Q&A",               "자유 질문 · 마무리"]
+          ["55–60분", "Q&A · 마무리",      "주제 투표 · <b>2분 실습</b>으로 마무리"]
         ]
       ) + `<p class="note">부록에 <b style="color:var(--heading)">2026 AI Tools 카탈로그와 참고 슬라이드</b>를 담아 두었습니다. 팀 활동과 실무에서 참고하세요.</p>`
     },
@@ -3389,7 +3403,7 @@
       kicker: "Part 3 · Team Session · 32–50분",
       title: "팀 세션 — <em>내 업무 중</em> 자동화 · 개선하고 싶은 것",
       lead: "각자 적고(10분), 팀 안에서 발표합니다(10분). 앞에서 본 Work Map에서 아이디어를 얻어도 좋습니다.",
-      body: `<div class="ws-timer"><span class="ws-digits">10:00</span><button type="button" class="rv-btn" data-ws="start">▶ 시작</button><button type="button" class="rv-btn" data-ws="pause">⏸ 일시정지</button><button type="button" class="rv-btn" data-ws="reset">↺ 10:00</button></div>` + steps([
+      body: `<div class="ws-timer"><span class="ws-digits">10:00</span><button type="button" class="rv-btn" data-ws="start">▶ 시작</button><button type="button" class="rv-btn" data-ws="pause">⏸ 일시정지</button><button type="button" class="rv-btn" data-ws="set" data-min="10">작성 10분</button><button type="button" class="rv-btn" data-ws="set" data-min="10">발표 10분</button></div>` + steps([
         "각자 — 내 업무 중 자동화하거나 개선하고 싶은 업무를 1~2개 적는다 (10분)",
         "각자 — 왜 그 업무인지, AI에게 어디까지 맡기고 싶은지 팀에 발표한다 (10분)",
         "팀 — 가장 공감을 얻은 사례 하나를 골라 전체 공유를 준비한다"
@@ -3486,7 +3500,7 @@
     { ch: 5, divider: true, nav: "Q&A 안내",
       partLabel: "Q&A", title: "질문과 <em>대화</em>",
       teaser: "남은 시간은 여러분의 질문으로 채웁니다.",
-      bullets: ["자유 질문", "팀 세션에서 나온 주제 이어가기", "마지막 메시지"],
+      bullets: ["먼저 다룰 주제 투표", "자유 질문 · 팀 세션 주제 이어가기", "2분 실습 — 다음 주에 바꿀 것 하나", "마지막 메시지"],
       time: "55–60분" },
 
     {
@@ -3494,11 +3508,31 @@
       kicker: "Q&A · 55–60분",
       title: "Q&A — <em>무엇이든</em> 물어보세요",
       lead: "정답을 말하는 시간이 아니라, 여러분의 업무에 붙여 보는 시간입니다.",
-      body: `<div class="grid g3">
+      body: `<div class="tl-wrap"><b>먼저 다룰 주제를 골라 주세요 — 손을 들면 제가 누르겠습니다</b><div class="tl-row"><button type="button" class="tl-btn">내 업무 적용<span class="tl-count">0</span></button><button type="button" class="tl-btn">보안 · 사내 규정<span class="tl-count">0</span></button><button type="button" class="tl-btn">어떤 도구부터<span class="tl-count">0</span></button><button type="button" class="tl-btn">팀 확산 방법<span class="tl-count">0</span></button></div></div>`
+        + `<div class="grid g3" style="margin-top:1.1rem">
         ${card("이런 질문 환영", ["내 업무엔 무엇부터 적용하나", "보안 · 사내 규정이 걱정될 때", "어떤 도구부터 시작하나"], "accent-c")}
         ${card("팀 세션에서 이어서", ["발표에서 못다 한 이야기", "비슷한 업무끼리 묶어서 논의"], "accent-v")}
         ${card("강의가 끝난 뒤에도", ["오늘 자료는 공유됩니다", "개별 질문은 강사에게 언제든지"], "accent-m")}
       </div>`
+    },
+
+    /* ── 마무리 다짐 ─────────────────────────────────────────── */
+    {
+      ch: 5, nav: "다음 주에 바꿀 것 하나", cls: "roomy",
+      kicker: "Closing · 참여 — 2분 실습",
+      title: "다음 주 월요일, <em>하나만</em> 바꾼다",
+      lead: "2분 드립니다. 오늘 나온 것 중 딱 하나만 골라 적어 주세요. 다 적은 분은 손을 들어 주세요.",
+      body: `<div class="ws-timer"><span class="ws-digits">10:00</span><button type="button" class="rv-btn" data-ws="start">▶ 시작</button><button type="button" class="rv-btn" data-ws="pause">⏸ 일시정지</button><button type="button" class="rv-btn" data-ws="set" data-min="2">2분</button><button type="button" class="rv-btn" data-ws="set" data-min="5">5분</button></div>`
+        + steps([
+        "내가 <b>다음 주에 AI에게 맡겨 볼 업무</b> 하나를 고른다",
+        "첫 문장을 지금 적는다 — 범위 · 형식 · 기준이 들어가게",
+        "언제 해볼지 <b>요일</b>까지 정한다"
+      ]) + table(
+        ["이름", "다음 주에 맡겨 볼 업무", "첫 Prompt 한 줄", "언제"],
+        [["&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"],
+         ["&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"],
+         ["&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"]]
+      ) + `<p class="note">적은 것을 옆 사람과 한 문장씩 나눠 주세요. <b>말로 뱉은 계획</b>이 실제로 실행될 확률이 훨씬 높습니다.</p>`
     },
 
     {
@@ -3771,6 +3805,20 @@
       ]) + `<div class="demo-prompt"><b>実際に使っているプロンプト</b><br>「添付のRFPから要求事項をすべて抽出して表に。各項目に難易度(高/中/低)と対応可否を付け、提案書の目次ドラフトまで作って。」</div>`
     },
 
+    /* ── アイスブレイク ─────────────────────────────────────── */
+    {
+      ch: 0, nav: "挙手 — 今週のAI利用", img: "node-graph", cls: "roomy",
+      kicker: "Opening · 参加 — 挙手",
+      title: "始める前に — <em>今週AIを何回</em>使いましたか?",
+      lead: "手を挙げてください。数えて画面に残します。今日の話の深さをここに合わせます。",
+      body: `<div class="tl-wrap"><b>挙手 — この一週間</b><div class="tl-row"><button type="button" class="tl-btn">ほとんど使っていない<span class="tl-count">0</span></button><button type="button" class="tl-btn">たまに検索代わりに<span class="tl-count">0</span></button><button type="button" class="tl-btn">ほぼ毎日使う<span class="tl-count">0</span></button><button type="button" class="tl-btn">業務に組み込んでいる<span class="tl-count">0</span></button><button type="button" class="tl-btn">チームに展開中<span class="tl-count">0</span></button></div></div>`
+        + `<div class="grid g3" style="margin-top:1.1rem">
+        ${card("よくある答え", ["「アカウントはあるが手が伸びない」", "「翻訳・要約くらい」"], "accent-m")}
+        ${card("今日の目標", ["ツールをもう一つ知ることではなく", "<b>自分の業務を一つ変えること</b>"], "accent-c")}
+        ${card("一つの約束", ["今日の終わりに各自<b>持ち帰るもの一つ</b>は", "必ず手に握って帰っていただきます"], "accent-v")}
+      </div>`
+    },
+
     {
       ch: 0, nav: "60分の全体の流れ", img: "node-graph", cls: "compact",
       kicker: "Agenda · 5–7分",
@@ -3779,12 +3827,12 @@
       body: table(
         ["時間", "パート", "何をするか"],
         [
-          ["0–7分",   "講師紹介",           "実務でAIをどう使っているか"],
-          ["7–17分",  "Part 1. 統計",       "導入率・成果の格差・成熟度 — 数字で見る現在"],
+          ["0–7分",   "講師紹介",           "実務での活用事例・<b>挙手</b>で開始"],
+          ["7–17分",  "Part 1. 統計",       "<b>クイズ</b>で開始 — 導入率・成果の格差・成熟度"],
           ["17–32分", "Part 2. 概念 · Agent System", "Harness・MCP・Skillsと主要用語の整理"],
           ["32–50分", "Part 3. チーム活動", "自動化・改善したい自分の業務を書いて発表"],
           ["50–55分", "Part 4. シナリオ",   "Level 1〜5・2027〜2030年、AIはどこまで行くのか"],
-          ["55–60分", "Q&A",                "自由質問・まとめ"]
+          ["55–60分", "Q&A・まとめ",        "テーマ投票・<b>2分実習</b>で締め"]
         ]
       ) + `<p class="note">付録に<b style="color:var(--heading)">2026 AI Toolsカタログと参考スライド</b>を入れてあります。チーム活動と実務で参考にしてください。</p>`
     },
@@ -4171,7 +4219,7 @@
       kicker: "Part 3 · Team Session · 32–50分",
       title: "チームセッション — <em>自分の業務の中で</em>自動化・改善したいこと",
       lead: "各自で書き(10分)、チーム内で発表します(10分)。先ほどのWork Mapからアイデアを得ても構いません。",
-      body: `<div class="ws-timer"><span class="ws-digits">10:00</span><button type="button" class="rv-btn" data-ws="start">▶ 開始</button><button type="button" class="rv-btn" data-ws="pause">⏸ 一時停止</button><button type="button" class="rv-btn" data-ws="reset">↺ 10:00</button></div>` + steps([
+      body: `<div class="ws-timer"><span class="ws-digits">10:00</span><button type="button" class="rv-btn" data-ws="start">▶ 開始</button><button type="button" class="rv-btn" data-ws="pause">⏸ 一時停止</button><button type="button" class="rv-btn" data-ws="set" data-min="10">記入10分</button><button type="button" class="rv-btn" data-ws="set" data-min="10">発表10分</button></div>` + steps([
         "各自 — 自分の業務の中で自動化・改善したい業務を1〜2個書く (10分)",
         "各自 — なぜその業務か、AIにどこまで任せたいかをチームに発表する (10分)",
         "チーム — 最も共感を集めた事例を一つ選び、全体共有の準備をする"
@@ -4268,7 +4316,7 @@
     { ch: 5, divider: true, nav: "Q&A 案内",
       partLabel: "Q&A", title: "質問と<em>対話</em>",
       teaser: "残りの時間は皆さんの質問で埋めます。",
-      bullets: ["自由質問", "チームセッションで出たテーマの続き", "最後のメッセージ"],
+      bullets: ["先に扱うテーマの投票", "自由質問・チームセッションの続き", "2分実習 — 来週変えることを一つ", "最後のメッセージ"],
       time: "55–60分" },
 
     {
@@ -4276,11 +4324,31 @@
       kicker: "Q&A · 55–60分",
       title: "Q&A — <em>何でも</em>聞いてください",
       lead: "正解を話す時間ではなく、皆さんの業務に当てはめてみる時間です。",
-      body: `<div class="grid g3">
+      body: `<div class="tl-wrap"><b>先に扱うテーマを選んでください — 手が挙がったら私が押します</b><div class="tl-row"><button type="button" class="tl-btn">自分の業務への適用<span class="tl-count">0</span></button><button type="button" class="tl-btn">セキュリティ・社内規定<span class="tl-count">0</span></button><button type="button" class="tl-btn">どのツールから<span class="tl-count">0</span></button><button type="button" class="tl-btn">チームへの展開<span class="tl-count">0</span></button></div></div>`
+        + `<div class="grid g3" style="margin-top:1.1rem">
         ${card("こんな質問歓迎", ["自分の業務には何から適用するか", "セキュリティ・社内規定が気になるとき", "どのツールから始めるか"], "accent-c")}
         ${card("チームセッションの続き", ["発表で話しきれなかったこと", "似た業務同士をまとめて議論"], "accent-v")}
         ${card("講義が終わった後も", ["今日の資料は共有されます", "個別の質問はいつでも講師まで"], "accent-m")}
       </div>`
+    },
+
+    /* ── 締めのコミット ──────────────────────────────────────── */
+    {
+      ch: 5, nav: "来週変えることを一つ", cls: "roomy",
+      kicker: "Closing · 参加 — 2分実習",
+      title: "来週の月曜日、<em>一つだけ</em>変える",
+      lead: "2分差し上げます。今日出たものから一つだけ選んで書いてください。書けた方は手を挙げてください。",
+      body: `<div class="ws-timer"><span class="ws-digits">10:00</span><button type="button" class="rv-btn" data-ws="start">▶ 開始</button><button type="button" class="rv-btn" data-ws="pause">⏸ 一時停止</button><button type="button" class="rv-btn" data-ws="set" data-min="2">2分</button><button type="button" class="rv-btn" data-ws="set" data-min="5">5分</button></div>`
+        + steps([
+        "<b>来週AIに任せてみる業務</b>を一つ選ぶ",
+        "最初の一文を今書く — 範囲・形式・基準が入るように",
+        "いつ試すか<b>曜日</b>まで決める"
+      ]) + table(
+        ["名前", "来週任せてみる業務", "最初のPromptの一行", "いつ"],
+        [["&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"],
+         ["&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"],
+         ["&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"]]
+      ) + `<p class="note">書いたことを隣の方と一文ずつ共有してください。<b>口に出した計画</b>のほうが実行される確率がはるかに高くなります。</p>`
     },
 
     {
@@ -4939,7 +5007,7 @@
   }
 
   /* ── Interactive widgets: quiz reveal · tally vote · workshop timer ── */
-  let wsRemain = 600, wsTick = null;
+  let wsRemain = 600, wsTick = null, wsPreset = 600;
   function wsRender() {
     const m = String(Math.floor(wsRemain / 60)).padStart(2, "0");
     const s = String(wsRemain % 60).padStart(2, "0");
@@ -4965,7 +5033,12 @@
         if (wsRemain === 0) wsStop();
       }, 1000);
     } else if (act === "pause") { wsStop(); }
-    else if (act === "reset") { wsStop(); wsRemain = 600; wsRender(); }
+    else if (act === "set") {
+      wsStop();
+      wsPreset = Math.max(1, parseInt(tw.dataset.min, 10) || 10) * 60;
+      wsRemain = wsPreset; wsRender();
+    }
+    else if (act === "reset") { wsStop(); wsRemain = wsPreset; wsRender(); }
   });
 
   document.addEventListener("click", (e) => {
@@ -5305,6 +5378,7 @@
     if (wheelLock || Math.abs(e.deltaY) < 18) return;
     wheelLock = true;
     setTimeout(() => { wheelLock = false; }, 620);
+    if (e.deltaY > 0 && revealNext()) return;
     go(index + (e.deltaY > 0 ? 1 : -1));
   }, { passive: true });
 
@@ -5313,7 +5387,7 @@
   window.addEventListener("touchend", (e) => {
     if (tocOpen || editMode || touchY === null) return;
     const dy = e.changedTouches[0].clientY - touchY;
-    if (Math.abs(dy) > 70) go(index + (dy < 0 ? 1 : -1));
+    if (Math.abs(dy) > 70) { if (dy < 0 && revealNext()) { touchY = null; return; } go(index + (dy < 0 ? 1 : -1)); }
     touchY = null;
   }, { passive: true });
 

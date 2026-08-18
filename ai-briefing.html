@@ -1536,6 +1536,37 @@
     @media (prefers-reduced-motion: reduce) {
       * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
+
+    /* ── Interactive widgets (quiz · tally · timer · prompt) ── */
+    .quiz-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 0.4rem; }
+    .quiz-item { background: var(--glass-soft); border: 1px solid var(--glass-border); border-radius: 14px; padding: 1.05rem 1.15rem; }
+    .quiz-q { font-weight: 650; line-height: 1.45; color: var(--heading); }
+    .rv-btn { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.85rem; padding: 0.48rem 1rem;
+      border-radius: 999px; border: 1px solid var(--cyan); background: transparent; color: var(--cyan);
+      font: inherit; font-size: 0.85rem; cursor: pointer; transition: background 0.15s ease; }
+    .rv-btn:hover { background: rgba(90, 200, 255, 0.12); }
+    .rv-ans { display: none; margin-top: 0.85rem; }
+    .quiz-item.is-open .rv-ans { display: block; }
+    .quiz-item.is-open > .rv-btn { display: none; }
+    .rv-num { font-size: 2.1rem; font-weight: 700; color: var(--cyan); letter-spacing: -0.02em; line-height: 1; }
+    .rv-d { color: var(--body-muted); font-size: 0.85rem; margin-top: 0.35rem; line-height: 1.55; }
+    .demo-prompt { margin-top: 0.9rem; padding: 0.85rem 1rem; border-left: 3px solid var(--cyan);
+      background: var(--glass-soft); border-radius: 0 10px 10px 0; font-size: 0.9rem; line-height: 1.6; color: var(--body-muted); }
+    .demo-prompt b { color: var(--heading); }
+    .ws-timer { display: flex; align-items: center; gap: 0.9rem; margin: 0 0 1rem; padding: 0.55rem 1.1rem;
+      border: 1px solid var(--glass-border); border-radius: 14px; background: var(--glass-soft); width: max-content; max-width: 100%; }
+    .ws-digits { font-size: 2.1rem; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: 0.02em; color: var(--heading); }
+    .ws-timer .rv-btn { margin-top: 0; }
+    .ws-timer.done .ws-digits { color: #ff6b7a; animation: wsBlink 1s steps(2) infinite; }
+    @keyframes wsBlink { 50% { opacity: 0.25; } }
+    .tl-wrap { margin-top: 0.9rem; }
+    .tl-wrap > b { color: var(--heading); }
+    .tl-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.8rem; margin-top: 0.6rem; }
+    .tl-btn { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; padding: 0.6rem 0.95rem;
+      border-radius: 12px; border: 1px solid var(--glass-border); background: var(--glass-soft); color: var(--heading);
+      font: inherit; font-size: 0.92rem; cursor: pointer; transition: border-color 0.15s ease; }
+    .tl-btn:hover { border-color: var(--cyan); }
+    .tl-count { font-size: 1.25rem; font-weight: 700; color: var(--cyan); font-variant-numeric: tabular-nums; }
   </style>
 </head>
 
@@ -2927,6 +2958,30 @@
     },
 
     {
+      ch: 0, nav: "실제 결과물 ① — 기업분석 브리프", layout: "split", img: "demo-brief", cap: "Live Demo · 미팅 전 30분",
+      kicker: "Instructor · Live Demo ①",
+      title: "실제 결과물 ① — <em>미팅 전 기업분석 브리프</em>",
+      lead: "오른쪽은 실제 결과물 화면입니다. 시간이 되면 이 자리에서 라이브로 돌려 보겠습니다.",
+      body: steps([
+        "회사명 하나만 넣으면 → 사업 구조 · 최근 이슈 · 예상 관심사까지 정리",
+        "30분 걸리던 미팅 준비가 5분으로",
+        "마지막 판단 — ‘이 회사에 우리가 왜 필요한가’ — 는 사람이"
+      ]) + `<div class="demo-prompt"><b>실제 사용 프롬프트</b><br>“○○사와 첫 미팅 예정. 회사 개요, 최근 3개월 뉴스, 우리 서비스와의 접점 3가지, 미팅에서 물어볼 질문 5개를 A4 한 장 브리프로.”</div>`
+    },
+
+    {
+      ch: 0, nav: "실제 결과물 ② — RFP 분해", layout: "split", img: "demo-rfp", cap: "Live Demo · RFP → 대응 구조",
+      kicker: "Instructor · Live Demo ②",
+      title: "실제 결과물 ② — <em>RFP 분해와 제안 뼈대</em>",
+      lead: "수십 페이지 RFP를 넣으면, 요구사항 표와 제안 뼈대가 먼저 나옵니다.",
+      body: steps([
+        "요구사항을 표로 분해 — 필수/선택, 난이도, 우리 강점 매칭",
+        "제안서 목차 초안까지 자동 — 저는 전략과 가격만 고민",
+        "라이브로 보여드리거나, 실제 화면을 여기서 함께 봅니다"
+      ]) + `<div class="demo-prompt"><b>실제 사용 프롬프트</b><br>“첨부한 RFP에서 요구사항을 전부 추출해 표로. 각 항목에 난이도(상/중/하)와 대응 가능 여부를 붙이고, 제안서 목차 초안까지 만들어줘.”</div>`
+    },
+
+    {
       ch: 0, nav: "60분 전체 흐름", img: "node-graph", cls: "compact",
       kicker: "Agenda · 5–7분",
       title: "60분 동안 우리가 지나갈 길",
@@ -2947,8 +3002,20 @@
     { ch: 1, divider: true, nav: "Part 1 안내",
       partLabel: "Part 1", title: "통계로 보는 <em>AI의 현재</em>",
       teaser: "이론 대신 숫자부터 봅니다. 도입은 어디까지 왔고, 성과의 격차는 왜 생기는지.",
-      bullets: ["글로벌 · 한국 · 일본 도입률", "도입률과 성과의 격차", "2026 능력 지도와 분야별 성숙도"],
+      bullets: ["몸풀기 퀴즈 — 숫자 감 잡기", "글로벌 · 한국 · 일본 도입률", "도입률과 성과의 격차", "2026 능력 지도와 분야별 성숙도"],
       time: "7–15분" },
+
+    {
+      ch: 1, nav: "몸풀기 퀴즈 — 숫자 감 잡기", img: "stats-globe", cls: "roomy",
+      kicker: "Part 1 · 참여 — 몸풀기 퀴즈",
+      title: "퀴즈 — <em>감으로</em> 맞혀보세요",
+      lead: "정답을 소리 내서 외쳐 주세요. 근처 숫자를 말한 분이 있는지 보겠습니다.",
+      body: `<div class="quiz-grid">
+        <div class="quiz-item"><div class="quiz-q">Q1. 일본 기업 중 업무에 생성 AI를 쓰는 비율은?</div><button type="button" class="rv-btn">정답 보기</button><div class="rv-ans"><div class="rv-num">86.4%</div><div class="rv-d">1년 전 55.2%에서 급등 (총무성, 2026)</div></div></div>
+        <div class="quiz-item"><div class="quiz-q">Q2. AI 도입 기업 중 Agent를 ‘확산’ 단계까지 가져간 곳은?</div><button type="button" class="rv-btn">정답 보기</button><div class="rv-ans"><div class="rv-num">23%</div><div class="rv-d">실험까지 합쳐도 62% — 격차는 여기서 벌어집니다</div></div></div>
+        <div class="quiz-item"><div class="quiz-q">Q3. 생성 AI 파일럿 중 측정 가능한 손익 효과를 못 낸 비율은?</div><button type="button" class="rv-btn">정답 보기</button><div class="rv-ans"><div class="rv-num">95%</div><div class="rv-d">MIT 조사 — 원인은 기술이 아니라 조직</div></div></div>
+      </div>` + `<p class="note">방금 나온 숫자들, 이어지는 슬라이드에서 <b>출처와 함께</b> 확인합니다.</p>`
+    },
 
     {
       ch: 1, nav: "숫자로 보는 2026 — 도입률", img: "stats-globe", cls: "compact",
@@ -3048,7 +3115,7 @@
     { ch: 2, divider: true, nav: "Part 2 안내",
       partLabel: "Part 2", title: "핵심 개념, <em>가볍고 쉽게</em>",
       teaser: "꼭 필요한 개념만 다섯 가지. 전부 비유와 예시로 짚고 넘어갑니다.",
-      bullets: ["2023→2026, 무엇이 달라졌나", "AI ‘직원’ 한 명에게 필요한 것", "MCP는 USB · Skills는 SOP", "맡긴다 / 같이한다 / 내가 한다"],
+      bullets: ["2023→2026, 무엇이 달라졌나", "AI ‘직원’ 한 명에게 필요한 것", "MCP는 USB · Skills는 SOP", "맡긴다 / 같이한다 / 내가 한다", "30초 프롬프트 실습"],
       time: "15–25분" },
 
     {
@@ -3103,6 +3170,17 @@
         ${card("의미", ["개인의 Prompt 노하우 → <b>조직의 자산</b>", "잘 쓰는 한 사람에게 의존하지 않는 구조", "신규 입사자 Onboarding과 같은 논리"], "accent-c")}
       </div>`
       + quote("개인의 Prompt 노하우가 아니라 <b>조직의 SOP를 AI 자산으로</b> 만드는 방향.")
+    },
+
+    {
+      ch: 2, nav: "30초 실습 — 프롬프트 고치기", img: "ai-key", cls: "roomy",
+      kicker: "Part 2 · 참여 — 30초 실습",
+      title: "30초 실습 — <em>이 프롬프트를 고쳐보세요</em>",
+      lead: "옆 사람과 15초 상의 → 어떻게 바꿀지 외쳐 주세요. 그다음 제 버전을 공개합니다.",
+      body: `<div class="grid g2">
+        <div class="quiz-item"><div class="quiz-q">나쁜 예</div><div class="demo-prompt">“경쟁사 조사해줘”</div><div class="rv-d" style="margin-top:0.6rem">범위도, 형식도, 기준도 없다 — 어떤 답이 와도 다시 시켜야 합니다.</div></div>
+        <div class="quiz-item"><div class="quiz-q">여러분이라면 어떻게 바꾸시겠습니까?</div><button type="button" class="rv-btn">제 버전 공개</button><div class="rv-ans"><div class="demo-prompt">“한국 물류 IT 시장에서 우리와 겹치는 경쟁사 5곳을 골라, 각사의 주력 서비스 · 최근 수주 · 가격 정책을 표로 비교하고, 우리가 이길 수 있는 각도 2가지를 제안해줘. 출처 링크 포함.”</div><div class="rv-d" style="margin-top:0.6rem"><b>범위 · 형식 · 기준 · 검증</b> — 네 가지가 다 들어갔습니다.</div></div></div>
+      </div>` + quote("Prompt 잘 쓰기의 8할은 문장력이 아니라 <b>업무 정의</b>입니다.")
     },
 
     {
@@ -3163,7 +3241,7 @@
       kicker: "Part 3 · Team Session · 25–45분",
       title: "팀 세션 — <em>내 업무 중</em> 자동화 · 개선하고 싶은 것",
       lead: "각자 적고(10분), 팀 안에서 발표합니다(10분). 앞에서 본 Work Map에서 아이디어를 얻어도 좋습니다.",
-      body: steps([
+      body: `<div class="ws-timer"><span class="ws-digits">10:00</span><button type="button" class="rv-btn" data-ws="start">▶ 시작</button><button type="button" class="rv-btn" data-ws="pause">⏸ 일시정지</button><button type="button" class="rv-btn" data-ws="reset">↺ 10:00</button></div>` + steps([
         "각자 — 내 업무 중 자동화하거나 개선하고 싶은 업무를 1~2개 적는다 (10분)",
         "각자 — 왜 그 업무인지, AI에게 어디까지 맡기고 싶은지 팀에 발표한다 (10분)",
         "팀 — 가장 공감을 얻은 사례 하나를 골라 전체 공유를 준비한다"
@@ -3175,7 +3253,7 @@
           ["&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"],
           ["&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"]
         ]
-      ) + `<p class="note">오늘 적은 것 중 하나는 <b>다음 주에 실제로 시도</b>해 보세요. 시작은 작을수록 좋습니다.</p>`
+      ) + `<p class="note">오늘 적은 것 중 하나는 <b>다음 주에 실제로 시도</b>해 보세요. 시작은 작을수록 좋습니다. 발표 때는 상단의 <b>편집(✎)</b>을 켜면 팀 의견을 이 표에 화면으로 바로 입력할 수 있습니다.</p>`
     },
 
     /* ── Part 4 간지 ─────────────────────────────────────────── */
@@ -3196,7 +3274,7 @@
         ${card("Level 4 — Multi-Agent", "사람이 여러 AI를 관리한다.<br><br>Research + Analysis + Document + Reviewer Agent", "accent-v")}
         ${card("Level 5 — Outcome", "Task가 아니라 Outcome을 맡긴다.<br><br>“고객 이탈률을 낮출 방안을 찾고 실행안을 제안해라.”", "accent-m")}
       </div>`
-      + `<p class="note">현재 대부분의 기업은 <b>Level 2~3</b> 사이에 있습니다. Level 5는 아직 미래 Scenario에 가깝습니다.</p>`
+      + `<p class="note">현재 대부분의 기업은 <b>Level 2~3</b> 사이에 있습니다. Level 5는 아직 미래 Scenario에 가깝습니다.</p><div class="tl-wrap"><b>손들기 투표 — 내 업무는 지금 어느 Level?</b><div class="tl-row"><button type="button" class="tl-btn">L1 Assistant<span class="tl-count">0</span></button><button type="button" class="tl-btn">L2 Copilot<span class="tl-count">0</span></button><button type="button" class="tl-btn">L3 Agent<span class="tl-count">0</span></button><button type="button" class="tl-btn">L4 Multi<span class="tl-count">0</span></button><button type="button" class="tl-btn">L5 Outcome<span class="tl-count">0</span></button></div></div>`
     },
 
     {
@@ -3290,8 +3368,20 @@
     { ch: 6, divider: true, nav: "부록 안내",
       partLabel: "Appendix", title: "부록 — <em>참고 자료</em>",
       teaser: "강의에서는 건너뛰지만, 실무에서 꺼내 볼 수 있는 자료입니다.",
-      bullets: ["2026 AI Tools 카탈로그 5장", "빅테크의 Agent-first 업무 리듬", "전문가 관점 · Jagged Intelligence"],
+      bullets: ["실전 프롬프트 3종", "2026 AI Tools 카탈로그 5장", "빅테크의 Agent-first 업무 리듬", "전문가 관점 · Jagged Intelligence"],
       time: "별도 자료" },
+
+    {
+      ch: 6, nav: "가져가는 실전 프롬프트 3종", cls: "roomy",
+      kicker: "부록 · 복사해서 바로 쓰는",
+      title: "오늘 <em>가져가는</em> 실전 프롬프트 3종",
+      lead: "사진으로 찍어 가세요. 회사명 · 품목만 바꾸면 내일 아침부터 쓸 수 있습니다.",
+      body: `<div class="grid g3">
+        <div class="quiz-item"><div class="quiz-q">① 미팅 준비</div><div class="demo-prompt">“○○사와 미팅 예정. 회사 개요, 최근 3개월 뉴스, 우리와의 접점 3가지, 물어볼 질문 5개를 A4 한 장으로.”</div></div>
+        <div class="quiz-item"><div class="quiz-q">② 회의록 → Action</div><div class="demo-prompt">“이 회의 녹취를 요약하고, 결정사항 / Action Item(담당 · 기한) / 미해결 이슈 세 부분으로 나눠 표로 정리해줘.”</div></div>
+        <div class="quiz-item"><div class="quiz-q">③ 문서 비교</div><div class="demo-prompt">“두 견적서를 비교해 차이 나는 조건만 표로. 우리에게 불리한 조항에는 ⚠ 표시하고 이유를 한 줄씩 달아줘.”</div></div>
+      </div>` + `<p class="note">잘 되는 프롬프트가 생기면 <b>팀 템플릿</b>으로 만드세요 — 그게 Part 2에서 말한 Skills의 시작입니다.</p>`
+    },
 
     {
       ch: 6, nav: "2026 AI Tools — Assistant / Research", cls: "compact",
@@ -3535,6 +3625,30 @@
     },
 
     {
+      ch: 0, nav: "実際の成果物 ① — 企業分析ブリーフ", layout: "split", img: "demo-brief", cap: "Live Demo · 商談前の30分",
+      kicker: "Instructor · Live Demo ①",
+      title: "実際の成果物 ① — <em>商談前の企業分析ブリーフ</em>",
+      lead: "右は実際の成果物の画面です。時間があれば、この場でライブで回してみます。",
+      body: steps([
+        "会社名を一つ入れるだけで → 事業構造・最近の話題・想定される関心事まで整理",
+        "30分かかっていた商談準備が5分に",
+        "最後の判断 — 『この会社になぜ我々が必要か』 — は人が行う"
+      ]) + `<div class="demo-prompt"><b>実際に使っているプロンプト</b><br>「○○社と初回商談の予定。会社概要、直近3ヶ月のニュース、当社サービスとの接点3つ、商談で聞くべき質問5つをA4一枚のブリーフに。」</div>`
+    },
+
+    {
+      ch: 0, nav: "実際の成果物 ② — RFP分解", layout: "split", img: "demo-rfp", cap: "Live Demo · RFP → 対応構成",
+      kicker: "Instructor · Live Demo ②",
+      title: "実際の成果物 ② — <em>RFP分解と提案の骨子</em>",
+      lead: "数十ページのRFPを入れると、要求事項の表と提案の骨子が先に出てきます。",
+      body: steps([
+        "要求事項を表に分解 — 必須/任意、難易度、当社の強みとのマッチング",
+        "提案書の目次ドラフトまで自動 — 私は戦略と価格だけを考える",
+        "ライブでお見せするか、実際の画面をここで一緒に見ます"
+      ]) + `<div class="demo-prompt"><b>実際に使っているプロンプト</b><br>「添付のRFPから要求事項をすべて抽出して表に。各項目に難易度(高/中/低)と対応可否を付け、提案書の目次ドラフトまで作って。」</div>`
+    },
+
+    {
       ch: 0, nav: "60分の全体の流れ", img: "node-graph", cls: "compact",
       kicker: "Agenda · 5–7分",
       title: "60分間で辿る道のり",
@@ -3555,8 +3669,20 @@
     { ch: 1, divider: true, nav: "Part 1 案内",
       partLabel: "Part 1", title: "統計で見る<em>AIの現在</em>",
       teaser: "理論の代わりに、まず数字を見ます。導入はどこまで進み、成果の格差はなぜ生まれるのか。",
-      bullets: ["グローバル・韓国・日本の導入率", "導入率と成果の格差", "2026年の能力マップと分野別成熟度"],
+      bullets: ["ウォームアップクイズ — 数字の感覚", "グローバル・韓国・日本の導入率", "導入率と成果の格差", "2026年の能力マップと分野別成熟度"],
       time: "7–15分" },
+
+    {
+      ch: 1, nav: "ウォームアップクイズ — 数字の感覚", img: "stats-globe", cls: "roomy",
+      kicker: "Part 1 · 参加 — ウォームアップクイズ",
+      title: "クイズ — <em>感覚で</em>当ててみてください",
+      lead: "答えを声に出してみてください。近い数字を言った方がいるか見てみます。",
+      body: `<div class="quiz-grid">
+        <div class="quiz-item"><div class="quiz-q">Q1. 日本企業のうち、業務に生成AIを使っている割合は?</div><button type="button" class="rv-btn">答えを見る</button><div class="rv-ans"><div class="rv-num">86.4%</div><div class="rv-d">1年前の55.2%から急上昇(総務省、2026年)</div></div></div>
+        <div class="quiz-item"><div class="quiz-q">Q2. AI導入企業のうち、Agentを『普及』段階まで進めた企業は?</div><button type="button" class="rv-btn">答えを見る</button><div class="rv-ans"><div class="rv-num">23%</div><div class="rv-d">実験まで含めても62% — 格差はここで生まれます</div></div></div>
+        <div class="quiz-item"><div class="quiz-q">Q3. 生成AIパイロットのうち、測定可能な損益効果を出せなかった割合は?</div><button type="button" class="rv-btn">答えを見る</button><div class="rv-ans"><div class="rv-num">95%</div><div class="rv-d">MIT調査 — 原因は技術ではなく組織</div></div></div>
+      </div>` + `<p class="note">いま出てきた数字は、続くスライドで<b>出典と共に</b>確認します。</p>`
+    },
 
     {
       ch: 1, nav: "数字で見る2026年 — 導入率", img: "stats-globe", cls: "compact",
@@ -3656,7 +3782,7 @@
     { ch: 2, divider: true, nav: "Part 2 案内",
       partLabel: "Part 2", title: "核心概念を<em>軽く、やさしく</em>",
       teaser: "本当に必要な概念だけを五つ。すべて、たとえと例で押さえます。",
-      bullets: ["2023→2026、何が変わったか", "AI『社員』一人に必要なもの", "MCPはUSB・SkillsはSOP", "任せる / 一緒にやる / 自分でやる"],
+      bullets: ["2023→2026、何が変わったか", "AI『社員』一人に必要なもの", "MCPはUSB・SkillsはSOP", "任せる / 一緒にやる / 自分でやる", "30秒プロンプト実習"],
       time: "15–25分" },
 
     {
@@ -3711,6 +3837,17 @@
         ${card("意味", ["個人のPromptノウハウ → <b>組織の資産</b>", "うまく使える一人に依存しない仕組み", "新入社員のOnboardingと同じロジック"], "accent-c")}
       </div>`
       + quote("個人のPromptノウハウではなく、<b>組織のSOPをAI資産に</b>する方向。")
+    },
+
+    {
+      ch: 2, nav: "30秒実習 — プロンプトを直す", img: "ai-key", cls: "roomy",
+      kicker: "Part 2 · 参加 — 30秒実習",
+      title: "30秒実習 — <em>このプロンプトを直してみてください</em>",
+      lead: "隣の方と15秒相談 → どう変えるか声に出してください。その後、私のバージョンを公開します。",
+      body: `<div class="grid g2">
+        <div class="quiz-item"><div class="quiz-q">悪い例</div><div class="demo-prompt">「競合を調べて」</div><div class="rv-d" style="margin-top:0.6rem">範囲も、形式も、基準もない — どんな答えが来てもやり直しになります。</div></div>
+        <div class="quiz-item"><div class="quiz-q">皆さんならどう変えますか?</div><button type="button" class="rv-btn">私のバージョンを公開</button><div class="rv-ans"><div class="demo-prompt">「韓国の物流IT市場で当社と競合する5社を選び、各社の主力サービス・直近の受注・価格政策を表で比較し、当社が勝てる切り口を2つ提案して。出典リンク付きで。」</div><div class="rv-d" style="margin-top:0.6rem"><b>範囲・形式・基準・検証</b> — 四つがすべて入っています。</div></div></div>
+      </div>` + quote("Promptをうまく書くことの8割は文章力ではなく<b>業務の定義</b>です。")
     },
 
     {
@@ -3771,7 +3908,7 @@
       kicker: "Part 3 · Team Session · 25–45分",
       title: "チームセッション — <em>自分の業務の中で</em>自動化・改善したいこと",
       lead: "各自で書き(10分)、チーム内で発表します(10分)。先ほどのWork Mapからアイデアを得ても構いません。",
-      body: steps([
+      body: `<div class="ws-timer"><span class="ws-digits">10:00</span><button type="button" class="rv-btn" data-ws="start">▶ 開始</button><button type="button" class="rv-btn" data-ws="pause">⏸ 一時停止</button><button type="button" class="rv-btn" data-ws="reset">↺ 10:00</button></div>` + steps([
         "各自 — 自分の業務の中で自動化・改善したい業務を1〜2個書く (10分)",
         "各自 — なぜその業務か、AIにどこまで任せたいかをチームに発表する (10分)",
         "チーム — 最も共感を集めた事例を一つ選び、全体共有の準備をする"
@@ -3783,7 +3920,7 @@
           ["&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"],
           ["&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"]
         ]
-      ) + `<p class="note">今日書いたものの一つを、<b>来週実際に試して</b>みてください。始まりは小さいほど良いです。</p>`
+      ) + `<p class="note">今日書いたものの一つを、<b>来週実際に試して</b>みてください。始まりは小さいほど良いです。発表の際は上部の<b>編集(✎)</b>をオンにすると、チームの意見をこの表に直接入力できます。</p>`
     },
 
     /* ── Part 4 間紙 ─────────────────────────────────────────── */
@@ -3804,7 +3941,7 @@
         ${card("Level 4 — Multi-Agent", "人が複数のAIを管理する。<br><br>Research + Analysis + Document + Reviewer Agent", "accent-v")}
         ${card("Level 5 — Outcome", "TaskではなくOutcomeを任せる。<br><br>『顧客離脱率を下げる方策を見つけ、実行案を提案せよ。』", "accent-m")}
       </div>`
-      + `<p class="note">現在ほとんどの企業は<b>Level 2〜3</b>の間にいます。Level 5はまだ未来のScenarioに近いものです。</p>`
+      + `<p class="note">現在ほとんどの企業は<b>Level 2〜3</b>の間にいます。Level 5はまだ未来のScenarioに近いものです。</p><div class="tl-wrap"><b>挙手投票 — 自分の業務は今どのLevel?</b><div class="tl-row"><button type="button" class="tl-btn">L1 Assistant<span class="tl-count">0</span></button><button type="button" class="tl-btn">L2 Copilot<span class="tl-count">0</span></button><button type="button" class="tl-btn">L3 Agent<span class="tl-count">0</span></button><button type="button" class="tl-btn">L4 Multi<span class="tl-count">0</span></button><button type="button" class="tl-btn">L5 Outcome<span class="tl-count">0</span></button></div></div>`
     },
 
     {
@@ -3898,8 +4035,20 @@
     { ch: 6, divider: true, nav: "付録 案内",
       partLabel: "Appendix", title: "付録 — <em>参考資料</em>",
       teaser: "講義では扱いませんが、実務で参照できる資料です。",
-      bullets: ["2026 AI Toolsカタログ 5枚", "ビッグテックのAgent-first業務リズム", "専門家の視点・Jagged Intelligence"],
+      bullets: ["実戦プロンプト3種", "2026 AI Toolsカタログ 5枚", "ビッグテックのAgent-first業務リズム", "専門家の視点・Jagged Intelligence"],
       time: "別途資料" },
+
+    {
+      ch: 6, nav: "持ち帰る実戦プロンプト3種", cls: "roomy",
+      kicker: "付録 · コピーしてすぐ使える",
+      title: "今日<em>持ち帰る</em>実戦プロンプト3種",
+      lead: "写真に撮って帰ってください。会社名・品目を変えるだけで、明日の朝から使えます。",
+      body: `<div class="grid g3">
+        <div class="quiz-item"><div class="quiz-q">① 商談準備</div><div class="demo-prompt">「○○社と商談予定。会社概要、直近3ヶ月のニュース、当社との接点3つ、聞くべき質問5つをA4一枚に。」</div></div>
+        <div class="quiz-item"><div class="quiz-q">② 議事録 → Action</div><div class="demo-prompt">「この会議の書き起こしを要約し、決定事項 / Action Item(担当・期限) / 未解決の論点の三つに分けて表に整理して。」</div></div>
+        <div class="quiz-item"><div class="quiz-q">③ 文書比較</div><div class="demo-prompt">「二つの見積書を比較し、条件が異なる項目だけ表に。当社に不利な条項には⚠を付けて、理由を一行ずつ添えて。」</div></div>
+      </div>` + `<p class="note">うまくいくプロンプトができたら<b>チームのテンプレート</b>にしましょう — それがPart 2で話したSkillsの始まりです。</p>`
+    },
 
     {
       ch: 6, nav: "2026 AI Tools — Assistant / Research", cls: "compact",
@@ -4545,6 +4694,36 @@
       reader.readAsDataURL(file);
     });
   }
+
+  /* ── Interactive widgets: quiz reveal · tally vote · workshop timer ── */
+  let wsRemain = 600, wsTick = null;
+  function wsRender() {
+    const m = String(Math.floor(wsRemain / 60)).padStart(2, "0");
+    const s = String(wsRemain % 60).padStart(2, "0");
+    document.querySelectorAll(".ws-digits").forEach((d) => { d.textContent = m + ":" + s; });
+    document.querySelectorAll(".ws-timer").forEach((w) => w.classList.toggle("done", wsRemain === 0));
+  }
+  function wsStop() { if (wsTick) { clearInterval(wsTick); wsTick = null; } }
+  document.addEventListener("click", (e) => {
+    const rv = e.target.closest(".rv-btn");
+    if (rv && !rv.dataset.ws) { rv.closest(".quiz-item")?.classList.add("is-open"); return; }
+    const tl = e.target.closest(".tl-btn");
+    if (tl) {
+      const c = tl.querySelector(".tl-count");
+      if (c) c.textContent = String((parseInt(c.textContent, 10) || 0) + 1);
+      return;
+    }
+    const tw = e.target.closest("[data-ws]");
+    if (!tw) return;
+    const act = tw.dataset.ws;
+    if (act === "start" && !wsTick) {
+      wsTick = setInterval(() => {
+        if (wsRemain > 0) { wsRemain -= 1; wsRender(); }
+        if (wsRemain === 0) wsStop();
+      }, 1000);
+    } else if (act === "pause") { wsStop(); }
+    else if (act === "reset") { wsStop(); wsRemain = 600; wsRender(); }
+  });
 
   document.addEventListener("click", (e) => {
     const upBtn = e.target.closest(".photo-upload-btn");

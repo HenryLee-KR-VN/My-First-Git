@@ -2941,7 +2941,7 @@
               "반복 업무는 Prompt · Agent · Workflow로 구조화"
             ], "accent-c")}
             ${card("깨알 같은 AI 스킬", [
-              "Skills · MCP · Harness · Ralph 개념을 실무형으로 적용",
+              "Skills · MCP · Harness 개념을 실무형으로 적용",
               "문서 체계, Context 설계, 재현 가능한 업무 플로우 구성",
               "‘보여주기용 AI’보다 <b>‘실제 업무에 박히는 AI’</b>를 지향"
             ])}
@@ -2999,7 +2999,7 @@
         [
           ["0–7분",   "강사 소개",         "실무에서 AI를 어떻게 쓰고 있는지"],
           ["7–17분",  "Part 1. 통계",      "도입률 · 성과 격차 · 성숙도 — 숫자로 보는 현재"],
-          ["17–32분", "Part 2. 개념 · Agent System", "MCP · Skills · Harness · Ralph — 비유와 예시로"],
+          ["17–32분", "Part 2. 개념 · Agent System", "Harness · MCP · Skills와 핵심 용어 정리"],
           ["32–50분", "Part 3. 팀 활동",   "자동화 · 개선하고 싶은 내 업무를 적고 발표"],
           ["50–55분", "Part 4. 시나리오",  "Level 1~5 · 2027~2030, AI는 어디까지 가는가"],
           ["55–60분", "Q&A",               "자유 질문 · 마무리"]
@@ -3010,7 +3010,7 @@
     { ch: 1, divider: true, nav: "Part 1 안내",
       partLabel: "Part 1", title: "통계로 보는 <em>AI의 현재</em>",
       teaser: "이론 대신 숫자부터 봅니다. 도입은 어디까지 왔고, 성과의 격차는 왜 생기는지.",
-      bullets: ["몸풀기 퀴즈 — 숫자 감 잡기", "글로벌 · 한국 · 일본 도입률", "도입률과 성과의 격차", "2026 능력 지도와 분야별 성숙도", "기술 Gap — 왜 대기업은 느린가"],
+      bullets: ["몸풀기 퀴즈 — 숫자 감 잡기", "글로벌 · 한국 · 일본 도입률", "도입률과 성과의 격차", "2026 능력 지도와 분야별 성숙도", "왜 대기업은 느릴 수밖에 없는가"],
       time: "7–17분" },
 
     {
@@ -3153,24 +3153,10 @@
       + quote("Enterprise Gap은 무조건 나쁜 것이 아니다.<br>필요한 <b>안전장치</b> 때문에 생기는 Gap이기도 하다.")
     },
 
-    {
-      ch: 1, nav: "그런데 왜 지금이 중요한가", img: "chrome-chip",
-      kicker: "Part 1 · 왜 지금인가",
-      title: "Gap은 남지만, <em>Gap을 연결하는 기술</em>이 빠르게 발전한다",
-      body: chips([
-        "MCP / Connectors", "Agent Skills", "Enterprise Search", "Agent Harness",
-        "Memory / State", "Evaluation", "Permission", "Audit", "Sandboxing", "Governance"
-      ]) + `<div class="grid g2">
-        ${card("지금까지의 병목", ["모델 성능", "무엇을 할 수 있는가"])}
-        ${card("앞으로의 병목", ["연결 · 권한 · 검증 · 기록", "<b>안전하게</b> 할 수 있는가"], "accent-c")}
-      </div>`
-      + quote("따라서 AI 기술의 <b>Business Adoption 속도</b>가 빨라질 가능성이 높다.")
-    },
-
     { ch: 2, divider: true, nav: "Part 2 안내",
       partLabel: "Part 2", title: "핵심 개념, <em>가볍고 쉽게</em>",
-      teaser: "꼭 필요한 개념만 다섯 가지. 전부 비유와 예시로 짚고 넘어갑니다.",
-      bullets: ["2023→2026 — 무엇이 달라졌나", "Agent System 전체 그림 — 신입사원 온보딩", "① Harness → ② MCP → ③ Skills → ④ Ralph 순서대로", "30초 실습 · 맡긴다 / 같이한다 / 내가 한다"],
+      teaser: "꼭 필요한 개념만. 전부 비유와 예시로 짚고, 마지막에 용어를 한 장으로 정리합니다.",
+      bullets: ["2023→2026 — 무엇이 달라졌나", "Agent System 전체 그림 — 신입사원 온보딩", "① Harness → ② MCP → ③ Skills 순서대로", "AI 핵심 용어 정리 · 30초 실습"],
       time: "17–32분" },
 
     {
@@ -3187,69 +3173,19 @@
       + `<p class="note">연도별 세부 내용을 외울 필요는 없습니다. 오늘 기억할 것은 <b>“위임의 단위가 계속 커진다”</b>는 방향 하나입니다.</p>`
     },
 
-    {
-      ch: 2, nav: "2023 — GENERATE", layout: "split", img: "ai-key", cap: "2023 · Prompt / Generate",
-      kicker: "Part 2 · 2023",
-      title: "2023 — <em>GENERATE</em>",
-      lead: "AI에게 질문하면 답을 준다.",
-      body: `<div class="grid g2">
-        ${card("대표 흐름", ["GPT-4", "Claude 2", "Gemini 1.0", "Midjourney", "DALL-E 3"])}
-        ${card("주요 활용", ["번역 · 요약", "이메일 · 문서 초안", "코드 초안", "이미지 생성"])}
-      </div>`
-      + flow(["사람", "Prompt", "AI", "답변", "사람이 실행"])
-      + `<p class="note">AI의 역할 — <b style="color:var(--cyan)">Assistant</b></p>`
-    },
-
-    {
-      ch: 2, nav: "2024 — UNDERSTAND", layout: "split", img: "signal-web", cap: "2024 · Multimodal / Reasoning / Tool Use",
-      kicker: "Part 2 · 2024",
-      title: "2024 — <em>UNDERSTAND</em>",
-      lead: "AI가 텍스트만 읽는 것이 아니라 보고, 듣고, 파일과 도구를 사용하기 시작한다.",
-      body: `<div class="grid g2">
-        ${card("대표 흐름", ["GPT-4o · Gemini 1.5 · Claude 3 계열", "o1 계열 Reasoning", "Sora · Veo · Realtime Voice", "긴 Context · Tool Use · MCP 등장"])}
-        ${card("입출력의 변화", ["기존 — Text → AI → Text", "변화 — Text / Image / Audio / Video / File / Web → AI → <b>Tool</b>"])}
-      </div>`
-      + quote("생성 모델에서 <b>외부 환경과 연결되는 시스템</b>으로 발전하기 시작한 해.")
-    },
-
-    {
-      ch: 2, nav: "2025 — ACT", layout: "split", img: "android-head", cap: "2025 · Agent / Tool / Action",
-      kicker: "Part 2 · 2025",
-      title: "2025 — <em>ACT</em>",
-      lead: "AI가 답을 만드는 것을 넘어 업무를 직접 수행하기 시작한다.",
-      body: `<div class="grid g2">
-        ${card("대표 흐름", ["Claude Code · OpenAI Codex", "Cursor Agent", "Deep Research", "Computer Use", "Agent Skills · Subagents", "MCP ecosystem"])}
-        ${card("역할의 이동", ["기존 — 사람 → AI → 답 → 사람이 실행", "Agent — 사람 → <b>Goal</b> → AI → 검색 → Tool 사용 → 작업 → 검증 → 결과"], "accent-c", "Assistant → Agent")}
-      </div>`
-    },
-
-    {
-      ch: 2, nav: "2026 — DELEGATE", layout: "split", img: "robot-hand", cap: "2026 · Harness / Orchestration / Delegation",
-      kicker: "Part 2 · 2026",
-      title: "2026 — <em>DELEGATE</em>",
-      lead: "좋은 AI 모델 하나보다, AI가 일을 잘할 수 있도록 만드는 <em>시스템</em>이 중요해진다.",
-      body: `<div class="grid g3">
-        ${card("2023", "Prompt Engineering")}
-        ${card("2024–2025", "Context + Tool Use")}
-        ${card("2026", "Harness + Skills + Memory + Evals + Orchestration<br><br>= <b>Agentic AI</b>", "accent-v")}
-      </div>`
-      + quote("모델의 성능 경쟁에서 <b>실행 환경의 설계</b> 경쟁으로 무게중심이 이동하고 있다.")
-    },
-
     /* ── Agent System 전체 그림 ─────────────────────────────── */
     {
       ch: 2, nav: "Agent System 전체 그림", img: "crystal-core", cls: "roomy",
       kicker: "Part 2 · Agent System — 전체 그림",
       title: "AI에게 일을 맡기는 것은 <em>신입사원 온보딩</em>과 같다",
-      lead: "AI Agent는 ‘디지털 직원’입니다. 직원 한 명이 일을 시작하게 하려면 네 가지가 필요합니다 — 지금부터 이 순서대로 하나씩 봅니다.",
-      body: `<div class="grid g4">
+      lead: "AI Agent는 ‘디지털 직원’입니다. 직원 한 명이 일을 시작하게 하려면 세 가지가 필요합니다 — 지금부터 이 순서대로 하나씩 봅니다.",
+      body: `<div class="grid g3">
         ${card("① Harness", "일할 수 있는 <b>업무 환경</b> 전체<br><br>신입에게 자리 · PC · 권한을 세팅해 주는 것", "accent-c", "업무 환경")}
         ${card("② MCP", "사내 시스템과의 <b>연결</b><br><br>ERP · CRM · 메일 계정을 열어 주는 것", "accent-v", "시스템 연결")}
         ${card("③ Skills", "회사의 <b>업무 매뉴얼</b><br><br>보고 양식 · 검토 순서 · 조사 기준을 주는 것", "", "업무 매뉴얼")}
-        ${card("④ Ralph", "일을 <b>시키는 방식</b><br><br>큰 일을 작게 쪼개 반복해서 맡기는 것", "accent-m", "일 시키는 방식")}
       </div>`
-      + flow(["① 환경을 만든다", "② 시스템을 연결한다", "③ 매뉴얼을 준다", "④ 작게 쪼개 맡긴다"])
-      + `<p class="note">이 네 가지가 갖춰질수록 AI에게 <b>맡길 수 있는 업무의 길이</b>가 길어집니다. 다음 슬라이드부터 하나씩 설명합니다.</p>`
+      + flow(["① 환경을 만든다", "② 시스템을 연결한다", "③ 매뉴얼을 준다"])
+      + `<p class="note">이 세 가지가 갖춰질수록 AI에게 <b>맡길 수 있는 업무의 길이</b>가 길어집니다. 다음 슬라이드부터 하나씩 설명합니다.</p>`
     },
 
     {
@@ -3373,31 +3309,28 @@
       + quote("개인의 Prompt 노하우가 아니라 <b>조직의 SOP를 AI 자산으로</b> 만드는 방향.")
     },
 
+    /* ── AI 핵심 용어 한 장 정리 ─────────────────────────────── */
     {
-      ch: 2, nav: "Ralph — 반복 실행 패턴", layout: "split", img: "orbit-core", cap: "Ralph · 작은 Task의 반복 루프",
-      kicker: "Part 2 · Agent System ④ Ralph — 일 시키는 방식",
-      title: "④ Ralph — <em>반복 실행 패턴</em>",
-      lead: "Ralph는 Harness 전체를 의미하지 않습니다. 긴 업무를 끝까지 끌고 가기 위한 루프입니다.",
-      body: steps([
-        "Goal 정의", "작은 Task 선택", "AI 실행", "결과 생성",
-        "Test / Verify", "상태 저장", "다음 Task", "반복"
-      ], "two") + quote("큰 일을 AI에게 <b>한 번에</b> 시키지 않는다.")
-        + `<p class="note">잘못된 방식 — “이 6개월짜리 프로젝트를 모두 완성해줘.”<br>현실적인 방식 — 요구사항 분석 → Task 1 → 검증 → 기록 → Task 2 → 반복</p>`
-    },
-
-    {
-      ch: 2, nav: "Harness / Ralph / MCP / Skill 정리", img: "board-teal",
-      kicker: "Part 2 · Agent System — 한 장 정리",
-      title: "네 개의 단어를 <em>한 장으로</em>",
+      ch: 2, nav: "AI 핵심 용어 한 장 정리", img: "board-teal", cls: "compact",
+      kicker: "Part 2 · 용어 정리",
+      title: "AI 핵심 용어 — <em>한 장으로</em>",
+      lead: "외울 필요는 없습니다. 회의나 기사에서 이 단어가 나왔을 때 <em>무슨 얘기인지 알아듣는 것</em>이 목표입니다.",
       body: table(
-        ["개념", "역할", "쉽게 설명하면"],
+        ["용어", "한 줄 정의", "업무 언어로 바꾸면"],
         [
-          ["① Harness", "전체 실행 구조", "AI 직원의 업무환경"],
-          ["② MCP", "Tool 연결", "AI의 USB"],
-          ["③ Skill", "업무 절차", "AI용 SOP / 업무 매뉴얼"],
-          ["④ Ralph", "반복 실행 패턴", "작은 업무를 계속 수행하는 방식"]
+          ["LLM", "대량의 텍스트로 학습한 언어 모델", "AI의 두뇌"],
+          ["Prompt", "AI에게 주는 지시문", "업무 지시서"],
+          ["Context", "AI가 답할 때 참고하는 정보 전체", "업무 배경 자료"],
+          ["Token", "AI가 글을 세는 단위 (한글 1자 ≈ 1~2 토큰)", "처리량 · 비용의 단위"],
+          ["Hallucination", "그럴듯하지만 <b>틀린</b> 답", "반드시 검증해야 하는 이유"],
+          ["Multimodal", "글 · 이미지 · 음성 · 파일을 함께 다루는 것", "자료를 그대로 넣기"],
+          ["RAG", "사내 문서를 찾아 <b>근거로 삼아</b> 답하는 방식", "우리 자료 기반 답변"],
+          ["Agent", "스스로 도구를 써서 업무를 <b>수행</b>하는 AI", "디지털 직원"],
+          ["Harness", "Agent가 일하는 실행 환경 전체", "업무 환경 · 권한 · 기록"],
+          ["MCP", "AI와 사내 시스템을 잇는 표준 연결", "AI의 USB"],
+          ["Skills", "회사의 업무 절차를 AI가 쓰는 형태로", "AI용 SOP · 업무 매뉴얼"]
         ]
-      ) + `<p class="note">이 네 가지가 갖춰질수록 “AI에게 <b>맡길 수 있는 업무의 길이</b>”가 길어집니다. 이것이 2026년의 실질적인 변화입니다.</p>`
+      ) + `<p class="note">아래 세 줄 — <b style="color:var(--heading)">Harness · MCP · Skills</b> — 가 오늘 Part 2의 전부입니다. 이 세 가지가 갖춰질수록 AI에게 <b>맡길 수 있는 업무의 길이</b>가 길어집니다.</p>`
     },
 
     {
@@ -3790,7 +3723,7 @@
               "反復業務はPrompt・Agent・Workflowとして構造化"
             ], "accent-c")}
             ${card("細部まで効くAIスキル", [
-              "Skills・MCP・Harness・Ralphの概念を実務に適用",
+              "Skills・MCP・Harnessの概念を実務に適用",
               "ドキュメント体系、Context設計、再現可能な業務フローの構築",
               "『見せるためのAI』より<b>『実務に食い込むAI』</b>を志向"
             ])}
@@ -3848,7 +3781,7 @@
         [
           ["0–7分",   "講師紹介",           "実務でAIをどう使っているか"],
           ["7–17分",  "Part 1. 統計",       "導入率・成果の格差・成熟度 — 数字で見る現在"],
-          ["17–32分", "Part 2. 概念 · Agent System", "MCP・Skills・Harness・Ralph — たとえと例で"],
+          ["17–32分", "Part 2. 概念 · Agent System", "Harness・MCP・Skillsと主要用語の整理"],
           ["32–50分", "Part 3. チーム活動", "自動化・改善したい自分の業務を書いて発表"],
           ["50–55分", "Part 4. シナリオ",   "Level 1〜5・2027〜2030年、AIはどこまで行くのか"],
           ["55–60分", "Q&A",                "自由質問・まとめ"]
@@ -3859,7 +3792,7 @@
     { ch: 1, divider: true, nav: "Part 1 案内",
       partLabel: "Part 1", title: "統計で見る<em>AIの現在</em>",
       teaser: "理論の代わりに、まず数字を見ます。導入はどこまで進み、成果の格差はなぜ生まれるのか。",
-      bullets: ["ウォームアップクイズ — 数字の感覚", "グローバル・韓国・日本の導入率", "導入率と成果の格差", "2026年の能力マップと分野別成熟度", "技術Gap — なぜ大企業は遅いのか"],
+      bullets: ["ウォームアップクイズ — 数字の感覚", "グローバル・韓国・日本の導入率", "導入率と成果の格差", "2026年の能力マップと分野別成熟度", "なぜ大企業は遅くならざるを得ないのか"],
       time: "7–17分" },
 
     {
@@ -4002,24 +3935,10 @@
       + quote("Enterprise Gapは一概に悪いものではない。<br>必要な<b>安全装置</b>があるからこそ生まれるGapでもある。")
     },
 
-    {
-      ch: 1, nav: "では、なぜ今が重要なのか", img: "chrome-chip",
-      kicker: "Part 1 · なぜ今なのか",
-      title: "Gapは残るが、<em>Gapをつなぐ技術</em>が急速に発展している",
-      body: chips([
-        "MCP / Connectors", "Agent Skills", "Enterprise Search", "Agent Harness",
-        "Memory / State", "Evaluation", "Permission", "Audit", "Sandboxing", "Governance"
-      ]) + `<div class="grid g2">
-        ${card("これまでのボトルネック", ["モデル性能", "何ができるか"])}
-        ${card("これからのボトルネック", ["連携・権限・検証・記録", "<b>安全に</b>できるか"], "accent-c")}
-      </div>`
-      + quote("したがってAI技術の<b>Business Adoption</b>速度は速まる可能性が高い。")
-    },
-
     { ch: 2, divider: true, nav: "Part 2 案内",
       partLabel: "Part 2", title: "核心概念を<em>軽く、やさしく</em>",
-      teaser: "本当に必要な概念だけを五つ。すべて、たとえと例で押さえます。",
-      bullets: ["2023→2026 — 何が変わったか", "Agent System全体像 — 新入社員オンボーディング", "① Harness → ② MCP → ③ Skills → ④ Ralphの順に", "30秒実習・任せる / 一緒にやる / 自分でやる"],
+      teaser: "本当に必要な概念だけを。すべてたとえと例で押さえ、最後に用語を一枚に整理します。",
+      bullets: ["2023→2026 — 何が変わったか", "Agent System全体像 — 新入社員オンボーディング", "① Harness → ② MCP → ③ Skillsの順に", "AI主要用語の整理・30秒実習"],
       time: "17–32分" },
 
     {
@@ -4036,69 +3955,19 @@
       + `<p class="note">年ごとの細かい内容を覚える必要はありません。今日覚えるのは<b>「委任の単位が拡大し続ける」</b>という方向一つです。</p>`
     },
 
-    {
-      ch: 2, nav: "2023 — GENERATE", layout: "split", img: "ai-key", cap: "2023 · Prompt / Generate",
-      kicker: "Part 2 · 2023",
-      title: "2023 — <em>GENERATE</em>",
-      lead: "AIに質問すれば答えをくれる。",
-      body: `<div class="grid g2">
-        ${card("代表的な流れ", ["GPT-4", "Claude 2", "Gemini 1.0", "Midjourney", "DALL-E 3"])}
-        ${card("主な活用", ["翻訳・要約", "メール・文書のドラフト", "コードのドラフト", "画像生成"])}
-      </div>`
-      + flow(["人", "Prompt", "AI", "回答", "人が実行"])
-      + `<p class="note">AIの役割 — <b style="color:var(--cyan)">Assistant</b></p>`
-    },
-
-    {
-      ch: 2, nav: "2024 — UNDERSTAND", layout: "split", img: "signal-web", cap: "2024 · Multimodal / Reasoning / Tool Use",
-      kicker: "Part 2 · 2024",
-      title: "2024 — <em>UNDERSTAND</em>",
-      lead: "AIがテキストを読むだけでなく、見て、聞いて、ファイルやツールを使い始める。",
-      body: `<div class="grid g2">
-        ${card("代表的な流れ", ["GPT-4o・Gemini 1.5・Claude 3系", "o1系Reasoning", "Sora・Veo・Realtime Voice", "長いContext・Tool Use・MCPの登場"])}
-        ${card("入出力の変化", ["従来 — Text → AI → Text", "変化 — Text / Image / Audio / Video / File / Web → AI → <b>Tool</b>"])}
-      </div>`
-      + quote("生成モデルから<b>外部環境とつながるシステム</b>へと進化し始めた年。")
-    },
-
-    {
-      ch: 2, nav: "2025 — ACT", layout: "split", img: "android-head", cap: "2025 · Agent / Tool / Action",
-      kicker: "Part 2 · 2025",
-      title: "2025 — <em>ACT</em>",
-      lead: "AIが答えを作るだけでなく、業務を直接遂行し始める。",
-      body: `<div class="grid g2">
-        ${card("代表的な流れ", ["Claude Code · OpenAI Codex", "Cursor Agent", "Deep Research", "Computer Use", "Agent Skills · Subagents", "MCP ecosystem"])}
-        ${card("役割の移動", ["従来 — 人 → AI → 答え → 人が実行", "Agent — 人 → <b>Goal</b> → AI → 検索 → Tool使用 → 作業 → 検証 → 結果"], "accent-c", "Assistant → Agent")}
-      </div>`
-    },
-
-    {
-      ch: 2, nav: "2026 — DELEGATE", layout: "split", img: "robot-hand", cap: "2026 · Harness / Orchestration / Delegation",
-      kicker: "Part 2 · 2026",
-      title: "2026 — <em>DELEGATE</em>",
-      lead: "優れたAIモデル一つより、AIがうまく働けるようにする<em>システム</em>が重要になる。",
-      body: `<div class="grid g3">
-        ${card("2023", "Prompt Engineering")}
-        ${card("2024–2025", "Context + Tool Use")}
-        ${card("2026", "Harness + Skills + Memory + Evals + Orchestration<br><br>= <b>Agentic AI</b>", "accent-v")}
-      </div>`
-      + quote("モデル性能の競争から<b>実行環境の設計</b>の競争へと重心が移っている。")
-    },
-
     /* ── Agent System 全体像 ────────────────────────────────── */
     {
       ch: 2, nav: "Agent System 全体像", img: "crystal-core", cls: "roomy",
       kicker: "Part 2 · Agent System — 全体像",
       title: "AIに仕事を任せることは<em>新入社員のオンボーディング</em>と同じ",
-      lead: "AI Agentは『デジタル社員』です。社員一人が仕事を始めるには四つのものが必要です — ここからこの順番で一つずつ見ていきます。",
-      body: `<div class="grid g4">
+      lead: "AI Agentは『デジタル社員』です。社員一人が仕事を始めるには三つのものが必要です — ここからこの順番で一つずつ見ていきます。",
+      body: `<div class="grid g3">
         ${card("① Harness", "働くための<b>業務環境</b>全体<br><br>新入社員に席・PC・権限をセットアップすること", "accent-c", "業務環境")}
         ${card("② MCP", "社内システムとの<b>連携</b><br><br>ERP・CRM・メールのアカウントを開くこと", "accent-v", "システム連携")}
         ${card("③ Skills", "会社の<b>業務マニュアル</b><br><br>報告様式・レビュー手順・調査基準を渡すこと", "", "業務マニュアル")}
-        ${card("④ Ralph", "仕事の<b>任せ方</b><br><br>大きな仕事を小さく分けて繰り返し任せること", "accent-m", "任せ方")}
       </div>`
-      + flow(["① 環境を作る", "② システムをつなぐ", "③ マニュアルを渡す", "④ 小さく分けて任せる"])
-      + `<p class="note">この四つが揃うほど、AIに<b>任せられる仕事の長さ</b>が伸びていきます。次のスライドから一つずつ説明します。</p>`
+      + flow(["① 環境を作る", "② システムをつなぐ", "③ マニュアルを渡す"])
+      + `<p class="note">この三つが揃うほど、AIに<b>任せられる仕事の長さ</b>が伸びていきます。次のスライドから一つずつ説明します。</p>`
     },
 
     {
@@ -4222,31 +4091,28 @@
       + quote("個人のPromptノウハウではなく、<b>組織のSOPをAI資産に</b>する方向。")
     },
 
+    /* ── AI主要用語の一枚整理 ────────────────────────────────── */
     {
-      ch: 2, nav: "Ralph — 反復実行パターン", layout: "split", img: "orbit-core", cap: "Ralph・小さなTaskの反復ループ",
-      kicker: "Part 2 · Agent System ④ Ralph — 任せ方",
-      title: "④ Ralph — <em>反復実行パターン</em>",
-      lead: "RalphはHarness全体を意味するものではありません。長い業務を最後までやり切るための<em>ループ</em>です。",
-      body: steps([
-        "Goal定義", "小さなTaskの選択", "AI実行", "結果生成",
-        "Test / Verify", "状態保存", "次のTask", "反復"
-      ], "two") + quote("大きな仕事をAIに<b>一度に</b>やらせない。")
-        + `<p class="note">誤ったやり方 — 『この半年がかりのプロジェクトを全部完成させて。』<br>現実的なやり方 — 要件分析 → Task 1 → 検証 → 記録 → Task 2 → 反復</p>`
-    },
-
-    {
-      ch: 2, nav: "Harness / Ralph / MCP / Skill 整理", img: "board-teal",
-      kicker: "Part 2 · Agent System — 一枚整理",
-      title: "四つの言葉を<em>一枚に</em>",
+      ch: 2, nav: "AI主要用語の一枚整理", img: "board-teal", cls: "compact",
+      kicker: "Part 2 · 用語整理",
+      title: "AI主要用語 — <em>一枚で</em>",
+      lead: "覚える必要はありません。会議や記事でこの言葉が出たときに<em>何の話か分かること</em>が目標です。",
       body: table(
-        ["概念", "役割", "わかりやすく言うと"],
+        ["用語", "一行での定義", "業務の言葉に変えると"],
         [
-          ["① Harness", "全体の実行構造", "AI社員の業務環境"],
-          ["② MCP", "Tool連携", "AIのUSB"],
-          ["③ Skill", "業務手順", "AI用SOP/業務マニュアル"],
-          ["④ Ralph", "反復実行パターン", "小さな業務を継続的にこなすやり方"]
+          ["LLM", "大量のテキストで学習した言語モデル", "AIの頭脳"],
+          ["Prompt", "AIに与える指示文", "業務指示書"],
+          ["Context", "AIが答える際に参照する情報の全体", "業務の背景資料"],
+          ["Token", "AIが文章を数える単位(日本語1文字 ≈ 1〜2トークン)", "処理量・コストの単位"],
+          ["Hallucination", "もっともらしいが<b>誤った</b>答え", "必ず検証すべき理由"],
+          ["Multimodal", "文字・画像・音声・ファイルをまとめて扱うこと", "資料をそのまま入れる"],
+          ["RAG", "社内文書を検索し<b>根拠として</b>答える方式", "自社資料に基づく回答"],
+          ["Agent", "自らツールを使って業務を<b>遂行</b>するAI", "デジタル社員"],
+          ["Harness", "Agentが働く実行環境の全体", "業務環境・権限・記録"],
+          ["MCP", "AIと社内システムをつなぐ標準的な接続", "AIのUSB"],
+          ["Skills", "会社の業務手順をAIが使える形に", "AI用SOP・業務マニュアル"]
         ]
-      ) + `<p class="note">この四つが揃うほど<b>『AIに任せられる業務の長さ』</b>が伸びていきます。これが2026年の実質的な変化です。</p>`
+      ) + `<p class="note">下の三行 — <b style="color:var(--heading)">Harness・MCP・Skills</b> — が今日のPart 2のすべてです。この三つが揃うほど、AIに<b>任せられる仕事の長さ</b>が伸びていきます。</p>`
     },
 
     {

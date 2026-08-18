@@ -2796,20 +2796,20 @@
      ═══════════════════════════════════════════════════════════════ */
 
   const CHAPTERS_KO = [
-    { t: "표지 · 강사 소개",                 time: "0–7분" },
-    { t: "Part 1 — 통계로 보는 AI 현재",      time: "7–17분" },
-    { t: "Part 2 — 핵심 개념과 Agent System", time: "17–32분" },
-    { t: "Part 3 — 미쓰이 팀 활동",           time: "32–50분" },
+    { t: "Opening — 왜 지금 AI인가",          time: "0–12분" },
+    { t: "Part 1 — 통계로 보는 AI 현재",      time: "12–20분" },
+    { t: "Part 2 — 핵심 개념과 Agent System", time: "20–34분" },
+    { t: "Part 3 — 미쓰이 팀 활동",           time: "34–50분" },
     { t: "Part 4 — 앞으로의 AI 시나리오",     time: "50–55분" },
     { t: "Q&A · Closing",                    time: "55–60분" },
     { t: "부록 — 참고 자료",                  time: "별도 자료" }
   ];
 
   const CHAPTERS_JA = [
-    { t: "表紙・講師紹介",                    time: "0–7分" },
-    { t: "Part 1 — 統計で見るAIの現在",       time: "7–17分" },
-    { t: "Part 2 — 核心概念とAgent System",   time: "17–32分" },
-    { t: "Part 3 — 三井チーム活動",           time: "32–50分" },
+    { t: "Opening — なぜ今AIなのか",          time: "0–12分" },
+    { t: "Part 1 — 統計で見るAIの現在",       time: "12–20分" },
+    { t: "Part 2 — 核心概念とAgent System",   time: "20–34分" },
+    { t: "Part 3 — 三井チーム活動",           time: "34–50分" },
     { t: "Part 4 — これからのAIシナリオ",     time: "50–55分" },
     { t: "Q&A・Closing",                     time: "55–60分" },
     { t: "付録 — 参考資料",                   time: "別途資料" }
@@ -2905,11 +2905,78 @@
       badge: "1시간 강의 · 60분 · 2026",
       subline: "2023년 ChatGPT에서 2026년 AI Agent까지, 그리고 앞으로 우리가 일하는 방식",
       ctaPrimary: "강의 시작", ctaSecondary: "목차 보기",
-      metaPrefix: "60분 · 6개 파트 + 부록 · ", metaSuffix: "장", metaHint: "←  →  로 페이지 이동" },
+      metaPrefix: "60분 · Opening + 4개 파트 + 부록 · ", metaSuffix: "장", metaHint: "←  →  로 페이지 이동" },
+
+    /* ── 오프닝 훅 ──────────────────────────────────────────── */
+    {
+      ch: 0, nav: "지금 AI는 이런 일을 합니다", img: "android-head", cls: "roomy",
+      kicker: "Opening · 왜 지금 AI인가",
+      title: "이 네 가지는 <em>오늘 AI가</em> 실제로 하는 일입니다",
+      lead: "특별한 기술이 아닙니다. 지금 이 순간, 다른 회사 실무자들이 이렇게 일하고 있습니다.",
+      body: `<div class="grid g2">
+        ${card("30페이지 계약서에서", ["우리에게 <b>불리한 조항만</b> 뽑아", "이유와 대안까지 한 장으로"], "accent-c", "5분")}
+        ${card("경쟁사 10곳을", ["사업 구조 · 최근 수주 · 가격 정책을", "<b>비교표와 시사점</b>이 있는 보고서로"], "accent-v", "30분")}
+        ${card("2시간 회의 녹취를", ["결정사항 / Action Item(담당 · 기한) /", "미해결 이슈로 <b>나눠서 정리</b>"], "accent-c", "3분")}
+        ${card("매일 아침 시장 뉴스 중", ["우리 <b>포지션에 영향을 주는 것만</b> 골라", "이유와 확인할 Action까지"], "accent-m", "자동")}
+      </div>`
+        + quote("이 네 가지 중에 <b>여러분이 지난주에 직접 손으로 한 일</b>이 몇 개나 있습니까?")
+    },
+
+    {
+      ch: 0, nav: "직무별 실제 활용 사례", img: "signal-web", cls: "compact",
+      kicker: "Opening · 요즘 어떻게 쓰이는가",
+      title: "이미 <em>직무마다</em> 쓰이고 있습니다",
+      lead: "‘AI를 도입한다’가 아니라, 각자 자기 업무에서 이미 쓰기 시작했습니다.",
+      body: `<div class="grid g3">
+        ${card("영업", ["미팅 전 고객사 브리프 자동 작성", "제안서 · 견적 조건 비교", "Follow-up 메일 초안"], "accent-c")}
+        ${card("조사 · 기획", ["산업 · 경쟁사 리서치 초안", "시장 데이터 정리와 해석", "신사업 가설 검토"], "accent-c")}
+        ${card("재무 · 회계", ["숫자 차이(Variance) 원인 정리", "반복 분석 자동화", "리포트 초안"], "accent-v")}
+        ${card("법무 · 총무", ["계약서 1차 검토와 조항 비교", "사내 규정 질의 응답", "리스크 항목 Flag"], "accent-v")}
+        ${card("물류 · 관리", ["납기 · 조건 모니터링", "예외 상황 알림", "문서 대조 · 확인"], "accent-m")}
+        ${card("IT · DX", ["코드 작성과 리뷰", "사내 시스템 연결", "업무 자동화 구축"], "accent-m")}
+      </div>`
+        + `<p class="note">공통점은 하나입니다 — <b style="color:var(--heading)">‘찾고 · 읽고 · 정리하고 · 초안 쓰는’ 일부터</b> AI가 들어옵니다. 판단과 협상은 여전히 사람의 몫입니다.</p>`
+    },
+
+    {
+      ch: 0, nav: "배우면 무엇이 달라지나", img: "capital-night", cls: "roomy",
+      kicker: "Opening · 나에게 무엇이 좋은가",
+      title: "그래서 <em>나에게</em> 무엇이 좋은가",
+      lead: "거창한 혁신 이야기가 아닙니다. 매주 반복하는 몇 가지 업무의 시간이 바뀝니다.",
+      body: table(
+        ["업무", "지금", "AI와 함께", "사람이 남기는 것"],
+        [
+          ["미팅 전 고객사 파악", "30분", "5분", "무엇을 물을지"],
+          ["경쟁사 · 산업 조사", "반나절", "30분", "무엇이 중요한지"],
+          ["회의록 · Action 정리", "40분", "3분", "무엇을 합의할지"],
+          ["계약서 1차 검토", "2시간", "20분", "무엇을 감수할지"],
+          ["보고서 초안", "1시간", "10분", "무엇을 말할지"]
+        ]
+      ) + `<div class="grid g3" style="margin-top:0.9rem">
+        ${card("① 시간이 생긴다", "찾고 정리하는 시간이 줄고, <b>판단하고 협상하는 시간</b>이 늘어난다", "accent-c")}
+        ${card("② 결과물이 올라간다", "초안이 빨라지니 <b>고쳐 쓸 여유</b>가 생긴다 — 첫 장부터 쓰는 사람과 차이가 벌어진다", "accent-v")}
+        ${card("③ 격차가 생긴다", "같은 도구를 줘도 결과가 갈린다. 그 차이는 <b>도구가 아니라 쓰는 법</b>에서 온다", "accent-m")}
+      </div>`
+        + `<p class="src">위 시간은 강사가 실제 업무에서 측정한 <b>경험 기준 예시</b>입니다. 업무 성격에 따라 달라질 수 있습니다. 산업 전체의 수치는 <b>Part 1</b>에서 출처와 함께 확인합니다.</p>`
+    },
+
+    /* ── 아이스브레이커 ─────────────────────────────────────── */
+    {
+      ch: 0, nav: "손들기 — 이번 주 AI 사용", img: "node-graph", cls: "roomy",
+      kicker: "Opening · 참여 — 손들기 · 5–6분",
+      title: "시작 전에 — <em>이번 주에 AI를 몇 번</em> 쓰셨나요?",
+      lead: "방금 본 것들이 남 얘기처럼 느껴지셨을 수도 있습니다. 그럼 여러분은 어디쯤 계신가요? 손을 들어 주시면 제가 세어서 화면에 남기고, 오늘 이야기의 깊이를 여기에 맞추겠습니다.",
+      body: `<div class="tl-wrap"><b>손들기 — 지난 한 주 기준</b><div class="tl-row"><button type="button" class="tl-btn">거의 안 썼다<span class="tl-count">0</span></button><button type="button" class="tl-btn">가끔 검색 대신<span class="tl-count">0</span></button><button type="button" class="tl-btn">거의 매일 쓴다<span class="tl-count">0</span></button><button type="button" class="tl-btn">업무에 붙여 쓴다<span class="tl-count">0</span></button><button type="button" class="tl-btn">팀에 적용 중<span class="tl-count">0</span></button></div></div>`
+        + `<div class="grid g3" style="margin-top:1.1rem">
+        ${card("많이 나오는 답", ["“계정은 있는데 손이 안 간다”", "“번역·요약 정도만”"], "accent-m")}
+        ${card("오늘의 목표", ["도구를 하나 더 아는 것이 아니라", "<b>내 업무 하나를 바꾸는 것</b>"], "accent-c")}
+        ${card("한 가지 약속", ["오늘 끝날 때 각자 <b>가져갈 것 하나</b>는", "반드시 손에 쥐고 가시게 하겠습니다"], "accent-v")}
+      </div>`
+    },
 
     {
       ch: 0, nav: "강사 소개", img: "analyst-desk", cls: "compact",
-      kicker: "Instructor · 0–3분",
+      kicker: "Instructor · 6–8분",
       title: "오늘 이야기하는 사람",
       body: `<div class="bio">
         <div class="bio-profile">
@@ -2953,7 +3020,7 @@
 
     {
       ch: 0, nav: "실무에서 이렇게 쓰고 있습니다", img: "signal-web", cls: "roomy",
-      kicker: "Instructor · 3–5분",
+      kicker: "Instructor · 8–10분",
       title: "저는 실무에서 AI를 <em>이렇게</em> 쓰고 있습니다",
       lead: "이론이 아니라, 제가 이번 주에 실제로 돌린 업무들입니다.",
       body: `<div class="grid g2">
@@ -2989,32 +3056,19 @@
       ]) + `<div class="demo-prompt"><b>실제 사용 프롬프트</b><br>“첨부한 RFP에서 요구사항을 전부 추출해 표로. 각 항목에 난이도(상/중/하)와 대응 가능 여부를 붙이고, 제안서 목차 초안까지 만들어줘.”</div>`
     },
 
-    /* ── 아이스브레이커 ─────────────────────────────────────── */
-    {
-      ch: 0, nav: "손들기 — 이번 주 AI 사용", img: "node-graph", cls: "roomy",
-      kicker: "Opening · 참여 — 손들기",
-      title: "시작 전에 — <em>이번 주에 AI를 몇 번</em> 쓰셨나요?",
-      lead: "손을 들어 주세요. 제가 세어서 화면에 남기겠습니다. 오늘 이야기의 깊이를 여기에 맞추겠습니다.",
-      body: `<div class="tl-wrap"><b>손들기 — 지난 한 주 기준</b><div class="tl-row"><button type="button" class="tl-btn">거의 안 썼다<span class="tl-count">0</span></button><button type="button" class="tl-btn">가끔 검색 대신<span class="tl-count">0</span></button><button type="button" class="tl-btn">거의 매일 쓴다<span class="tl-count">0</span></button><button type="button" class="tl-btn">업무에 붙여 쓴다<span class="tl-count">0</span></button><button type="button" class="tl-btn">팀에 적용 중<span class="tl-count">0</span></button></div></div>`
-        + `<div class="grid g3" style="margin-top:1.1rem">
-        ${card("많이 나오는 답", ["“계정은 있는데 손이 안 간다”", "“번역·요약 정도만”"], "accent-m")}
-        ${card("오늘의 목표", ["도구를 하나 더 아는 것이 아니라", "<b>내 업무 하나를 바꾸는 것</b>"], "accent-c")}
-        ${card("한 가지 약속", ["오늘 끝날 때 각자 <b>가져갈 것 하나</b>는", "반드시 손에 쥐고 가시게 하겠습니다"], "accent-v")}
-      </div>`
-    },
-
     {
       ch: 0, nav: "60분 전체 흐름", img: "node-graph", cls: "compact",
-      kicker: "Agenda · 5–7분",
+      kicker: "Agenda · 10–12분",
       title: "60분 동안 우리가 지나갈 길",
-      lead: "이론 강의는 최소화했습니다. 숫자를 먼저 보고, 개념은 가볍게 짚고, 시간의 절반은 <em>우리 업무 이야기</em>에 씁니다.",
+      lead: "방금 본 사례들이 <em>왜 지금</em> 가능해졌는지, 그리고 <em>내 업무</em>에 어떻게 붙이는지를 이 순서로 풀어갑니다. 이론은 최소한만 다룹니다.",
       body: table(
         ["시간", "파트", "무엇을 하나"],
         [
-          ["0–7분",   "강사 소개",         "실무 활용 사례 · <b>손들기</b>로 시작"],
-          ["7–17분",  "Part 1. 통계",      "<b>퀴즈</b>로 시작 — 도입률 · 성과 격차 · 성숙도"],
-          ["17–32분", "Part 2. 개념 · Agent System", "Harness · MCP · Skills와 핵심 용어 정리"],
-          ["32–50분", "Part 3. 팀 활동",   "자동화 · 개선하고 싶은 내 업무를 적고 발표"],
+          ["0–6분",   "Opening",           "왜 지금 AI인가 · 실제 사례 · <b>손들기</b>"],
+          ["6–12분",  "강사 소개",         "실무 활용 방식과 <b>실제 결과물</b> 시연"],
+          ["12–20분", "Part 1. 통계",      "<b>퀴즈</b>로 시작 — 도입률 · 성과 격차 · 성숙도"],
+          ["20–34분", "Part 2. 개념 · Agent System", "Harness · MCP · Skills와 핵심 용어 정리"],
+          ["34–50분", "Part 3. 팀 활동",   "자동화 · 개선하고 싶은 내 업무를 적고 발표"],
           ["50–55분", "Part 4. 시나리오",  "Level 1~5 · 2027~2030, AI는 어디까지 가는가"],
           ["55–60분", "Q&A · 마무리",      "주제 투표 · <b>2분 실습</b>으로 마무리"]
         ]
@@ -3025,7 +3079,7 @@
       partLabel: "Part 1", title: "통계로 보는 <em>AI의 현재</em>",
       teaser: "이론 대신 숫자부터 봅니다. 도입은 어디까지 왔고, 성과의 격차는 왜 생기는지.",
       bullets: ["몸풀기 퀴즈 — 숫자 감 잡기", "글로벌 · 한국 · 일본 도입률", "도입률과 성과의 격차", "2026 능력 지도와 분야별 성숙도", "왜 대기업은 느릴 수밖에 없는가"],
-      time: "7–17분" },
+      time: "12–20분" },
 
     {
       ch: 1, nav: "몸풀기 퀴즈 — 숫자 감 잡기", img: "stats-globe", cls: "roomy",
@@ -3171,7 +3225,7 @@
       partLabel: "Part 2", title: "핵심 개념, <em>가볍고 쉽게</em>",
       teaser: "꼭 필요한 개념만. 전부 비유와 예시로 짚고, 마지막에 용어를 한 장으로 정리합니다.",
       bullets: ["2023→2026 — 무엇이 달라졌나", "Agent System 전체 그림 — 신입사원 온보딩", "① Harness → ② MCP → ③ Skills 순서대로", "AI 핵심 용어 정리 · 30초 실습"],
-      time: "17–32분" },
+      time: "20–34분" },
 
     {
       ch: 2, nav: "2023~2026, AI의 발전 흐름", img: "orbit-core", cls: "compact",
@@ -3373,7 +3427,7 @@
       partLabel: "Part 3", title: "미쓰이 <em>팀 활동</em>",
       teaser: "이제 우리 업무 차례입니다. 각자 자동화 · 개선하고 싶은 업무를 적고 발표합니다.",
       bullets: ["Work Map에서 아이디어 얻기", "작성 10분 + 발표 10분", "팀별 대표 사례 공유"],
-      time: "32–50분" },
+      time: "34–50분" },
 
     {
       ch: 3, nav: "Mitsui AI Work Map", img: "grid-aerial", cls: "compact",
@@ -3400,7 +3454,7 @@
 
     {
       ch: 3, nav: "팀 세션 — 자동화하고 싶은 내 업무", cls: "roomy",
-      kicker: "Part 3 · Team Session · 32–50분",
+      kicker: "Part 3 · Team Session · 34–50분",
       title: "팀 세션 — <em>내 업무 중</em> 자동화 · 개선하고 싶은 것",
       lead: "각자 적고(10분), 팀 안에서 발표합니다(10분). 앞에서 본 Work Map에서 아이디어를 얻어도 좋습니다.",
       body: `<div class="ws-timer"><span class="ws-digits">10:00</span><button type="button" class="rv-btn" data-ws="start">▶ 시작</button><button type="button" class="rv-btn" data-ws="pause">⏸ 일시정지</button><button type="button" class="rv-btn" data-ws="set" data-min="10">작성 10분</button><button type="button" class="rv-btn" data-ws="set" data-min="10">발표 10분</button></div>` + steps([
@@ -3721,11 +3775,78 @@
       badge: "1時間講義 · 60分 · 2026",
       subline: "2023年のChatGPTから2026年のAI Agentまで、そしてこれから私たちの働き方はどう変わるか",
       ctaPrimary: "講義を始める", ctaSecondary: "目次を見る",
-      metaPrefix: "60分・6パート+付録・全", metaSuffix: "枚", metaHint: "←  →  でページ移動" },
+      metaPrefix: "60分・Opening+4パート+付録・全", metaSuffix: "枚", metaHint: "←  →  でページ移動" },
+
+    /* ── オープニングのフック ───────────────────────────────── */
+    {
+      ch: 0, nav: "今のAIはこんな仕事をします", img: "android-head", cls: "roomy",
+      kicker: "Opening · なぜ今AIなのか",
+      title: "この四つは<em>今日のAIが</em>実際にやっている仕事です",
+      lead: "特別な技術ではありません。今この瞬間、他社の実務者はこう働いています。",
+      body: `<div class="grid g2">
+        ${card("30ページの契約書から", ["自社に<b>不利な条項だけ</b>を抜き出し", "理由と代替案まで一枚に"], "accent-c", "5分")}
+        ${card("競合10社を", ["事業構造・直近の受注・価格政策を", "<b>比較表と示唆</b>のあるレポートに"], "accent-v", "30分")}
+        ${card("2時間の会議の書き起こしを", ["決定事項 / Action Item(担当・期限) /", "未解決の論点に<b>分けて整理</b>"], "accent-c", "3分")}
+        ${card("毎朝の市場ニュースから", ["自社の<b>ポジションに影響するものだけ</b>を選び", "理由と確認すべきActionまで"], "accent-m", "自動")}
+      </div>`
+        + quote("この四つのうち、<b>皆さんが先週自分の手でやった仕事</b>はいくつありますか?")
+    },
+
+    {
+      ch: 0, nav: "職務別の実際の活用事例", img: "signal-web", cls: "compact",
+      kicker: "Opening · 最近どう使われているか",
+      title: "すでに<em>職務ごとに</em>使われています",
+      lead: "『AIを導入する』ではなく、各自が自分の業務ですでに使い始めています。",
+      body: `<div class="grid g3">
+        ${card("営業", ["商談前の顧客ブリーフを自動作成", "提案書・見積条件の比較", "Follow-upメールのドラフト"], "accent-c")}
+        ${card("調査・企画", ["業界・競合リサーチのドラフト", "市場データの整理と解釈", "新規事業の仮説検討"], "accent-c")}
+        ${card("財務・会計", ["数値差異(Variance)の原因整理", "反復分析の自動化", "レポートのドラフト"], "accent-v")}
+        ${card("法務・総務", ["契約書の一次レビューと条項比較", "社内規程の照会対応", "リスク項目のFlag"], "accent-v")}
+        ${card("物流・管理", ["納期・条件のモニタリング", "例外発生時の通知", "書類の突合・確認"], "accent-m")}
+        ${card("IT・DX", ["コードの作成とレビュー", "社内システムの連携", "業務自動化の構築"], "accent-m")}
+      </div>`
+        + `<p class="note">共通点は一つです — <b style="color:var(--heading)">『探す・読む・整理する・ドラフトを書く』仕事から</b>AIが入ってきます。判断と交渉は依然として人の仕事です。</p>`
+    },
+
+    {
+      ch: 0, nav: "学ぶと何が変わるのか", img: "capital-night", cls: "roomy",
+      kicker: "Opening · 自分にとって何が良いのか",
+      title: "では<em>自分にとって</em>何が良いのか",
+      lead: "大げさな革新の話ではありません。毎週繰り返している幾つかの業務の時間が変わります。",
+      body: table(
+        ["業務", "今", "AIと一緒なら", "人が担う部分"],
+        [
+          ["商談前の顧客把握", "30分", "5分", "何を聞くか"],
+          ["競合・業界調査", "半日", "30分", "何が重要か"],
+          ["議事録・Actionの整理", "40分", "3分", "何を合意するか"],
+          ["契約書の一次レビュー", "2時間", "20分", "何を許容するか"],
+          ["レポートのドラフト", "1時間", "10分", "何を伝えるか"]
+        ]
+      ) + `<div class="grid g3" style="margin-top:0.9rem">
+        ${card("① 時間が生まれる", "探して整理する時間が減り、<b>判断し交渉する時間</b>が増える", "accent-c")}
+        ${card("② 成果物の質が上がる", "ドラフトが速くなる分<b>直す余裕</b>が生まれる — 白紙から書く人との差が開く", "accent-v")}
+        ${card("③ 差が生まれる", "同じ道具を渡しても結果は分かれる。その差は<b>道具ではなく使い方</b>から来る", "accent-m")}
+      </div>`
+        + `<p class="src">上記の時間は講師が実務で測定した<b>経験ベースの例</b>です。業務の性質により変わり得ます。業界全体の数値は<b>Part 1</b>で出典と共に確認します。</p>`
+    },
+
+    /* ── アイスブレイク ─────────────────────────────────────── */
+    {
+      ch: 0, nav: "挙手 — 今週のAI利用", img: "node-graph", cls: "roomy",
+      kicker: "Opening · 参加 — 挙手 · 5–6分",
+      title: "始める前に — <em>今週AIを何回</em>使いましたか?",
+      lead: "今ご覧になったものが他人事に感じられたかもしれません。では皆さんはどのあたりでしょうか?手を挙げていただければ数えて画面に残し、今日の話の深さをここに合わせます。",
+      body: `<div class="tl-wrap"><b>挙手 — この一週間</b><div class="tl-row"><button type="button" class="tl-btn">ほとんど使っていない<span class="tl-count">0</span></button><button type="button" class="tl-btn">たまに検索代わりに<span class="tl-count">0</span></button><button type="button" class="tl-btn">ほぼ毎日使う<span class="tl-count">0</span></button><button type="button" class="tl-btn">業務に組み込んでいる<span class="tl-count">0</span></button><button type="button" class="tl-btn">チームに展開中<span class="tl-count">0</span></button></div></div>`
+        + `<div class="grid g3" style="margin-top:1.1rem">
+        ${card("よくある答え", ["「アカウントはあるが手が伸びない」", "「翻訳・要約くらい」"], "accent-m")}
+        ${card("今日の目標", ["ツールをもう一つ知ることではなく", "<b>自分の業務を一つ変えること</b>"], "accent-c")}
+        ${card("一つの約束", ["今日の終わりに各自<b>持ち帰るもの一つ</b>は", "必ず手に握って帰っていただきます"], "accent-v")}
+      </div>`
+    },
 
     {
       ch: 0, nav: "講師紹介", img: "analyst-desk", cls: "compact",
-      kicker: "Instructor · 0–3分",
+      kicker: "Instructor · 6–8分",
       title: "今日お話しする人",
       body: `<div class="bio">
         <div class="bio-profile">
@@ -3769,7 +3890,7 @@
 
     {
       ch: 0, nav: "実務ではこう使っています", img: "signal-web", cls: "roomy",
-      kicker: "Instructor · 3–5分",
+      kicker: "Instructor · 8–10分",
       title: "私は実務でAIを<em>こう</em>使っています",
       lead: "理論ではなく、私が今週実際に回した業務です。",
       body: `<div class="grid g2">
@@ -3805,32 +3926,19 @@
       ]) + `<div class="demo-prompt"><b>実際に使っているプロンプト</b><br>「添付のRFPから要求事項をすべて抽出して表に。各項目に難易度(高/中/低)と対応可否を付け、提案書の目次ドラフトまで作って。」</div>`
     },
 
-    /* ── アイスブレイク ─────────────────────────────────────── */
-    {
-      ch: 0, nav: "挙手 — 今週のAI利用", img: "node-graph", cls: "roomy",
-      kicker: "Opening · 参加 — 挙手",
-      title: "始める前に — <em>今週AIを何回</em>使いましたか?",
-      lead: "手を挙げてください。数えて画面に残します。今日の話の深さをここに合わせます。",
-      body: `<div class="tl-wrap"><b>挙手 — この一週間</b><div class="tl-row"><button type="button" class="tl-btn">ほとんど使っていない<span class="tl-count">0</span></button><button type="button" class="tl-btn">たまに検索代わりに<span class="tl-count">0</span></button><button type="button" class="tl-btn">ほぼ毎日使う<span class="tl-count">0</span></button><button type="button" class="tl-btn">業務に組み込んでいる<span class="tl-count">0</span></button><button type="button" class="tl-btn">チームに展開中<span class="tl-count">0</span></button></div></div>`
-        + `<div class="grid g3" style="margin-top:1.1rem">
-        ${card("よくある答え", ["「アカウントはあるが手が伸びない」", "「翻訳・要約くらい」"], "accent-m")}
-        ${card("今日の目標", ["ツールをもう一つ知ることではなく", "<b>自分の業務を一つ変えること</b>"], "accent-c")}
-        ${card("一つの約束", ["今日の終わりに各自<b>持ち帰るもの一つ</b>は", "必ず手に握って帰っていただきます"], "accent-v")}
-      </div>`
-    },
-
     {
       ch: 0, nav: "60分の全体の流れ", img: "node-graph", cls: "compact",
-      kicker: "Agenda · 5–7分",
+      kicker: "Agenda · 10–12分",
       title: "60分間で辿る道のり",
-      lead: "理論の講義は最小限にしました。まず数字を見て、概念は軽く押さえ、時間の半分は<em>私たちの業務の話</em>に使います。",
+      lead: "今見た事例が<em>なぜ今</em>可能になったのか、そして<em>自分の業務</em>にどう結びつけるかを、この順番で解いていきます。理論は最小限です。",
       body: table(
         ["時間", "パート", "何をするか"],
         [
-          ["0–7分",   "講師紹介",           "実務での活用事例・<b>挙手</b>で開始"],
-          ["7–17分",  "Part 1. 統計",       "<b>クイズ</b>で開始 — 導入率・成果の格差・成熟度"],
-          ["17–32分", "Part 2. 概念 · Agent System", "Harness・MCP・Skillsと主要用語の整理"],
-          ["32–50分", "Part 3. チーム活動", "自動化・改善したい自分の業務を書いて発表"],
+          ["0–6分",   "Opening",            "なぜ今AIなのか・実際の事例・<b>挙手</b>"],
+          ["6–12分",  "講師紹介",           "実務での使い方と<b>実際の成果物</b>のデモ"],
+          ["12–20分", "Part 1. 統計",       "<b>クイズ</b>で開始 — 導入率・成果の格差・成熟度"],
+          ["20–34分", "Part 2. 概念 · Agent System", "Harness・MCP・Skillsと主要用語の整理"],
+          ["34–50分", "Part 3. チーム活動", "自動化・改善したい自分の業務を書いて発表"],
           ["50–55分", "Part 4. シナリオ",   "Level 1〜5・2027〜2030年、AIはどこまで行くのか"],
           ["55–60分", "Q&A・まとめ",        "テーマ投票・<b>2分実習</b>で締め"]
         ]
@@ -3841,7 +3949,7 @@
       partLabel: "Part 1", title: "統計で見る<em>AIの現在</em>",
       teaser: "理論の代わりに、まず数字を見ます。導入はどこまで進み、成果の格差はなぜ生まれるのか。",
       bullets: ["ウォームアップクイズ — 数字の感覚", "グローバル・韓国・日本の導入率", "導入率と成果の格差", "2026年の能力マップと分野別成熟度", "なぜ大企業は遅くならざるを得ないのか"],
-      time: "7–17分" },
+      time: "12–20分" },
 
     {
       ch: 1, nav: "ウォームアップクイズ — 数字の感覚", img: "stats-globe", cls: "roomy",
@@ -3987,7 +4095,7 @@
       partLabel: "Part 2", title: "核心概念を<em>軽く、やさしく</em>",
       teaser: "本当に必要な概念だけを。すべてたとえと例で押さえ、最後に用語を一枚に整理します。",
       bullets: ["2023→2026 — 何が変わったか", "Agent System全体像 — 新入社員オンボーディング", "① Harness → ② MCP → ③ Skillsの順に", "AI主要用語の整理・30秒実習"],
-      time: "17–32分" },
+      time: "20–34分" },
 
     {
       ch: 2, nav: "2023〜2026年、AIの発展の流れ", img: "orbit-core", cls: "compact",
@@ -4189,7 +4297,7 @@
       partLabel: "Part 3", title: "三井<em>チーム活動</em>",
       teaser: "ここからは私たちの業務の番です。各自、自動化・改善したい業務を書いて発表します。",
       bullets: ["Work Mapからアイデアを得る", "記入10分 + 発表10分", "チーム代表事例の共有"],
-      time: "32–50分" },
+      time: "34–50分" },
 
     {
       ch: 3, nav: "Mitsui AI Work Map", img: "grid-aerial", cls: "compact",
@@ -4216,7 +4324,7 @@
 
     {
       ch: 3, nav: "チームセッション — 自動化したい自分の業務", cls: "roomy",
-      kicker: "Part 3 · Team Session · 32–50分",
+      kicker: "Part 3 · Team Session · 34–50分",
       title: "チームセッション — <em>自分の業務の中で</em>自動化・改善したいこと",
       lead: "各自で書き(10分)、チーム内で発表します(10分)。先ほどのWork Mapからアイデアを得ても構いません。",
       body: `<div class="ws-timer"><span class="ws-digits">10:00</span><button type="button" class="rv-btn" data-ws="start">▶ 開始</button><button type="button" class="rv-btn" data-ws="pause">⏸ 一時停止</button><button type="button" class="rv-btn" data-ws="set" data-min="10">記入10分</button><button type="button" class="rv-btn" data-ws="set" data-min="10">発表10分</button></div>` + steps([

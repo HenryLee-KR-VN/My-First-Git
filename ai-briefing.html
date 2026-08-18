@@ -37,14 +37,14 @@
     html {
       /* 해상도와 무관하게 화면 대비 같은 비율로 보이도록 vw 기준.
          1440×810 에서 19.2px, 1920×1080 에서 25.6px — 기존 대비 +20%. */
-      font-size: clamp(15px, 1.333333vw, 30px);
+      font-size: clamp(13px, 1.16vw, 26px);
       width: 100%;
       height: 100%;
       background: var(--hero-base);
     }
 
-    @media (max-width: 1024px) { html { font-size: 1.875vw; } }
-    @media (max-width: 640px)  { html { font-size: 4.32vw; } }
+    @media (max-width: 1024px) { html { font-size: 1.66vw; } }
+    @media (max-width: 640px)  { html { font-size: 3.9vw; } }
 
     body {
       height: 100%;
@@ -128,6 +128,8 @@
       align-items: center;
       text-align: center;
       max-width: 46rem;
+      width: 100%;
+      margin: 0 auto;
       position: relative;
     }
     .divider-num {
@@ -2789,21 +2791,21 @@
 
   const CHAPTERS_KO = [
     { t: "표지 · 강사 소개",                 time: "0–7분" },
-    { t: "Part 1 — 통계로 보는 AI 현재",      time: "7–15분" },
-    { t: "Part 2 — 핵심 개념, 가볍고 쉽게",   time: "15–25분" },
-    { t: "Part 3 — 미쓰이 팀 활동",           time: "25–45분" },
-    { t: "Part 4 — 앞으로의 AI 시나리오",     time: "45–52분" },
-    { t: "Q&A · Closing",                    time: "52–60분" },
+    { t: "Part 1 — 통계로 보는 AI 현재",      time: "7–17분" },
+    { t: "Part 2 — 핵심 개념과 Agent System", time: "17–32분" },
+    { t: "Part 3 — 미쓰이 팀 활동",           time: "32–50분" },
+    { t: "Part 4 — 앞으로의 AI 시나리오",     time: "50–55분" },
+    { t: "Q&A · Closing",                    time: "55–60분" },
     { t: "부록 — 참고 자료",                  time: "별도 자료" }
   ];
 
   const CHAPTERS_JA = [
     { t: "表紙・講師紹介",                    time: "0–7分" },
-    { t: "Part 1 — 統計で見るAIの現在",       time: "7–15分" },
-    { t: "Part 2 — 核心概念を軽く、やさしく",  time: "15–25分" },
-    { t: "Part 3 — 三井チーム活動",           time: "25–45分" },
-    { t: "Part 4 — これからのAIシナリオ",     time: "45–52分" },
-    { t: "Q&A・Closing",                     time: "52–60分" },
+    { t: "Part 1 — 統計で見るAIの現在",       time: "7–17分" },
+    { t: "Part 2 — 核心概念とAgent System",   time: "17–32分" },
+    { t: "Part 3 — 三井チーム活動",           time: "32–50分" },
+    { t: "Part 4 — これからのAIシナリオ",     time: "50–55分" },
+    { t: "Q&A・Closing",                     time: "55–60分" },
     { t: "付録 — 参考資料",                   time: "別途資料" }
   ];
 
@@ -2990,11 +2992,11 @@
         ["시간", "파트", "무엇을 하나"],
         [
           ["0–7분",   "강사 소개",         "실무에서 AI를 어떻게 쓰고 있는지"],
-          ["7–15분",  "Part 1. 통계",      "도입률 · 성과 격차 · 성숙도 — 숫자로 보는 현재"],
-          ["15–25분", "Part 2. 핵심 개념", "꼭 필요한 개념만 비유와 예시로 가볍게"],
-          ["25–45분", "Part 3. 팀 활동",   "자동화 · 개선하고 싶은 내 업무를 적고 발표"],
-          ["45–52분", "Part 4. 시나리오",  "Level 1~5 · 2027~2030, AI는 어디까지 가는가"],
-          ["52–60분", "Q&A",               "자유 질문 · 마무리"]
+          ["7–17분",  "Part 1. 통계",      "도입률 · 성과 격차 · 성숙도 — 숫자로 보는 현재"],
+          ["17–32분", "Part 2. 개념 · Agent System", "MCP · Skills · Harness · Ralph — 비유와 예시로"],
+          ["32–50분", "Part 3. 팀 활동",   "자동화 · 개선하고 싶은 내 업무를 적고 발표"],
+          ["50–55분", "Part 4. 시나리오",  "Level 1~5 · 2027~2030, AI는 어디까지 가는가"],
+          ["55–60분", "Q&A",               "자유 질문 · 마무리"]
         ]
       ) + `<p class="note">부록에 <b style="color:var(--heading)">2026 AI Tools 카탈로그와 참고 슬라이드</b>를 담아 두었습니다. 팀 활동과 실무에서 참고하세요.</p>`
     },
@@ -3002,8 +3004,8 @@
     { ch: 1, divider: true, nav: "Part 1 안내",
       partLabel: "Part 1", title: "통계로 보는 <em>AI의 현재</em>",
       teaser: "이론 대신 숫자부터 봅니다. 도입은 어디까지 왔고, 성과의 격차는 왜 생기는지.",
-      bullets: ["몸풀기 퀴즈 — 숫자 감 잡기", "글로벌 · 한국 · 일본 도입률", "도입률과 성과의 격차", "2026 능력 지도와 분야별 성숙도"],
-      time: "7–15분" },
+      bullets: ["몸풀기 퀴즈 — 숫자 감 잡기", "글로벌 · 한국 · 일본 도입률", "도입률과 성과의 격차", "2026 능력 지도와 분야별 성숙도", "기술 Gap — 왜 대기업은 느린가"],
+      time: "7–17분" },
 
     {
       ch: 1, nav: "몸풀기 퀴즈 — 숫자 감 잡기", img: "stats-globe", cls: "roomy",
@@ -3112,11 +3114,58 @@
       ]) + `<p class="note">기업이 실제로 체감하는 병목은 상단(언어·코드)이 아니라 <b>Enterprise Agent · Computer Use</b> 구간에 있습니다.</p>`
     },
 
+    {
+      ch: 1, nav: "AI에는 여러 개의 ‘현재’가 있다", layout: "split", img: "grid-aerial",
+      kicker: "Part 1 · 기술 Gap",
+      title: "AI에는 <em>여러 개의 ‘현재’</em>가 있다",
+      lead: "같은 시점에도, 어느 층에 있느냐에 따라 체감하는 AI가 완전히 다릅니다.",
+      body: steps([
+        "<b>AI Research</b> — 최전선의 연구",
+        "<b>Prototype / Benchmark</b> — 데모와 벤치마크",
+        "<b>AI-native Startup</b> — 제약 없이 먼저 적용",
+        "<b>Big Tech</b> — 대규모 인프라 위 적용",
+        "<b>Large Enterprise</b> — 보안·거버넌스 통과 후 적용",
+        "<b>General Enterprise</b> — 표준 제품 중심 적용",
+        "<b>General Employee</b> — 실제 업무 도구로 사용",
+        "<b>General Public</b> — 일상 사용"
+      ]) + quote("“AI가 어디까지 왔는가?”와<br>“우리 회사에서 AI를 어디까지 쓸 수 있는가?”는 <b>다른 질문</b>이다."),
+      figureHtml: layerVisualMarkup()
+    },
+
+    {
+      ch: 1, nav: "왜 대기업은 느릴 수밖에 없는가", img: "capital-night",
+      kicker: "Part 1 · Enterprise Gap",
+      title: "왜 대기업은 <em>느릴 수밖에 없는가</em>",
+      body: `<div class="grid g3">
+        ${card("Security", ["기밀정보", "고객정보", "시스템 권한"])}
+        ${card("Governance", ["허용 범위", "승인", "사용 정책", "Log"])}
+        ${card("Compliance", ["개인정보", "규제", "Audit", "IP"])}
+        ${card("Legacy", ["오래된 시스템", "API 부족", "데이터 사일로"])}
+        ${card("Reliability", ["정확도", "예외 처리", "장애", "복구"])}
+        ${card("Accountability", ["AI가 잘못했을 때<br>누가 책임지는가?"], "accent-m")}
+      </div>`
+      + quote("Enterprise Gap은 무조건 나쁜 것이 아니다.<br>필요한 <b>안전장치</b> 때문에 생기는 Gap이기도 하다.")
+    },
+
+    {
+      ch: 1, nav: "그런데 왜 지금이 중요한가", img: "chrome-chip",
+      kicker: "Part 1 · 왜 지금인가",
+      title: "Gap은 남지만, <em>Gap을 연결하는 기술</em>이 빠르게 발전한다",
+      body: chips([
+        "MCP / Connectors", "Agent Skills", "Enterprise Search", "Agent Harness",
+        "Memory / State", "Evaluation", "Permission", "Audit", "Sandboxing", "Governance"
+      ]) + `<div class="grid g2">
+        ${card("지금까지의 병목", ["모델 성능", "무엇을 할 수 있는가"])}
+        ${card("앞으로의 병목", ["연결 · 권한 · 검증 · 기록", "<b>안전하게</b> 할 수 있는가"], "accent-c")}
+      </div>`
+      + quote("따라서 AI 기술의 <b>Business Adoption 속도</b>가 빨라질 가능성이 높다.")
+    },
+
     { ch: 2, divider: true, nav: "Part 2 안내",
       partLabel: "Part 2", title: "핵심 개념, <em>가볍고 쉽게</em>",
       teaser: "꼭 필요한 개념만 다섯 가지. 전부 비유와 예시로 짚고 넘어갑니다.",
-      bullets: ["2023→2026, 무엇이 달라졌나", "AI ‘직원’ 한 명에게 필요한 것", "MCP는 USB · Skills는 SOP", "맡긴다 / 같이한다 / 내가 한다", "30초 프롬프트 실습"],
-      time: "15–25분" },
+      bullets: ["2023→2026, 무엇이 달라졌나", "AI ‘직원’ 한 명에게 필요한 것", "MCP는 USB · Skills는 SOP", "Harness · Ralph — AI의 업무 환경", "맡긴다 / 같이한다 / 내가 한다", "30초 프롬프트 실습"],
+      time: "17–32분" },
 
     {
       ch: 2, nav: "2023~2026, AI의 발전 흐름", img: "orbit-core", cls: "compact",
@@ -3130,6 +3179,55 @@
       </div>`
       + quote("2023년에는 “AI에게 무엇이라고 질문할까?”가 중요했다면,<br>2026년에는 “AI가 어떤 환경에서 어떻게 일하도록 만들까?”가 중요해지고 있다.")
       + `<p class="note">연도별 세부 내용을 외울 필요는 없습니다. 오늘 기억할 것은 <b>“위임의 단위가 계속 커진다”</b>는 방향 하나입니다.</p>`
+    },
+
+    {
+      ch: 2, nav: "2023 — GENERATE", layout: "split", img: "ai-key", cap: "2023 · Prompt / Generate",
+      kicker: "Part 2 · 2023",
+      title: "2023 — <em>GENERATE</em>",
+      lead: "AI에게 질문하면 답을 준다.",
+      body: `<div class="grid g2">
+        ${card("대표 흐름", ["GPT-4", "Claude 2", "Gemini 1.0", "Midjourney", "DALL-E 3"])}
+        ${card("주요 활용", ["번역 · 요약", "이메일 · 문서 초안", "코드 초안", "이미지 생성"])}
+      </div>`
+      + flow(["사람", "Prompt", "AI", "답변", "사람이 실행"])
+      + `<p class="note">AI의 역할 — <b style="color:var(--cyan)">Assistant</b></p>`
+    },
+
+    {
+      ch: 2, nav: "2024 — UNDERSTAND", layout: "split", img: "signal-web", cap: "2024 · Multimodal / Reasoning / Tool Use",
+      kicker: "Part 2 · 2024",
+      title: "2024 — <em>UNDERSTAND</em>",
+      lead: "AI가 텍스트만 읽는 것이 아니라 보고, 듣고, 파일과 도구를 사용하기 시작한다.",
+      body: `<div class="grid g2">
+        ${card("대표 흐름", ["GPT-4o · Gemini 1.5 · Claude 3 계열", "o1 계열 Reasoning", "Sora · Veo · Realtime Voice", "긴 Context · Tool Use · MCP 등장"])}
+        ${card("입출력의 변화", ["기존 — Text → AI → Text", "변화 — Text / Image / Audio / Video / File / Web → AI → <b>Tool</b>"])}
+      </div>`
+      + quote("생성 모델에서 <b>외부 환경과 연결되는 시스템</b>으로 발전하기 시작한 해.")
+    },
+
+    {
+      ch: 2, nav: "2025 — ACT", layout: "split", img: "android-head", cap: "2025 · Agent / Tool / Action",
+      kicker: "Part 2 · 2025",
+      title: "2025 — <em>ACT</em>",
+      lead: "AI가 답을 만드는 것을 넘어 업무를 직접 수행하기 시작한다.",
+      body: `<div class="grid g2">
+        ${card("대표 흐름", ["Claude Code · OpenAI Codex", "Cursor Agent", "Deep Research", "Computer Use", "Agent Skills · Subagents", "MCP ecosystem"])}
+        ${card("역할의 이동", ["기존 — 사람 → AI → 답 → 사람이 실행", "Agent — 사람 → <b>Goal</b> → AI → 검색 → Tool 사용 → 작업 → 검증 → 결과"], "accent-c", "Assistant → Agent")}
+      </div>`
+    },
+
+    {
+      ch: 2, nav: "2026 — DELEGATE", layout: "split", img: "robot-hand", cap: "2026 · Harness / Orchestration / Delegation",
+      kicker: "Part 2 · 2026",
+      title: "2026 — <em>DELEGATE</em>",
+      lead: "좋은 AI 모델 하나보다, AI가 일을 잘할 수 있도록 만드는 <em>시스템</em>이 중요해진다.",
+      body: `<div class="grid g3">
+        ${card("2023", "Prompt Engineering")}
+        ${card("2024–2025", "Context + Tool Use")}
+        ${card("2026", "Harness + Skills + Memory + Evals + Orchestration<br><br>= <b>Agentic AI</b>", "accent-v")}
+      </div>`
+      + quote("모델의 성능 경쟁에서 <b>실행 환경의 설계</b> 경쟁으로 무게중심이 이동하고 있다.")
     },
 
     {
@@ -3147,6 +3245,18 @@
         ${card("Harness", "위 요소 전체를 관리하는 <b>실행 환경</b>", "accent-v")}
         ${card("사람", "Goal 정의 · 판단 · 승인 · 책임", "accent-m")}
       </div>`
+    },
+
+    {
+      ch: 2, nav: "Prompt → Context → Harness", img: "board-macro", cls: "roomy",
+      kicker: "Part 2 · 엔지니어링의 세 단계",
+      title: "Prompt → Context → <em>Harness</em>",
+      body: `<div class="grid g3">
+        ${card("Prompt Engineering", "AI에게 <b>뭐라고 말할까?</b>", "", "2023")}
+        ${card("Context Engineering", "AI에게 <b>무엇을 보여줄까?</b>", "accent-c", "2024–2025")}
+        ${card("Harness Engineering", "AI가 <b>어떤 환경에서, 어떤 권한으로, 어떤 과정을 거쳐</b> 일하게 할까?", "accent-v", "2026")}
+      </div>`
+      + quote("기업 AI에서는 Prompt보다 <b>뒤의 두 영역</b>이 점점 더 중요해진다.")
     },
 
     {
@@ -3170,6 +3280,102 @@
         ${card("의미", ["개인의 Prompt 노하우 → <b>조직의 자산</b>", "잘 쓰는 한 사람에게 의존하지 않는 구조", "신규 입사자 Onboarding과 같은 논리"], "accent-c")}
       </div>`
       + quote("개인의 Prompt 노하우가 아니라 <b>조직의 SOP를 AI 자산으로</b> 만드는 방향.")
+    },
+
+    {
+      ch: 2, nav: "AI 문서 체계 = 법령 체계", img: "capital-night", cls: "compact",
+      kicker: "Part 2 · 문서 위계",
+      title: "AI에게 주는 규칙은 <em>법령처럼</em> 쌓는다",
+      lead: "Skill과 규칙을 파일 하나에 몰아넣으면 관리가 안 됩니다. <em>상위법과 하위법</em>처럼 위계를 두고 폴더로 나눕니다.",
+      body: `<div class="ladder">
+        <div class="ladder-row l1">
+          <div class="lv">헌법<i>LV 1</i></div>
+          <div class="ds"><b>전사 AI 사용 원칙</b> — 보안 · 승인 · 절대 금지사항. 짧고 거의 바뀌지 않는다.</div>
+          <div class="pt">/CLAUDE.md</div>
+        </div>
+        <div class="ladder-row l2">
+          <div class="lv">법률<i>LV 2</i></div>
+          <div class="ds"><b>본부 · 부서 공통 규칙</b> — 영업본부의 보고 양식, 고객 정보 취급 기준.</div>
+          <div class="pt">/영업본부/CLAUDE.md</div>
+        </div>
+        <div class="ladder-row l3">
+          <div class="lv">시행령<i>LV 3</i></div>
+          <div class="ds"><b>업무별 절차 = Skill</b> — 시장조사는 어떤 순서로, 무엇을 확인하며 하는가.</div>
+          <div class="pt">/skills/시장조사/SKILL.md</div>
+        </div>
+        <div class="ladder-row l4">
+          <div class="lv">시행규칙<i>LV 4</i></div>
+          <div class="ds"><b>세부 지침 · 체크리스트 · 양식</b> — 길고 자주 바뀌는 실무 디테일.</div>
+          <div class="pt">/skills/시장조사/references/*.md</div>
+        </div>
+        <div class="ladder-row l5">
+          <div class="lv">조례 · 특약<i>LV 5</i></div>
+          <div class="ds"><b>개별 프로젝트 · 고객 특수 규칙</b> — 이 건에만 적용되는 예외.</div>
+          <div class="pt">/projects/2026-LNG/CLAUDE.md</div>
+        </div>
+      </div>`
+      + `<div class="grid g3" style="margin-top:1rem">
+        ${card("상위법 우선", "하위 문서는 상위 문서를 <b>위반할 수 없다.</b> 전사 보안 원칙을 팀 규칙이 뒤집지 못한다.", "accent-c")}
+        ${card("특별법 우선", "더 <b>구체적인 것이 먼저</b> 적용된다. 단, 상위 원칙의 범위 안에서만.", "accent-v")}
+        ${card("위로 갈수록 짧게", "헌법은 한 장, 시행규칙은 수십 장. <b>안정적인 것은 위, 자주 바뀌는 것은 아래.</b>", "accent-m")}
+      </div>`
+    },
+
+    {
+      ch: 2, nav: "실제 폴더 구조", img: "board-macro", cls: "compact",
+      kicker: "Part 2 · 폴더 구조",
+      title: "실제로는 <em>이렇게 생겼다</em>",
+      lead: "특별한 시스템이 아니라 <em>폴더와 .md 파일</em>입니다. AI는 일할 때 위에서부터 순서대로 읽습니다.",
+      body: `<div class="tree">
+        <div class="tree-row"><code><b>mitsui-ai/</b></code><em>전사 AI 작업 공간</em></div>
+        <div class="tree-row"><code>├── <b>CLAUDE.md</b></code><em><b>헌법</b> — 전사 원칙 · 보안 · 승인 · 금지사항</em></div>
+        <div class="tree-row sp"><code>│</code><em></em></div>
+        <div class="tree-row"><code>├── <b>영업본부/</b></code><em></em></div>
+        <div class="tree-row"><code>│   ├── <b>CLAUDE.md</b></code><em><b>법률</b> — 영업 공통 규칙 · 보고 양식</em></div>
+        <div class="tree-row"><code>│   ├── 철강/<b>CLAUDE.md</b></code><em><b>조례</b> — 철강팀 단가 · 고객 취급 기준</em></div>
+        <div class="tree-row"><code>│   └── 에너지/<b>CLAUDE.md</b></code><em><b>조례</b> — LNG Position 관련 예외</em></div>
+        <div class="tree-row sp"><code>│</code><em></em></div>
+        <div class="tree-row"><code>├── <b>skills/</b></code><em><u>업무 절차 = AI용 SOP</u></em></div>
+        <div class="tree-row"><code>│   ├── 시장조사/</code><em></em></div>
+        <div class="tree-row"><code>│   │   ├── <b>SKILL.md</b></code><em><b>시행령</b> — 조사 순서 · 판단 기준</em></div>
+        <div class="tree-row"><code>│   │   └── references/</code><em></em></div>
+        <div class="tree-row"><code>│   │       ├── 조사항목.md</code><em><b>시행규칙</b> — 확인할 항목 체크리스트</em></div>
+        <div class="tree-row"><code>│   │       └── 보고양식.md</code><em><b>시행규칙</b> — 산출물 양식</em></div>
+        <div class="tree-row"><code>│   └── 계약검토/</code><em></em></div>
+        <div class="tree-row"><code>│       ├── <b>SKILL.md</b></code><em><b>시행령</b> — 계약 검토 순서</em></div>
+        <div class="tree-row"><code>│       └── references/리스크체크.md</code><em><b>시행규칙</b> — Clause별 리스크 목록</em></div>
+        <div class="tree-row sp"><code>│</code><em></em></div>
+        <div class="tree-row"><code>└── <b>projects/</b></code><em></em></div>
+        <div class="tree-row"><code>    └── 2026-LNG/<b>CLAUDE.md</b></code><em><b>특약</b> — 이 건에만 적용되는 규칙</em></div>
+      </div>`
+      + `<p class="note">철강팀 시장조사를 시킬 때 AI는 <b>전사 원칙 → 영업본부 규칙 → 철강팀 규칙 → 시장조사 SKILL → 체크리스트</b> 순으로 읽고 일합니다. 규정이 바뀌면 <b>해당 계층의 파일 하나만</b> 고치면 되고, 개정 이력은 버전 관리로 남습니다 — 법령 개정과 같은 구조입니다.</p>`
+    },
+
+    {
+      ch: 2, nav: "Ralph — 반복 실행 패턴", layout: "split", img: "orbit-core", cap: "Ralph · 작은 Task의 반복 루프",
+      kicker: "Part 2 · Ralph",
+      title: "Ralph — <em>반복 실행 패턴</em>",
+      lead: "Ralph는 Harness 전체를 의미하지 않습니다. 긴 업무를 끝까지 끌고 가기 위한 루프입니다.",
+      body: steps([
+        "Goal 정의", "작은 Task 선택", "AI 실행", "결과 생성",
+        "Test / Verify", "상태 저장", "다음 Task", "반복"
+      ], "two") + quote("큰 일을 AI에게 <b>한 번에</b> 시키지 않는다.")
+        + `<p class="note">잘못된 방식 — “이 6개월짜리 프로젝트를 모두 완성해줘.”<br>현실적인 방식 — 요구사항 분석 → Task 1 → 검증 → 기록 → Task 2 → 반복</p>`
+    },
+
+    {
+      ch: 2, nav: "Harness / Ralph / MCP / Skill 정리", img: "board-teal",
+      kicker: "Part 2 · 개념 정리",
+      title: "네 개의 단어를 <em>한 장으로</em>",
+      body: table(
+        ["개념", "역할", "쉽게 설명하면"],
+        [
+          ["Harness", "전체 실행 구조", "AI 직원의 업무환경"],
+          ["Ralph", "반복 실행 패턴", "작은 업무를 계속 수행하는 방식"],
+          ["MCP", "Tool 연결", "AI의 USB"],
+          ["Skill", "업무 절차", "AI용 SOP / 업무 매뉴얼"]
+        ]
+      ) + `<p class="note">이 네 가지가 갖춰질수록 “AI에게 <b>맡길 수 있는 업무의 길이</b>”가 길어집니다. 이것이 2026년의 실질적인 변화입니다.</p>`
     },
 
     {
@@ -3198,7 +3404,7 @@
       partLabel: "Part 3", title: "미쓰이 <em>팀 활동</em>",
       teaser: "이제 우리 업무 차례입니다. 각자 자동화 · 개선하고 싶은 업무를 적고 발표합니다.",
       bullets: ["영업부서 공통 Workflow 훑어보기", "Work Map에서 아이디어 얻기", "작성 10분 + 발표 10분"],
-      time: "25–45분" },
+      time: "32–50분" },
 
     {
       ch: 3, nav: "영업부서 공통 Workflow", img: "harbor-bridge",
@@ -3238,7 +3444,7 @@
 
     {
       ch: 3, nav: "팀 세션 — 자동화하고 싶은 내 업무", cls: "roomy",
-      kicker: "Part 3 · Team Session · 25–45분",
+      kicker: "Part 3 · Team Session · 32–50분",
       title: "팀 세션 — <em>내 업무 중</em> 자동화 · 개선하고 싶은 것",
       lead: "각자 적고(10분), 팀 안에서 발표합니다(10분). 앞에서 본 Work Map에서 아이디어를 얻어도 좋습니다.",
       body: `<div class="ws-timer"><span class="ws-digits">10:00</span><button type="button" class="rv-btn" data-ws="start">▶ 시작</button><button type="button" class="rv-btn" data-ws="pause">⏸ 일시정지</button><button type="button" class="rv-btn" data-ws="reset">↺ 10:00</button></div>` + steps([
@@ -3261,7 +3467,7 @@
       partLabel: "Part 4", title: "앞으로의 <em>AI 시나리오</em>",
       teaser: "방금 적어 본 아이디어가 앞으로 몇 년 안에 어디까지 갈 수 있는지 봅니다.",
       bullets: ["AI 활용의 발전 단계 Level 1~5", "2027~2030 시나리오", "미래 실무자의 역할", "잘 쓰는 사람과 못 쓰는 사람의 차이"],
-      time: "45–52분" },
+      time: "50–55분" },
 
     {
       ch: 4, nav: "Level 1~5 — AI 활용의 발전 단계", img: "arm-crimson",
@@ -3339,11 +3545,11 @@
       partLabel: "Q&A", title: "질문과 <em>대화</em>",
       teaser: "남은 시간은 여러분의 질문으로 채웁니다.",
       bullets: ["자유 질문", "팀 세션에서 나온 주제 이어가기", "마지막 메시지"],
-      time: "52–60분" },
+      time: "55–60분" },
 
     {
       ch: 5, nav: "Q&A", img: "mesh-field", cls: "roomy",
-      kicker: "Q&A · 52–60분",
+      kicker: "Q&A · 55–60분",
       title: "Q&A — <em>무엇이든</em> 물어보세요",
       lead: "정답을 말하는 시간이 아니라, 여러분의 업무에 붙여 보는 시간입니다.",
       body: `<div class="grid g3">
@@ -3657,11 +3863,11 @@
         ["時間", "パート", "何をするか"],
         [
           ["0–7分",   "講師紹介",           "実務でAIをどう使っているか"],
-          ["7–15分",  "Part 1. 統計",       "導入率・成果の格差・成熟度 — 数字で見る現在"],
-          ["15–25分", "Part 2. 核心概念",   "本当に必要な概念だけを、たとえと例で軽く"],
-          ["25–45分", "Part 3. チーム活動", "自動化・改善したい自分の業務を書いて発表"],
-          ["45–52分", "Part 4. シナリオ",   "Level 1〜5・2027〜2030年、AIはどこまで行くのか"],
-          ["52–60分", "Q&A",                "自由質問・まとめ"]
+          ["7–17分",  "Part 1. 統計",       "導入率・成果の格差・成熟度 — 数字で見る現在"],
+          ["17–32分", "Part 2. 概念 · Agent System", "MCP・Skills・Harness・Ralph — たとえと例で"],
+          ["32–50分", "Part 3. チーム活動", "自動化・改善したい自分の業務を書いて発表"],
+          ["50–55分", "Part 4. シナリオ",   "Level 1〜5・2027〜2030年、AIはどこまで行くのか"],
+          ["55–60分", "Q&A",                "自由質問・まとめ"]
         ]
       ) + `<p class="note">付録に<b style="color:var(--heading)">2026 AI Toolsカタログと参考スライド</b>を入れてあります。チーム活動と実務で参考にしてください。</p>`
     },
@@ -3669,8 +3875,8 @@
     { ch: 1, divider: true, nav: "Part 1 案内",
       partLabel: "Part 1", title: "統計で見る<em>AIの現在</em>",
       teaser: "理論の代わりに、まず数字を見ます。導入はどこまで進み、成果の格差はなぜ生まれるのか。",
-      bullets: ["ウォームアップクイズ — 数字の感覚", "グローバル・韓国・日本の導入率", "導入率と成果の格差", "2026年の能力マップと分野別成熟度"],
-      time: "7–15分" },
+      bullets: ["ウォームアップクイズ — 数字の感覚", "グローバル・韓国・日本の導入率", "導入率と成果の格差", "2026年の能力マップと分野別成熟度", "技術Gap — なぜ大企業は遅いのか"],
+      time: "7–17分" },
 
     {
       ch: 1, nav: "ウォームアップクイズ — 数字の感覚", img: "stats-globe", cls: "roomy",
@@ -3779,11 +3985,58 @@
       ]) + `<p class="note">企業が実際に体感するボトルネックは上位(言語・コード)ではなく、<b>Enterprise Agent・Computer Use</b>の領域にあります。</p>`
     },
 
+    {
+      ch: 1, nav: "AIには複数の『現在』がある", layout: "split", img: "grid-aerial",
+      kicker: "Part 1 · 技術Gap",
+      title: "AIには<em>複数の『現在』</em>がある",
+      lead: "同じ時点でも、どの層にいるかによって体感するAIはまったく異なります。",
+      body: steps([
+        "<b>AI Research</b> — 最前線の研究",
+        "<b>Prototype / Benchmark</b> — デモとベンチマーク",
+        "<b>AI-native Startup</b> — 制約なく真っ先に適用",
+        "<b>Big Tech</b> — 大規模インフラの上で適用",
+        "<b>Large Enterprise</b> — セキュリティ・ガバナンス通過後に適用",
+        "<b>General Enterprise</b> — 標準製品中心の適用",
+        "<b>General Employee</b> — 実際の業務ツールとして使用",
+        "<b>General Public</b> — 日常使用"
+      ]) + quote("『AIはどこまで来ているか?』と<br>『自社でAIをどこまで使えるか?』は<b>別の問い</b>だ。"),
+      figureHtml: layerVisualMarkup("ja")
+    },
+
+    {
+      ch: 1, nav: "なぜ大企業は遅くならざるを得ないのか", img: "capital-night",
+      kicker: "Part 1 · Enterprise Gap",
+      title: "なぜ大企業は<em>遅くならざるを得ないのか</em>",
+      body: `<div class="grid g3">
+        ${card("Security", ["機密情報", "顧客情報", "システム権限"])}
+        ${card("Governance", ["許可範囲", "承認", "利用ポリシー", "Log"])}
+        ${card("Compliance", ["個人情報", "規制", "Audit", "IP"])}
+        ${card("Legacy", ["古いシステム", "API不足", "データサイロ"])}
+        ${card("Reliability", ["精度", "例外処理", "障害", "復旧"])}
+        ${card("Accountability", ["AIが間違えたとき<br>誰が責任を取るのか?"], "accent-m")}
+      </div>`
+      + quote("Enterprise Gapは一概に悪いものではない。<br>必要な<b>安全装置</b>があるからこそ生まれるGapでもある。")
+    },
+
+    {
+      ch: 1, nav: "では、なぜ今が重要なのか", img: "chrome-chip",
+      kicker: "Part 1 · なぜ今なのか",
+      title: "Gapは残るが、<em>Gapをつなぐ技術</em>が急速に発展している",
+      body: chips([
+        "MCP / Connectors", "Agent Skills", "Enterprise Search", "Agent Harness",
+        "Memory / State", "Evaluation", "Permission", "Audit", "Sandboxing", "Governance"
+      ]) + `<div class="grid g2">
+        ${card("これまでのボトルネック", ["モデル性能", "何ができるか"])}
+        ${card("これからのボトルネック", ["連携・権限・検証・記録", "<b>安全に</b>できるか"], "accent-c")}
+      </div>`
+      + quote("したがってAI技術の<b>Business Adoption</b>速度は速まる可能性が高い。")
+    },
+
     { ch: 2, divider: true, nav: "Part 2 案内",
       partLabel: "Part 2", title: "核心概念を<em>軽く、やさしく</em>",
       teaser: "本当に必要な概念だけを五つ。すべて、たとえと例で押さえます。",
-      bullets: ["2023→2026、何が変わったか", "AI『社員』一人に必要なもの", "MCPはUSB・SkillsはSOP", "任せる / 一緒にやる / 自分でやる", "30秒プロンプト実習"],
-      time: "15–25分" },
+      bullets: ["2023→2026、何が変わったか", "AI『社員』一人に必要なもの", "MCPはUSB・SkillsはSOP", "Harness・Ralph — AIの業務環境", "任せる / 一緒にやる / 自分でやる", "30秒プロンプト実習"],
+      time: "17–32分" },
 
     {
       ch: 2, nav: "2023〜2026年、AIの発展の流れ", img: "orbit-core", cls: "compact",
@@ -3797,6 +4050,55 @@
       </div>`
       + quote("2023年には「AIに何を質問しようか?」が重要だったとすれば、<br>2026年には「AIをどんな環境でどう働かせるか?」が重要になっている。")
       + `<p class="note">年ごとの細かい内容を覚える必要はありません。今日覚えるのは<b>「委任の単位が拡大し続ける」</b>という方向一つです。</p>`
+    },
+
+    {
+      ch: 2, nav: "2023 — GENERATE", layout: "split", img: "ai-key", cap: "2023 · Prompt / Generate",
+      kicker: "Part 2 · 2023",
+      title: "2023 — <em>GENERATE</em>",
+      lead: "AIに質問すれば答えをくれる。",
+      body: `<div class="grid g2">
+        ${card("代表的な流れ", ["GPT-4", "Claude 2", "Gemini 1.0", "Midjourney", "DALL-E 3"])}
+        ${card("主な活用", ["翻訳・要約", "メール・文書のドラフト", "コードのドラフト", "画像生成"])}
+      </div>`
+      + flow(["人", "Prompt", "AI", "回答", "人が実行"])
+      + `<p class="note">AIの役割 — <b style="color:var(--cyan)">Assistant</b></p>`
+    },
+
+    {
+      ch: 2, nav: "2024 — UNDERSTAND", layout: "split", img: "signal-web", cap: "2024 · Multimodal / Reasoning / Tool Use",
+      kicker: "Part 2 · 2024",
+      title: "2024 — <em>UNDERSTAND</em>",
+      lead: "AIがテキストを読むだけでなく、見て、聞いて、ファイルやツールを使い始める。",
+      body: `<div class="grid g2">
+        ${card("代表的な流れ", ["GPT-4o・Gemini 1.5・Claude 3系", "o1系Reasoning", "Sora・Veo・Realtime Voice", "長いContext・Tool Use・MCPの登場"])}
+        ${card("入出力の変化", ["従来 — Text → AI → Text", "変化 — Text / Image / Audio / Video / File / Web → AI → <b>Tool</b>"])}
+      </div>`
+      + quote("生成モデルから<b>外部環境とつながるシステム</b>へと進化し始めた年。")
+    },
+
+    {
+      ch: 2, nav: "2025 — ACT", layout: "split", img: "android-head", cap: "2025 · Agent / Tool / Action",
+      kicker: "Part 2 · 2025",
+      title: "2025 — <em>ACT</em>",
+      lead: "AIが答えを作るだけでなく、業務を直接遂行し始める。",
+      body: `<div class="grid g2">
+        ${card("代表的な流れ", ["Claude Code · OpenAI Codex", "Cursor Agent", "Deep Research", "Computer Use", "Agent Skills · Subagents", "MCP ecosystem"])}
+        ${card("役割の移動", ["従来 — 人 → AI → 答え → 人が実行", "Agent — 人 → <b>Goal</b> → AI → 検索 → Tool使用 → 作業 → 検証 → 結果"], "accent-c", "Assistant → Agent")}
+      </div>`
+    },
+
+    {
+      ch: 2, nav: "2026 — DELEGATE", layout: "split", img: "robot-hand", cap: "2026 · Harness / Orchestration / Delegation",
+      kicker: "Part 2 · 2026",
+      title: "2026 — <em>DELEGATE</em>",
+      lead: "優れたAIモデル一つより、AIがうまく働けるようにする<em>システム</em>が重要になる。",
+      body: `<div class="grid g3">
+        ${card("2023", "Prompt Engineering")}
+        ${card("2024–2025", "Context + Tool Use")}
+        ${card("2026", "Harness + Skills + Memory + Evals + Orchestration<br><br>= <b>Agentic AI</b>", "accent-v")}
+      </div>`
+      + quote("モデル性能の競争から<b>実行環境の設計</b>の競争へと重心が移っている。")
     },
 
     {
@@ -3814,6 +4116,18 @@
         ${card("Harness", "上記すべての要素を管理する<b>実行環境</b>", "accent-v")}
         ${card("人", "Goal定義・判断・承認・責任", "accent-m")}
       </div>`
+    },
+
+    {
+      ch: 2, nav: "Prompt → Context → Harness", img: "board-macro", cls: "roomy",
+      kicker: "Part 2 · エンジニアリングの三段階",
+      title: "Prompt → Context → <em>Harness</em>",
+      body: `<div class="grid g3">
+        ${card("Prompt Engineering", "AIに<b>何と言おうか?</b>", "", "2023")}
+        ${card("Context Engineering", "AIに<b>何を見せようか?</b>", "accent-c", "2024–2025")}
+        ${card("Harness Engineering", "AIを<b>どんな環境で、どんな権限で、どんなプロセスを経て</b>働かせようか?", "accent-v", "2026")}
+      </div>`
+      + quote("企業AIではPromptより<b>後ろの二つの領域</b>がますます重要になる。")
     },
 
     {
@@ -3837,6 +4151,102 @@
         ${card("意味", ["個人のPromptノウハウ → <b>組織の資産</b>", "うまく使える一人に依存しない仕組み", "新入社員のOnboardingと同じロジック"], "accent-c")}
       </div>`
       + quote("個人のPromptノウハウではなく、<b>組織のSOPをAI資産に</b>する方向。")
+    },
+
+    {
+      ch: 2, nav: "AI文書体系 = 法令体系", img: "capital-night", cls: "compact",
+      kicker: "Part 2 · 文書の階層",
+      title: "AIに与えるルールは<em>法令のように</em>積み重ねる",
+      lead: "Skillとルールを一つのファイルに詰め込むと管理できません。<em>上位法と下位法</em>のように階層を設け、フォルダで分けます。",
+      body: `<div class="ladder">
+        <div class="ladder-row l1">
+          <div class="lv">憲法<i>LV 1</i></div>
+          <div class="ds"><b>全社AI利用原則</b> — セキュリティ・承認・絶対禁止事項。短く、ほとんど変わらない。</div>
+          <div class="pt">/CLAUDE.md</div>
+        </div>
+        <div class="ladder-row l2">
+          <div class="lv">法律<i>LV 2</i></div>
+          <div class="ds"><b>本部・部署共通ルール</b> — 営業本部の報告フォーマット、顧客情報の取扱い基準。</div>
+          <div class="pt">/営業本部/CLAUDE.md</div>
+        </div>
+        <div class="ladder-row l3">
+          <div class="lv">施行令<i>LV 3</i></div>
+          <div class="ds"><b>業務別手順 = Skill</b> — 市場調査はどんな順序で、何を確認しながら行うか。</div>
+          <div class="pt">/skills/市場調査/SKILL.md</div>
+        </div>
+        <div class="ladder-row l4">
+          <div class="lv">施行規則<i>LV 4</i></div>
+          <div class="ds"><b>細部の指針・チェックリスト・フォーマット</b> — 長く、頻繁に変わる実務の詳細。</div>
+          <div class="pt">/skills/市場調査/references/*.md</div>
+        </div>
+        <div class="ladder-row l5">
+          <div class="lv">条例・特約<i>LV 5</i></div>
+          <div class="ds"><b>個別プロジェクト・顧客特殊ルール</b> — この案件にのみ適用される例外。</div>
+          <div class="pt">/projects/2026-LNG/CLAUDE.md</div>
+        </div>
+      </div>`
+      + `<div class="grid g3" style="margin-top:1rem">
+        ${card("上位法優先", "下位文書は上位文書に<b>違反できない。</b>全社セキュリティ原則をチームルールが覆すことはできない。", "accent-c")}
+        ${card("特別法優先", "<b>より具体的なもの</b>が先に適用される。ただし上位原則の範囲内でのみ。", "accent-v")}
+        ${card("上に行くほど短く", "憲法は1枚、施行規則は数十枚。<b>安定したものは上、頻繁に変わるものは下。</b>", "accent-m")}
+      </div>`
+    },
+
+    {
+      ch: 2, nav: "実際のフォルダ構造", img: "board-macro", cls: "compact",
+      kicker: "Part 2 · フォルダ構造",
+      title: "実際には<em>こんな形</em>をしている",
+      lead: "特別なシステムではなく<em>フォルダと.mdファイル</em>です。AIは作業する際、上から順番に読み込みます。",
+      body: `<div class="tree">
+        <div class="tree-row"><code><b>mitsui-ai/</b></code><em>全社AI作業スペース</em></div>
+        <div class="tree-row"><code>├── <b>CLAUDE.md</b></code><em><b>憲法</b> — 全社原則・セキュリティ・承認・禁止事項</em></div>
+        <div class="tree-row sp"><code>│</code><em></em></div>
+        <div class="tree-row"><code>├── <b>営業本部/</b></code><em></em></div>
+        <div class="tree-row"><code>│   ├── <b>CLAUDE.md</b></code><em><b>法律</b> — 営業共通ルール・報告フォーマット</em></div>
+        <div class="tree-row"><code>│   ├── 鉄鋼/<b>CLAUDE.md</b></code><em><b>条例</b> — 鉄鋼チームの単価・顧客取扱い基準</em></div>
+        <div class="tree-row"><code>│   └── エネルギー/<b>CLAUDE.md</b></code><em><b>条例</b> — LNG Position関連の例外</em></div>
+        <div class="tree-row sp"><code>│</code><em></em></div>
+        <div class="tree-row"><code>├── <b>skills/</b></code><em><u>業務手順 = AI用SOP</u></em></div>
+        <div class="tree-row"><code>│   ├── 市場調査/</code><em></em></div>
+        <div class="tree-row"><code>│   │   ├── <b>SKILL.md</b></code><em><b>施行令</b> — 調査の順序・判断基準</em></div>
+        <div class="tree-row"><code>│   │   └── references/</code><em></em></div>
+        <div class="tree-row"><code>│   │       ├── 調査項目.md</code><em><b>施行規則</b> — 確認項目チェックリスト</em></div>
+        <div class="tree-row"><code>│   │       └── 報告フォーマット.md</code><em><b>施行規則</b> — 成果物フォーマット</em></div>
+        <div class="tree-row"><code>│   └── 契約レビュー/</code><em></em></div>
+        <div class="tree-row"><code>│       ├── <b>SKILL.md</b></code><em><b>施行令</b> — 契約レビューの手順</em></div>
+        <div class="tree-row"><code>│       └── references/リスクチェック.md</code><em><b>施行規則</b> — 条項別リスク一覧</em></div>
+        <div class="tree-row sp"><code>│</code><em></em></div>
+        <div class="tree-row"><code>└── <b>projects/</b></code><em></em></div>
+        <div class="tree-row"><code>    └── 2026-LNG/<b>CLAUDE.md</b></code><em><b>特約</b> — この案件にのみ適用されるルール</em></div>
+      </div>`
+      + `<p class="note">鉄鋼チームの市場調査を指示すると、AIは<b>全社原則 → 営業本部ルール → 鉄鋼チームルール → 市場調査SKILL → チェックリスト</b>の順で読んで作業します。規定が変わればその階層のファイル一つだけを直せばよく、改定履歴はバージョン管理に残ります — 法令改正と同じ構造です。</p>`
+    },
+
+    {
+      ch: 2, nav: "Ralph — 反復実行パターン", layout: "split", img: "orbit-core", cap: "Ralph・小さなTaskの反復ループ",
+      kicker: "Part 2 · Ralph",
+      title: "Ralph — <em>反復実行パターン</em>",
+      lead: "RalphはHarness全体を意味するものではありません。長い業務を最後までやり切るための<em>ループ</em>です。",
+      body: steps([
+        "Goal定義", "小さなTaskの選択", "AI実行", "結果生成",
+        "Test / Verify", "状態保存", "次のTask", "反復"
+      ], "two") + quote("大きな仕事をAIに<b>一度に</b>やらせない。")
+        + `<p class="note">誤ったやり方 — 『この半年がかりのプロジェクトを全部完成させて。』<br>現実的なやり方 — 要件分析 → Task 1 → 検証 → 記録 → Task 2 → 反復</p>`
+    },
+
+    {
+      ch: 2, nav: "Harness / Ralph / MCP / Skill 整理", img: "board-teal",
+      kicker: "Part 2 · 概念整理",
+      title: "四つの言葉を<em>一枚に</em>",
+      body: table(
+        ["概念", "役割", "わかりやすく言うと"],
+        [
+          ["Harness", "全体の実行構造", "AI社員の業務環境"],
+          ["Ralph", "反復実行パターン", "小さな業務を継続的にこなすやり方"],
+          ["MCP", "Tool連携", "AIのUSB"],
+          ["Skill", "業務手順", "AI用SOP/業務マニュアル"]
+        ]
+      ) + `<p class="note">この四つが揃うほど<b>『AIに任せられる業務の長さ』</b>が伸びていきます。これが2026年の実質的な変化です。</p>`
     },
 
     {
@@ -3865,7 +4275,7 @@
       partLabel: "Part 3", title: "三井<em>チーム活動</em>",
       teaser: "ここからは私たちの業務の番です。各自、自動化・改善したい業務を書いて発表します。",
       bullets: ["営業部門共通のWorkflowをざっと確認", "Work Mapからアイデアを得る", "記入10分 + 発表10分"],
-      time: "25–45分" },
+      time: "32–50分" },
 
     {
       ch: 3, nav: "営業部門共通Workflow", img: "harbor-bridge",
@@ -3905,7 +4315,7 @@
 
     {
       ch: 3, nav: "チームセッション — 自動化したい自分の業務", cls: "roomy",
-      kicker: "Part 3 · Team Session · 25–45分",
+      kicker: "Part 3 · Team Session · 32–50分",
       title: "チームセッション — <em>自分の業務の中で</em>自動化・改善したいこと",
       lead: "各自で書き(10分)、チーム内で発表します(10分)。先ほどのWork Mapからアイデアを得ても構いません。",
       body: `<div class="ws-timer"><span class="ws-digits">10:00</span><button type="button" class="rv-btn" data-ws="start">▶ 開始</button><button type="button" class="rv-btn" data-ws="pause">⏸ 一時停止</button><button type="button" class="rv-btn" data-ws="reset">↺ 10:00</button></div>` + steps([
@@ -3928,7 +4338,7 @@
       partLabel: "Part 4", title: "これからの<em>AIシナリオ</em>",
       teaser: "いま書き出したアイデアが、今後数年でどこまで進み得るのかを見ます。",
       bullets: ["AI活用の発展段階 Level 1〜5", "2027〜2030年シナリオ", "未来の実務者の役割", "うまく使う人と使えない人の差"],
-      time: "45–52分" },
+      time: "50–55分" },
 
     {
       ch: 4, nav: "Level 1~5 — AI活用の発展段階", img: "arm-crimson",
@@ -4006,11 +4416,11 @@
       partLabel: "Q&A", title: "質問と<em>対話</em>",
       teaser: "残りの時間は皆さんの質問で埋めます。",
       bullets: ["自由質問", "チームセッションで出たテーマの続き", "最後のメッセージ"],
-      time: "52–60分" },
+      time: "55–60分" },
 
     {
       ch: 5, nav: "Q&A", img: "mesh-field", cls: "roomy",
-      kicker: "Q&A · 52–60分",
+      kicker: "Q&A · 55–60分",
       title: "Q&A — <em>何でも</em>聞いてください",
       lead: "正解を話す時間ではなく、皆さんの業務に当てはめてみる時間です。",
       body: `<div class="grid g3">

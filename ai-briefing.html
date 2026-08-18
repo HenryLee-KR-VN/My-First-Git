@@ -4957,13 +4957,24 @@
     try { localStorage.setItem(IMAGE_KEY, JSON.stringify(images)); imagesStorageOK = true; }
     catch (e) { imagesStorageOK = false; }
   }
+  /* 모든 슬라이드가 같은 화면 자리(inset:0)에 겹쳐 있어 네이티브
+     loading="lazy" 는 효과가 없다 — 브라우저가 "화면 안"으로 보고
+     전부 즉시 디코드해버려서, 사진을 여러 장 올릴수록 느려진다.
+     그래서 현재 슬라이드 근처에만 실제 src 를 심고, 나머지는 비워서
+     디코드/메모리 비용을 피한다. */
+  const PHOTO_HYDRATE_RANGE = 1;
   function applyImages() {
     document.querySelectorAll(".photo-host").forEach(host => {
       const slug = host.dataset.imgSlug;
       const url = images[slug] || "";
-      const img = host.querySelector(".photo-img");
-      if (img) img.src = url;
       host.classList.toggle("has-photo", !!url);
+      const img = host.querySelector(".photo-img");
+      if (!img) return;
+      const slideEl = host.closest(".slide");
+      const i = slideEl ? Number(slideEl.dataset.i) : -1;
+      const near = url && Number.isFinite(i) && Math.abs(i - index) <= PHOTO_HYDRATE_RANGE;
+      if (near) { if (img.src !== url) img.src = url; }
+      else if (img.getAttribute("src")) { img.removeAttribute("src"); }
     });
   }
 
@@ -4971,7 +4982,7 @@
     if (!s || !s.img) return "";
     const slug = s.img;
     const url = images[slug] || "";
-    const img = `<img class="photo-img" src="${url}" alt="" loading="lazy" decoding="async" />`;
+    const img = `<img class="photo-img" alt="" decoding="async" />`;
     return `<div class="photo-host photo-${mode} ${url ? "has-photo" : ""}" data-img-slug="${slug}">
       ${mode === "bg" ? `<div class="photo-frame">${img}</div>` : img}
       <div class="photo-placeholder">${T().placeholder}</div>
@@ -5495,6 +5506,7 @@
 
     if (index === 0) requestAnimationFrame(() => coverEl.classList.add("is-ready"));
     if (push) history.replaceState(null, "", "#" + (index + 1));
+    applyImages();
     // 보여주기 직전에 다시 맞춘다 — 초기 측정이 실패했거나 창이 바뀌었어도 자가 복구된다
     if (!editMode) fitSlide(slideEls[index]);
     syncFx();

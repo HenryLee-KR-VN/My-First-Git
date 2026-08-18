@@ -1558,14 +1558,6 @@
     .ws-timer .rv-btn { margin-top: 0; }
     .ws-timer.done .ws-digits { color: #ff6b7a; animation: wsBlink 1s steps(2) infinite; }
     @keyframes wsBlink { 50% { opacity: 0.25; } }
-    .tl-wrap { margin-top: 0.9rem; }
-    .tl-wrap > b { color: var(--heading); }
-    .tl-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: 0.8rem; margin-top: 0.6rem; }
-    .tl-btn { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; padding: 0.6rem 0.95rem;
-      border-radius: 12px; border: 1px solid var(--glass-border); background: var(--glass-soft); color: var(--heading);
-      font: inherit; font-size: 0.92rem; cursor: pointer; transition: border-color 0.15s ease; }
-    .tl-btn:hover { border-color: var(--cyan); }
-    .tl-count { font-size: 1.25rem; font-weight: 700; color: var(--cyan); font-variant-numeric: tabular-nums; }
 
     /* 사진이 없는 split 패널은 숨기고 본문을 전체 폭으로 (편집 모드에서는 업로드 슬롯 유지) */
     body:not(.is-editing) .col-fig.fig-empty { display: none; }
@@ -2960,20 +2952,6 @@
         + `<p class="src">위 시간은 강사가 실제 업무에서 측정한 <b>경험 기준 예시</b>입니다. 업무 성격에 따라 달라질 수 있습니다. 산업 전체의 수치는 <b>Part 1</b>에서 출처와 함께 확인합니다.</p>`
     },
 
-    /* ── 아이스브레이커 ─────────────────────────────────────── */
-    {
-      ch: 0, nav: "손들기 — 이번 주 AI 사용", img: "node-graph", cls: "roomy",
-      kicker: "Opening · 참여 — 손들기 · 5–6분",
-      title: "시작 전에 — <em>이번 주에 AI를 몇 번</em> 쓰셨나요?",
-      lead: "방금 본 것들이 남 얘기처럼 느껴지셨을 수도 있습니다. 그럼 여러분은 어디쯤 계신가요? 손을 들어 주시면 제가 세어서 화면에 남기고, 오늘 이야기의 깊이를 여기에 맞추겠습니다.",
-      body: `<div class="tl-wrap"><b>손들기 — 지난 한 주 기준</b><div class="tl-row"><button type="button" class="tl-btn">거의 안 썼다<span class="tl-count">0</span></button><button type="button" class="tl-btn">가끔 검색 대신<span class="tl-count">0</span></button><button type="button" class="tl-btn">거의 매일 쓴다<span class="tl-count">0</span></button><button type="button" class="tl-btn">업무에 붙여 쓴다<span class="tl-count">0</span></button><button type="button" class="tl-btn">팀에 적용 중<span class="tl-count">0</span></button></div></div>`
-        + `<div class="grid g3" style="margin-top:1.1rem">
-        ${card("많이 나오는 답", ["“계정은 있는데 손이 안 간다”", "“번역·요약 정도만”"], "accent-m")}
-        ${card("오늘의 목표", ["도구를 하나 더 아는 것이 아니라", "<b>내 업무 하나를 바꾸는 것</b>"], "accent-c")}
-        ${card("한 가지 약속", ["오늘 끝날 때 각자 <b>가져갈 것 하나</b>는", "반드시 손에 쥐고 가시게 하겠습니다"], "accent-v")}
-      </div>`
-    },
-
     {
       ch: 0, nav: "강사 소개", img: "analyst-desk", cls: "compact",
       kicker: "Instructor · 6–8분",
@@ -3064,13 +3042,13 @@
       body: table(
         ["시간", "파트", "무엇을 하나"],
         [
-          ["0–6분",   "Opening",           "왜 지금 AI인가 · 실제 사례 · <b>손들기</b>"],
+          ["0–6분",   "Opening",           "왜 지금 AI인가 · 직무별 실제 사례"],
           ["6–12분",  "강사 소개",         "실무 활용 방식과 <b>실제 결과물</b> 시연"],
           ["12–20분", "Part 1. 통계",      "<b>퀴즈</b>로 시작 — 도입률 · 성과 격차 · 성숙도"],
           ["20–34분", "Part 2. 개념 · Agent System", "Harness · MCP · Skills와 핵심 용어 정리"],
           ["34–50분", "Part 3. 팀 활동",   "자동화 · 개선하고 싶은 내 업무를 적고 발표"],
           ["50–55분", "Part 4. 시나리오",  "Level 1~5 · 2027~2030, AI는 어디까지 가는가"],
-          ["55–60분", "Q&A · 마무리",      "주제 투표 · <b>2분 실습</b>으로 마무리"]
+          ["55–60분", "Q&A · 마무리",      "자유 질문 · <b>2분 실습</b>으로 마무리"]
         ]
       ) + `<p class="note">부록에 <b style="color:var(--heading)">2026 AI Tools 카탈로그와 참고 슬라이드</b>를 담아 두었습니다. 팀 활동과 실무에서 참고하세요.</p>`
     },
@@ -3490,7 +3468,7 @@
         ${card("Level 4 — Multi-Agent", "사람이 여러 AI를 관리한다.<br><br>Research + Analysis + Document + Reviewer Agent", "accent-v")}
         ${card("Level 5 — Outcome", "Task가 아니라 Outcome을 맡긴다.<br><br>“고객 이탈률을 낮출 방안을 찾고 실행안을 제안해라.”", "accent-m")}
       </div>`
-      + `<p class="note">현재 대부분의 기업은 <b>Level 2~3</b> 사이에 있습니다. Level 5는 아직 미래 Scenario에 가깝습니다.</p><div class="tl-wrap"><b>손들기 투표 — 내 업무는 지금 어느 Level?</b><div class="tl-row"><button type="button" class="tl-btn">L1 Assistant<span class="tl-count">0</span></button><button type="button" class="tl-btn">L2 Copilot<span class="tl-count">0</span></button><button type="button" class="tl-btn">L3 Agent<span class="tl-count">0</span></button><button type="button" class="tl-btn">L4 Multi<span class="tl-count">0</span></button><button type="button" class="tl-btn">L5 Outcome<span class="tl-count">0</span></button></div></div>`
+      + `<p class="note">현재 대부분의 기업은 <b>Level 2~3</b> 사이에 있습니다. Level 5는 아직 미래 Scenario에 가깝습니다. 여러분의 업무는 지금 어느 단계에 있는지 한번 짚어보세요.</p>`
     },
 
     {
@@ -3554,7 +3532,7 @@
     { ch: 5, divider: true, nav: "Q&A 안내",
       partLabel: "Q&A", title: "질문과 <em>대화</em>",
       teaser: "남은 시간은 여러분의 질문으로 채웁니다.",
-      bullets: ["먼저 다룰 주제 투표", "자유 질문 · 팀 세션 주제 이어가기", "2분 실습 — 다음 주에 바꿀 것 하나", "마지막 메시지"],
+      bullets: ["자유 질문 · 팀 세션 주제 이어가기", "2분 실습 — 다음 주에 바꿀 것 하나", "마지막 메시지"],
       time: "55–60분" },
 
     {
@@ -3562,8 +3540,7 @@
       kicker: "Q&A · 55–60분",
       title: "Q&A — <em>무엇이든</em> 물어보세요",
       lead: "정답을 말하는 시간이 아니라, 여러분의 업무에 붙여 보는 시간입니다.",
-      body: `<div class="tl-wrap"><b>먼저 다룰 주제를 골라 주세요 — 손을 들면 제가 누르겠습니다</b><div class="tl-row"><button type="button" class="tl-btn">내 업무 적용<span class="tl-count">0</span></button><button type="button" class="tl-btn">보안 · 사내 규정<span class="tl-count">0</span></button><button type="button" class="tl-btn">어떤 도구부터<span class="tl-count">0</span></button><button type="button" class="tl-btn">팀 확산 방법<span class="tl-count">0</span></button></div></div>`
-        + `<div class="grid g3" style="margin-top:1.1rem">
+      body: `<div class="grid g3">
         ${card("이런 질문 환영", ["내 업무엔 무엇부터 적용하나", "보안 · 사내 규정이 걱정될 때", "어떤 도구부터 시작하나"], "accent-c")}
         ${card("팀 세션에서 이어서", ["발표에서 못다 한 이야기", "비슷한 업무끼리 묶어서 논의"], "accent-v")}
         ${card("강의가 끝난 뒤에도", ["오늘 자료는 공유됩니다", "개별 질문은 강사에게 언제든지"], "accent-m")}
@@ -3830,20 +3807,6 @@
         + `<p class="src">上記の時間は講師が実務で測定した<b>経験ベースの例</b>です。業務の性質により変わり得ます。業界全体の数値は<b>Part 1</b>で出典と共に確認します。</p>`
     },
 
-    /* ── アイスブレイク ─────────────────────────────────────── */
-    {
-      ch: 0, nav: "挙手 — 今週のAI利用", img: "node-graph", cls: "roomy",
-      kicker: "Opening · 参加 — 挙手 · 5–6分",
-      title: "始める前に — <em>今週AIを何回</em>使いましたか?",
-      lead: "今ご覧になったものが他人事に感じられたかもしれません。では皆さんはどのあたりでしょうか?手を挙げていただければ数えて画面に残し、今日の話の深さをここに合わせます。",
-      body: `<div class="tl-wrap"><b>挙手 — この一週間</b><div class="tl-row"><button type="button" class="tl-btn">ほとんど使っていない<span class="tl-count">0</span></button><button type="button" class="tl-btn">たまに検索代わりに<span class="tl-count">0</span></button><button type="button" class="tl-btn">ほぼ毎日使う<span class="tl-count">0</span></button><button type="button" class="tl-btn">業務に組み込んでいる<span class="tl-count">0</span></button><button type="button" class="tl-btn">チームに展開中<span class="tl-count">0</span></button></div></div>`
-        + `<div class="grid g3" style="margin-top:1.1rem">
-        ${card("よくある答え", ["「アカウントはあるが手が伸びない」", "「翻訳・要約くらい」"], "accent-m")}
-        ${card("今日の目標", ["ツールをもう一つ知ることではなく", "<b>自分の業務を一つ変えること</b>"], "accent-c")}
-        ${card("一つの約束", ["今日の終わりに各自<b>持ち帰るもの一つ</b>は", "必ず手に握って帰っていただきます"], "accent-v")}
-      </div>`
-    },
-
     {
       ch: 0, nav: "講師紹介", img: "analyst-desk", cls: "compact",
       kicker: "Instructor · 6–8分",
@@ -3934,13 +3897,13 @@
       body: table(
         ["時間", "パート", "何をするか"],
         [
-          ["0–6分",   "Opening",            "なぜ今AIなのか・実際の事例・<b>挙手</b>"],
+          ["0–6分",   "Opening",            "なぜ今AIなのか・職務別の実際の事例"],
           ["6–12分",  "講師紹介",           "実務での使い方と<b>実際の成果物</b>のデモ"],
           ["12–20分", "Part 1. 統計",       "<b>クイズ</b>で開始 — 導入率・成果の格差・成熟度"],
           ["20–34分", "Part 2. 概念 · Agent System", "Harness・MCP・Skillsと主要用語の整理"],
           ["34–50分", "Part 3. チーム活動", "自動化・改善したい自分の業務を書いて発表"],
           ["50–55分", "Part 4. シナリオ",   "Level 1〜5・2027〜2030年、AIはどこまで行くのか"],
-          ["55–60分", "Q&A・まとめ",        "テーマ投票・<b>2分実習</b>で締め"]
+          ["55–60分", "Q&A・まとめ",        "自由質問・<b>2分実習</b>で締め"]
         ]
       ) + `<p class="note">付録に<b style="color:var(--heading)">2026 AI Toolsカタログと参考スライド</b>を入れてあります。チーム活動と実務で参考にしてください。</p>`
     },
@@ -4360,7 +4323,7 @@
         ${card("Level 4 — Multi-Agent", "人が複数のAIを管理する。<br><br>Research + Analysis + Document + Reviewer Agent", "accent-v")}
         ${card("Level 5 — Outcome", "TaskではなくOutcomeを任せる。<br><br>『顧客離脱率を下げる方策を見つけ、実行案を提案せよ。』", "accent-m")}
       </div>`
-      + `<p class="note">現在ほとんどの企業は<b>Level 2〜3</b>の間にいます。Level 5はまだ未来のScenarioに近いものです。</p><div class="tl-wrap"><b>挙手投票 — 自分の業務は今どのLevel?</b><div class="tl-row"><button type="button" class="tl-btn">L1 Assistant<span class="tl-count">0</span></button><button type="button" class="tl-btn">L2 Copilot<span class="tl-count">0</span></button><button type="button" class="tl-btn">L3 Agent<span class="tl-count">0</span></button><button type="button" class="tl-btn">L4 Multi<span class="tl-count">0</span></button><button type="button" class="tl-btn">L5 Outcome<span class="tl-count">0</span></button></div></div>`
+      + `<p class="note">現在ほとんどの企業は<b>Level 2〜3</b>の間にいます。Level 5はまだ未来のScenarioに近いものです。ご自身の業務が今どの段階にあるか、一度考えてみてください。</p>`
     },
 
     {
@@ -4424,7 +4387,7 @@
     { ch: 5, divider: true, nav: "Q&A 案内",
       partLabel: "Q&A", title: "質問と<em>対話</em>",
       teaser: "残りの時間は皆さんの質問で埋めます。",
-      bullets: ["先に扱うテーマの投票", "自由質問・チームセッションの続き", "2分実習 — 来週変えることを一つ", "最後のメッセージ"],
+      bullets: ["自由質問・チームセッションの続き", "2分実習 — 来週変えることを一つ", "最後のメッセージ"],
       time: "55–60分" },
 
     {
@@ -4432,8 +4395,7 @@
       kicker: "Q&A · 55–60分",
       title: "Q&A — <em>何でも</em>聞いてください",
       lead: "正解を話す時間ではなく、皆さんの業務に当てはめてみる時間です。",
-      body: `<div class="tl-wrap"><b>先に扱うテーマを選んでください — 手が挙がったら私が押します</b><div class="tl-row"><button type="button" class="tl-btn">自分の業務への適用<span class="tl-count">0</span></button><button type="button" class="tl-btn">セキュリティ・社内規定<span class="tl-count">0</span></button><button type="button" class="tl-btn">どのツールから<span class="tl-count">0</span></button><button type="button" class="tl-btn">チームへの展開<span class="tl-count">0</span></button></div></div>`
-        + `<div class="grid g3" style="margin-top:1.1rem">
+      body: `<div class="grid g3">
         ${card("こんな質問歓迎", ["自分の業務には何から適用するか", "セキュリティ・社内規定が気になるとき", "どのツールから始めるか"], "accent-c")}
         ${card("チームセッションの続き", ["発表で話しきれなかったこと", "似た業務同士をまとめて議論"], "accent-v")}
         ${card("講義が終わった後も", ["今日の資料は共有されます", "個別の質問はいつでも講師まで"], "accent-m")}
@@ -5126,12 +5088,6 @@
   document.addEventListener("click", (e) => {
     const rv = e.target.closest(".rv-btn");
     if (rv && !rv.dataset.ws) { rv.closest(".quiz-item")?.classList.add("is-open"); return; }
-    const tl = e.target.closest(".tl-btn");
-    if (tl) {
-      const c = tl.querySelector(".tl-count");
-      if (c) c.textContent = String((parseInt(c.textContent, 10) || 0) + 1);
-      return;
-    }
     const tw = e.target.closest("[data-ws]");
     if (!tw) return;
     const act = tw.dataset.ws;

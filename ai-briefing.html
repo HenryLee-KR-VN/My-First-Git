@@ -3164,12 +3164,12 @@
     { ch: 2, divider: true, nav: "Part 2 안내",
       partLabel: "Part 2", title: "핵심 개념, <em>가볍고 쉽게</em>",
       teaser: "꼭 필요한 개념만 다섯 가지. 전부 비유와 예시로 짚고 넘어갑니다.",
-      bullets: ["2023→2026, 무엇이 달라졌나", "AI ‘직원’ 한 명에게 필요한 것", "MCP는 USB · Skills는 SOP", "Harness · Ralph — AI의 업무 환경", "맡긴다 / 같이한다 / 내가 한다", "30초 프롬프트 실습"],
+      bullets: ["2023→2026 — 무엇이 달라졌나", "Agent System 전체 그림 — 신입사원 온보딩", "① Harness → ② MCP → ③ Skills → ④ Ralph 순서대로", "30초 실습 · 맡긴다 / 같이한다 / 내가 한다"],
       time: "17–32분" },
 
     {
       ch: 2, nav: "2023~2026, AI의 발전 흐름", img: "orbit-core", cls: "compact",
-      kicker: "Part 2 · 개념 ① 발전 흐름",
+      kicker: "Part 2 · 흐름 2023→2026",
       title: "AI의 흐름을 <em>2023에서 2026까지</em>",
       body: `<div class="era">
         <div><div class="yr">2023</div><div class="tg">GENERATE</div><p>질문하면 답을 준다.<br>AI = <b>Assistant</b></p></div>
@@ -3230,11 +3230,39 @@
       + quote("모델의 성능 경쟁에서 <b>실행 환경의 설계</b> 경쟁으로 무게중심이 이동하고 있다.")
     },
 
+    /* ── Agent System 전체 그림 ─────────────────────────────── */
+    {
+      ch: 2, nav: "Agent System 전체 그림", img: "crystal-core", cls: "roomy",
+      kicker: "Part 2 · Agent System — 전체 그림",
+      title: "AI에게 일을 맡기는 것은 <em>신입사원 온보딩</em>과 같다",
+      lead: "AI Agent는 ‘디지털 직원’입니다. 직원 한 명이 일을 시작하게 하려면 네 가지가 필요합니다 — 지금부터 이 순서대로 하나씩 봅니다.",
+      body: `<div class="grid g4">
+        ${card("① Harness", "일할 수 있는 <b>업무 환경</b> 전체<br><br>신입에게 자리 · PC · 권한을 세팅해 주는 것", "accent-c", "업무 환경")}
+        ${card("② MCP", "사내 시스템과의 <b>연결</b><br><br>ERP · CRM · 메일 계정을 열어 주는 것", "accent-v", "시스템 연결")}
+        ${card("③ Skills", "회사의 <b>업무 매뉴얼</b><br><br>보고 양식 · 검토 순서 · 조사 기준을 주는 것", "", "업무 매뉴얼")}
+        ${card("④ Ralph", "일을 <b>시키는 방식</b><br><br>큰 일을 작게 쪼개 반복해서 맡기는 것", "accent-m", "일 시키는 방식")}
+      </div>`
+      + flow(["① 환경을 만든다", "② 시스템을 연결한다", "③ 매뉴얼을 준다", "④ 작게 쪼개 맡긴다"])
+      + `<p class="note">이 네 가지가 갖춰질수록 AI에게 <b>맡길 수 있는 업무의 길이</b>가 길어집니다. 다음 슬라이드부터 하나씩 설명합니다.</p>`
+    },
+
+    {
+      ch: 2, nav: "Prompt → Context → Harness", img: "board-macro", cls: "roomy",
+      kicker: "Part 2 · Agent System ① Harness — 왜 필요한가",
+      title: "① Harness — <em>Prompt에서 Harness까지</em>",
+      body: `<div class="grid g3">
+        ${card("Prompt Engineering", "AI에게 <b>뭐라고 말할까?</b>", "", "2023")}
+        ${card("Context Engineering", "AI에게 <b>무엇을 보여줄까?</b>", "accent-c", "2024–2025")}
+        ${card("Harness Engineering", "AI가 <b>어떤 환경에서, 어떤 권한으로, 어떤 과정을 거쳐</b> 일하게 할까?", "accent-v", "2026")}
+      </div>`
+      + quote("기업 AI에서는 Prompt보다 <b>뒤의 두 영역</b>이 점점 더 중요해진다.")
+    },
+
     {
       ch: 2, nav: "AI 직원 한 명에게 필요한 것", img: "crystal-core",
-      kicker: "Part 2 · 개념 ② Agent",
-      title: "AI Agent를 <em>‘디지털 직원’</em>이라고 생각해보자",
-      lead: "그 직원 한 명이 실제로 일하려면 무엇이 필요할까요? 개발 용어가 아니라 업무 언어로 바꿔봅니다.",
+      kicker: "Part 2 · Agent System ① Harness — 구성 요소",
+      title: "① Harness — <em>AI 직원의 업무 환경</em>",
+      lead: "직원 한 명이 실제로 일하려면 이만큼이 필요합니다. 이 전체를 갖춘 실행 환경을 <em>Harness</em>라고 부릅니다.",
       body: `<div class="grid g4">
         ${card("Model", "AI의 두뇌", "accent-c")}
         ${card("Skills", "우리 회사의 업무 매뉴얼 — 시장조사 방법, 미팅 준비, 보고서 양식, 계약 검토 Checklist")}
@@ -3248,21 +3276,9 @@
     },
 
     {
-      ch: 2, nav: "Prompt → Context → Harness", img: "board-macro", cls: "roomy",
-      kicker: "Part 2 · 엔지니어링의 세 단계",
-      title: "Prompt → Context → <em>Harness</em>",
-      body: `<div class="grid g3">
-        ${card("Prompt Engineering", "AI에게 <b>뭐라고 말할까?</b>", "", "2023")}
-        ${card("Context Engineering", "AI에게 <b>무엇을 보여줄까?</b>", "accent-c", "2024–2025")}
-        ${card("Harness Engineering", "AI가 <b>어떤 환경에서, 어떤 권한으로, 어떤 과정을 거쳐</b> 일하게 할까?", "accent-v", "2026")}
-      </div>`
-      + quote("기업 AI에서는 Prompt보다 <b>뒤의 두 영역</b>이 점점 더 중요해진다.")
-    },
-
-    {
       ch: 2, nav: "MCP — AI의 USB", layout: "split", img: "pcb-blue", cap: "MCP · Model Context Protocol",
-      kicker: "Part 2 · 개념 ③ MCP",
-      title: "MCP — <em>AI의 USB / Connector</em>",
+      kicker: "Part 2 · Agent System ② MCP — 시스템 연결",
+      title: "② MCP — <em>AI의 USB / Connector</em>",
       lead: "AI가 사내의 다양한 시스템과 연결되는 표준 방식입니다.",
       body: `<div class="grid g2">
         ${card("지금 — 사람이 이동한다", ["CRM → Excel → Email → ERP → Web", "사람이 창을 옮겨 다니며 옮겨 적는다"])}
@@ -3273,8 +3289,8 @@
 
     {
       ch: 2, nav: "Agent Skills — AI용 SOP", img: "board-dark",
-      kicker: "Part 2 · 개념 ④ Skills",
-      title: "Agent Skills — <em>회사의 노하우를 AI가 쓰는 형태로</em>",
+      kicker: "Part 2 · Agent System ③ Skills — 업무 매뉴얼",
+      title: "③ Agent Skills — <em>회사의 노하우를 AI가 쓰는 형태로</em>",
       body: `<div class="grid g2">
         ${card("Skill로 만들 수 있는 것", ["우리 회사 고객보고 양식", "계약 검토 순서", "시장 조사 기준", "Supplier 평가 기준", "내부 승인용 문서 작성법"])}
         ${card("의미", ["개인의 Prompt 노하우 → <b>조직의 자산</b>", "잘 쓰는 한 사람에게 의존하지 않는 구조", "신규 입사자 Onboarding과 같은 논리"], "accent-c")}
@@ -3284,8 +3300,8 @@
 
     {
       ch: 2, nav: "AI 문서 체계 = 법령 체계", img: "capital-night", cls: "compact",
-      kicker: "Part 2 · 문서 위계",
-      title: "AI에게 주는 규칙은 <em>법령처럼</em> 쌓는다",
+      kicker: "Part 2 · Agent System ③ Skills — 문서 위계",
+      title: "③ Skills 심화 — 규칙은 <em>법령처럼</em> 쌓는다",
       lead: "Skill과 규칙을 파일 하나에 몰아넣으면 관리가 안 됩니다. <em>상위법과 하위법</em>처럼 위계를 두고 폴더로 나눕니다.",
       body: `<div class="ladder">
         <div class="ladder-row l1">
@@ -3323,8 +3339,8 @@
 
     {
       ch: 2, nav: "실제 폴더 구조", img: "board-macro", cls: "compact",
-      kicker: "Part 2 · 폴더 구조",
-      title: "실제로는 <em>이렇게 생겼다</em>",
+      kicker: "Part 2 · Agent System ③ Skills — 실제 모습",
+      title: "③ Skills 심화 — 실제로는 <em>이렇게 생겼다</em>",
       lead: "특별한 시스템이 아니라 <em>폴더와 .md 파일</em>입니다. AI는 일할 때 위에서부터 순서대로 읽습니다.",
       body: `<div class="tree">
         <div class="tree-row"><code><b>mitsui-ai/</b></code><em>전사 AI 작업 공간</em></div>
@@ -3353,8 +3369,8 @@
 
     {
       ch: 2, nav: "Ralph — 반복 실행 패턴", layout: "split", img: "orbit-core", cap: "Ralph · 작은 Task의 반복 루프",
-      kicker: "Part 2 · Ralph",
-      title: "Ralph — <em>반복 실행 패턴</em>",
+      kicker: "Part 2 · Agent System ④ Ralph — 일 시키는 방식",
+      title: "④ Ralph — <em>반복 실행 패턴</em>",
       lead: "Ralph는 Harness 전체를 의미하지 않습니다. 긴 업무를 끝까지 끌고 가기 위한 루프입니다.",
       body: steps([
         "Goal 정의", "작은 Task 선택", "AI 실행", "결과 생성",
@@ -3365,15 +3381,15 @@
 
     {
       ch: 2, nav: "Harness / Ralph / MCP / Skill 정리", img: "board-teal",
-      kicker: "Part 2 · 개념 정리",
+      kicker: "Part 2 · Agent System — 한 장 정리",
       title: "네 개의 단어를 <em>한 장으로</em>",
       body: table(
         ["개념", "역할", "쉽게 설명하면"],
         [
-          ["Harness", "전체 실행 구조", "AI 직원의 업무환경"],
-          ["Ralph", "반복 실행 패턴", "작은 업무를 계속 수행하는 방식"],
-          ["MCP", "Tool 연결", "AI의 USB"],
-          ["Skill", "업무 절차", "AI용 SOP / 업무 매뉴얼"]
+          ["① Harness", "전체 실행 구조", "AI 직원의 업무환경"],
+          ["② MCP", "Tool 연결", "AI의 USB"],
+          ["③ Skill", "업무 절차", "AI용 SOP / 업무 매뉴얼"],
+          ["④ Ralph", "반복 실행 패턴", "작은 업무를 계속 수행하는 방식"]
         ]
       ) + `<p class="note">이 네 가지가 갖춰질수록 “AI에게 <b>맡길 수 있는 업무의 길이</b>”가 길어집니다. 이것이 2026년의 실질적인 변화입니다.</p>`
     },
@@ -3391,7 +3407,7 @@
 
     {
       ch: 2, nav: "맡긴다 / 같이한다 / 내가 한다", img: "factory-arms",
-      kicker: "Part 2 · 개념 ⑤ 업무 분류",
+      kicker: "Part 2 · 적용 — 업무 분류",
       title: "지금 기준으로 <em>세 가지로 나눈다</em>",
       body: `<div class="grid g3">
         ${card("① 지금 AI에게 맡길 수 있는 것", ["시장 Monitoring", "경쟁사 Research", "Customer / Supplier Research", "Specification 비교", "과거 자료 Search", "회의 준비 · 회의록", "Follow-up 메일", "보고서 초안 · 조건 비교"], "accent-c", "DELEGATE")}
@@ -4035,12 +4051,12 @@
     { ch: 2, divider: true, nav: "Part 2 案内",
       partLabel: "Part 2", title: "核心概念を<em>軽く、やさしく</em>",
       teaser: "本当に必要な概念だけを五つ。すべて、たとえと例で押さえます。",
-      bullets: ["2023→2026、何が変わったか", "AI『社員』一人に必要なもの", "MCPはUSB・SkillsはSOP", "Harness・Ralph — AIの業務環境", "任せる / 一緒にやる / 自分でやる", "30秒プロンプト実習"],
+      bullets: ["2023→2026 — 何が変わったか", "Agent System全体像 — 新入社員オンボーディング", "① Harness → ② MCP → ③ Skills → ④ Ralphの順に", "30秒実習・任せる / 一緒にやる / 自分でやる"],
       time: "17–32分" },
 
     {
       ch: 2, nav: "2023〜2026年、AIの発展の流れ", img: "orbit-core", cls: "compact",
-      kicker: "Part 2 · 概念 ① 発展の流れ",
+      kicker: "Part 2 · 流れ 2023→2026",
       title: "AIの流れを<em>2023年から2026年まで</em>",
       body: `<div class="era">
         <div><div class="yr">2023</div><div class="tg">GENERATE</div><p>質問すれば答えをくれる。<br>AI = <b>Assistant</b></p></div>
@@ -4101,11 +4117,39 @@
       + quote("モデル性能の競争から<b>実行環境の設計</b>の競争へと重心が移っている。")
     },
 
+    /* ── Agent System 全体像 ────────────────────────────────── */
+    {
+      ch: 2, nav: "Agent System 全体像", img: "crystal-core", cls: "roomy",
+      kicker: "Part 2 · Agent System — 全体像",
+      title: "AIに仕事を任せることは<em>新入社員のオンボーディング</em>と同じ",
+      lead: "AI Agentは『デジタル社員』です。社員一人が仕事を始めるには四つのものが必要です — ここからこの順番で一つずつ見ていきます。",
+      body: `<div class="grid g4">
+        ${card("① Harness", "働くための<b>業務環境</b>全体<br><br>新入社員に席・PC・権限をセットアップすること", "accent-c", "業務環境")}
+        ${card("② MCP", "社内システムとの<b>連携</b><br><br>ERP・CRM・メールのアカウントを開くこと", "accent-v", "システム連携")}
+        ${card("③ Skills", "会社の<b>業務マニュアル</b><br><br>報告様式・レビュー手順・調査基準を渡すこと", "", "業務マニュアル")}
+        ${card("④ Ralph", "仕事の<b>任せ方</b><br><br>大きな仕事を小さく分けて繰り返し任せること", "accent-m", "任せ方")}
+      </div>`
+      + flow(["① 環境を作る", "② システムをつなぐ", "③ マニュアルを渡す", "④ 小さく分けて任せる"])
+      + `<p class="note">この四つが揃うほど、AIに<b>任せられる仕事の長さ</b>が伸びていきます。次のスライドから一つずつ説明します。</p>`
+    },
+
+    {
+      ch: 2, nav: "Prompt → Context → Harness", img: "board-macro", cls: "roomy",
+      kicker: "Part 2 · Agent System ① Harness — なぜ必要か",
+      title: "① Harness — <em>PromptからHarnessまで</em>",
+      body: `<div class="grid g3">
+        ${card("Prompt Engineering", "AIに<b>何と言おうか?</b>", "", "2023")}
+        ${card("Context Engineering", "AIに<b>何を見せようか?</b>", "accent-c", "2024–2025")}
+        ${card("Harness Engineering", "AIを<b>どんな環境で、どんな権限で、どんなプロセスを経て</b>働かせようか?", "accent-v", "2026")}
+      </div>`
+      + quote("企業AIではPromptより<b>後ろの二つの領域</b>がますます重要になる。")
+    },
+
     {
       ch: 2, nav: "AI社員一人に必要なもの", img: "crystal-core",
-      kicker: "Part 2 · 概念 ② Agent",
-      title: "AI Agentを<em>『デジタル社員』</em>だと考えてみよう",
-      lead: "その社員一人が実際に働くには何が必要でしょうか?開発用語ではなく業務の言葉に置き換えてみます。",
+      kicker: "Part 2 · Agent System ① Harness — 構成要素",
+      title: "① Harness — <em>AI社員の業務環境</em>",
+      lead: "社員一人が実際に働くにはこれだけのものが必要です。この全体を備えた実行環境を<em>Harness</em>と呼びます。",
       body: `<div class="grid g4">
         ${card("Model", "AIの頭脳", "accent-c")}
         ${card("Skills", "自社の業務マニュアル — 市場調査の方法、ミーティング準備、報告書フォーマット、契約レビューChecklist")}
@@ -4119,21 +4163,9 @@
     },
 
     {
-      ch: 2, nav: "Prompt → Context → Harness", img: "board-macro", cls: "roomy",
-      kicker: "Part 2 · エンジニアリングの三段階",
-      title: "Prompt → Context → <em>Harness</em>",
-      body: `<div class="grid g3">
-        ${card("Prompt Engineering", "AIに<b>何と言おうか?</b>", "", "2023")}
-        ${card("Context Engineering", "AIに<b>何を見せようか?</b>", "accent-c", "2024–2025")}
-        ${card("Harness Engineering", "AIを<b>どんな環境で、どんな権限で、どんなプロセスを経て</b>働かせようか?", "accent-v", "2026")}
-      </div>`
-      + quote("企業AIではPromptより<b>後ろの二つの領域</b>がますます重要になる。")
-    },
-
-    {
       ch: 2, nav: "MCP — AIのUSB", layout: "split", img: "pcb-blue", cap: "MCP · Model Context Protocol",
-      kicker: "Part 2 · 概念 ③ MCP",
-      title: "MCP — <em>AIのUSB / Connector</em>",
+      kicker: "Part 2 · Agent System ② MCP — システム連携",
+      title: "② MCP — <em>AIのUSB / Connector</em>",
       lead: "AIが社内のさまざまなシステムとつながるための標準的な方式です。",
       body: `<div class="grid g2">
         ${card("今 — 人が移動する", ["CRM → Excel → Email → ERP → Web", "人がウィンドウを行き来しながら転記する"])}
@@ -4144,8 +4176,8 @@
 
     {
       ch: 2, nav: "Agent Skills — AI用SOP", img: "board-dark",
-      kicker: "Part 2 · 概念 ④ Skills",
-      title: "Agent Skills — <em>会社のノウハウをAIが使える形に</em>",
+      kicker: "Part 2 · Agent System ③ Skills — 業務マニュアル",
+      title: "③ Agent Skills — <em>会社のノウハウをAIが使える形に</em>",
       body: `<div class="grid g2">
         ${card("Skillにできるもの", ["自社の顧客報告フォーマット", "契約レビューの手順", "市場調査の基準", "Supplier評価の基準", "社内承認用文書の作成方法"])}
         ${card("意味", ["個人のPromptノウハウ → <b>組織の資産</b>", "うまく使える一人に依存しない仕組み", "新入社員のOnboardingと同じロジック"], "accent-c")}
@@ -4155,8 +4187,8 @@
 
     {
       ch: 2, nav: "AI文書体系 = 法令体系", img: "capital-night", cls: "compact",
-      kicker: "Part 2 · 文書の階層",
-      title: "AIに与えるルールは<em>法令のように</em>積み重ねる",
+      kicker: "Part 2 · Agent System ③ Skills — 文書の階層",
+      title: "③ Skills深掘り — ルールは<em>法令のように</em>積み重ねる",
       lead: "Skillとルールを一つのファイルに詰め込むと管理できません。<em>上位法と下位法</em>のように階層を設け、フォルダで分けます。",
       body: `<div class="ladder">
         <div class="ladder-row l1">
@@ -4194,8 +4226,8 @@
 
     {
       ch: 2, nav: "実際のフォルダ構造", img: "board-macro", cls: "compact",
-      kicker: "Part 2 · フォルダ構造",
-      title: "実際には<em>こんな形</em>をしている",
+      kicker: "Part 2 · Agent System ③ Skills — 実際の形",
+      title: "③ Skills深掘り — 実際には<em>こんな形</em>をしている",
       lead: "特別なシステムではなく<em>フォルダと.mdファイル</em>です。AIは作業する際、上から順番に読み込みます。",
       body: `<div class="tree">
         <div class="tree-row"><code><b>mitsui-ai/</b></code><em>全社AI作業スペース</em></div>
@@ -4224,8 +4256,8 @@
 
     {
       ch: 2, nav: "Ralph — 反復実行パターン", layout: "split", img: "orbit-core", cap: "Ralph・小さなTaskの反復ループ",
-      kicker: "Part 2 · Ralph",
-      title: "Ralph — <em>反復実行パターン</em>",
+      kicker: "Part 2 · Agent System ④ Ralph — 任せ方",
+      title: "④ Ralph — <em>反復実行パターン</em>",
       lead: "RalphはHarness全体を意味するものではありません。長い業務を最後までやり切るための<em>ループ</em>です。",
       body: steps([
         "Goal定義", "小さなTaskの選択", "AI実行", "結果生成",
@@ -4236,15 +4268,15 @@
 
     {
       ch: 2, nav: "Harness / Ralph / MCP / Skill 整理", img: "board-teal",
-      kicker: "Part 2 · 概念整理",
+      kicker: "Part 2 · Agent System — 一枚整理",
       title: "四つの言葉を<em>一枚に</em>",
       body: table(
         ["概念", "役割", "わかりやすく言うと"],
         [
-          ["Harness", "全体の実行構造", "AI社員の業務環境"],
-          ["Ralph", "反復実行パターン", "小さな業務を継続的にこなすやり方"],
-          ["MCP", "Tool連携", "AIのUSB"],
-          ["Skill", "業務手順", "AI用SOP/業務マニュアル"]
+          ["① Harness", "全体の実行構造", "AI社員の業務環境"],
+          ["② MCP", "Tool連携", "AIのUSB"],
+          ["③ Skill", "業務手順", "AI用SOP/業務マニュアル"],
+          ["④ Ralph", "反復実行パターン", "小さな業務を継続的にこなすやり方"]
         ]
       ) + `<p class="note">この四つが揃うほど<b>『AIに任せられる業務の長さ』</b>が伸びていきます。これが2026年の実質的な変化です。</p>`
     },
@@ -4262,7 +4294,7 @@
 
     {
       ch: 2, nav: "任せる / 一緒にやる / 自分でやる", img: "factory-arms",
-      kicker: "Part 2 · 概念 ⑤ 業務の分類",
+      kicker: "Part 2 · 適用 — 業務の分類",
       title: "現時点で<em>三つに分ける</em>",
       body: `<div class="grid g3">
         ${card("① 今すぐAIに任せられるもの", ["市場Monitoring", "競合Research", "Customer / Supplier Research", "Specification比較", "過去資料Search", "会議準備・議事録", "Follow-upメール", "レポートドラフト・条件比較"], "accent-c", "DELEGATE")}
